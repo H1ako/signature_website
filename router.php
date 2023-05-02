@@ -23,13 +23,13 @@ function route($route, $path_to_include){
       $path_to_include.='.php';
     }
   }    
-  if($route == "/404"){
-    include_once __DIR__."/$path_to_include";
-    exit();
-  }  
   $request_url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
   $request_url = rtrim($request_url, '/');
   $request_url = strtok($request_url, '?');
+  if($request_url == $route && $route == "/404"){
+    include_once __DIR__."/$path_to_include";
+    exit();
+  }
   $route_parts = explode('/', $route);
   $request_url_parts = explode('/', $request_url);
   array_shift($route_parts);
@@ -37,8 +37,8 @@ function route($route, $path_to_include){
   if( $route_parts[0] == '' && count($request_url_parts) == 0 ){
     // Callback function
     if( is_callable($callback) ){
-      call_user_func_array($callback, []);
-      exit();
+      $template = get_callback_template_or_exit($callback, []);
+      $path_to_include = $template;
     }
     include_once __DIR__."/$path_to_include";
     exit();
@@ -53,15 +53,32 @@ function route($route, $path_to_include){
       $$route_part=$request_url_parts[$__i__];
     }
     else if( $route_parts[$__i__] != $request_url_parts[$__i__] ){
-      return;
+      continue;
     } 
   }
   // Callback function
   if( is_callable($callback) ){
-    call_user_func_array($callback, $parameters);
-    exit();
+    $template = get_callback_template_or_exit($callback, $parameters);
+    $path_to_include = $template;
   }    
   include_once __DIR__."/$path_to_include";
+  exit();
+}
+function call_callback_function($callback, $parameters) {
+  $template = call_user_func_array($callback, $parameters);
+
+  if (file_exists(__DIR__."/$template")) {
+    return $template;
+  }
+
+  return false;
+}
+function get_callback_template_or_exit($callback, $parameters) {
+  $template = call_callback_function($callback, $parameters);
+  if ($template) {
+    return $template;
+  }
+
   exit();
 }
 function out($text){echo htmlspecialchars($text);}
