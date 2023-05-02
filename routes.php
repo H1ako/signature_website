@@ -11,7 +11,6 @@ require_once __DIR__.'/router.php';
 // The output -> Index
 // get('/signature_website', 'views/index.php');
 get('/', function() {
-  // echo '13';
   return 'views/index.php';
 });
 
@@ -58,4 +57,4 @@ get('/', function() {
 // For GET or POST
 // The 404.php which is inside the views folder will be called
 // The 404.php has access to $_GET and $_POST
-any('/signature_website/404','views/404.php');
+any('/404','views/404.php');
