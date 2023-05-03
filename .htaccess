@@ -2,7 +2,7 @@
 RewriteEngine On
 RewriteBase /signature_generator/
 RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$
-RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$
+RewriteRule ^routes\.php$ - [L]
+RewriteCond %{REQUEST_URI} !^/signature_generator/assets/
 RewriteRule (.*) routes.php [QSA,L]
-RewriteRule . /routes.php [L]
 </IfModule>

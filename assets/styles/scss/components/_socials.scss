@@ -1,0 +1,34 @@
+.socials {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1em;
+
+  &__social {
+    flex: 1 1 100%;
+
+    .social__wrapper {
+      @include button($font-size: var(--font-size-3));
+    }
+
+    &.social_twitter .social__wrapper {
+      background: var(--color-twitter);
+    }
+
+    &.social_facebook .social__wrapper {
+      background: var(--color-facebook);
+    }
+
+    &.social_telegram .social__wrapper {
+      background: var(--color-telegram);
+    }
+
+    &.social_reddit .social__wrapper {
+      background: var(--color-reddit);
+    }
+
+    &.social_whatsapp .social__wrapper {
+      background: var(--color-whatsapp);
+    }
+  }
+}

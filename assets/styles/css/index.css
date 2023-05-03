@@ -1,0 +1,242 @@
+.socials-modal {
+  transition: var(--transition-main);
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+}
+.socials-modal:not(.socials-modal_active) {
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+.socials-modal__window {
+  position: relative;
+  width: var(--width-main-content);
+  margin: 0 auto;
+  padding: var(--padding-main-content);
+}
+
+.generator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.generator-form__field {
+  display: flex;
+  flex-direction: column;
+}
+.generator-form__field p {
+  margin-left: 1em;
+  text-transform: capitalize;
+  font-size: var(--font-size-5);
+}
+.generator-form__field input {
+  background: var(--color-bg-lightdark);
+  border-radius: var(--border-radius-small);
+  padding: var(--padding-input);
+  color: var(--color-text);
+}
+.generator-form__field input::-moz-placeholder {
+  opacity: 0.75;
+}
+.generator-form__field input::placeholder {
+  opacity: 0.75;
+}
+.generator-form__field input::-moz-placeholder {
+  opacity: 0;
+}
+.generator-form__field input::placeholder {
+  opacity: 0;
+}
+.generator-form__submit {
+  padding: var(--padding-button);
+  font-size: var(--font-size-5);
+  text-transform: capitalize;
+  color: var(--color-text-light);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-main);
+  align-self: center;
+}
+.generator-form__submit svg {
+  height: 1em;
+  color: var(--color-text-light);
+  fill: var(--color-text-light);
+}
+.generator-form__submit:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.generator-form__submit * {
+  z-index: 999;
+}
+.generator-form__submit:hover:before, .generator-form__submit:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
+
+.advertisement {
+  width: 100%;
+  height: 10em;
+  background: black;
+  color: var(--color-text-light);
+  border-radius: var(--border-radius-main);
+  display: grid;
+  place-items: center;
+}
+
+.editor {
+  border-radius: var(--border-radius-main);
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-block);
+}
+.editor__canvas {
+  width: 100%;
+  height: 30em;
+  background: var(--color-bg-light);
+}
+.editor__tools {
+  position: relative;
+  background: var(--color-bg-lightdark);
+  padding: 0.5em 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.editor__tools .tools__left,
+.editor__tools .tools__right {
+  position: relative;
+  display: flex;
+  gap: 1em;
+}
+.editor__tools .tools__left .left__tool.tool_edit, .editor__tools .tools__left .left__tool.tool_eraser {
+  padding: var(--padding-button);
+  font-size: var(--font-size-5);
+  text-transform: capitalize;
+  color: var(--color-text-light);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-main);
+}
+.editor__tools .tools__left .left__tool.tool_edit svg, .editor__tools .tools__left .left__tool.tool_eraser svg {
+  height: 1em;
+  color: var(--color-text-light);
+  fill: var(--color-text-light);
+}
+.editor__tools .tools__left .left__tool.tool_edit:before, .editor__tools .tools__left .left__tool.tool_eraser:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.editor__tools .tools__left .left__tool.tool_edit *, .editor__tools .tools__left .left__tool.tool_eraser * {
+  z-index: 999;
+}
+.editor__tools .tools__left .left__tool.tool_edit:hover:before, .editor__tools .tools__left .left__tool.tool_edit:focus-within:focus-visible:before, .editor__tools .tools__left .left__tool.tool_eraser:hover:before, .editor__tools .tools__left .left__tool.tool_eraser:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
+.editor__tools .tools__left .left__tool.tool_color {
+  aspect-ratio: 1/1;
+  background: red;
+}
+.editor__tools .tools__left .left__tool.tool_color .color__input {
+  display: none;
+}
+.editor__tools .tools__right .right__tool .tool_share,
+.editor__tools .tools__right .right__tool .tool_download {
+  padding: var(--padding-button);
+  font-size: var(--font-size-5);
+  text-transform: capitalize;
+  color: var(--color-text);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-bg-lightdark);
+}
+.editor__tools .tools__right .right__tool .tool_share svg,
+.editor__tools .tools__right .right__tool .tool_download svg {
+  height: 1em;
+  color: var(--color-text-light);
+  fill: var(--color-text-light);
+}
+.editor__tools .tools__right .right__tool .tool_share:before,
+.editor__tools .tools__right .right__tool .tool_download:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.editor__tools .tools__right .right__tool .tool_share *,
+.editor__tools .tools__right .right__tool .tool_download * {
+  z-index: 999;
+}
+.editor__tools .tools__right .right__tool .tool_share:hover:before, .editor__tools .tools__right .right__tool .tool_share:focus-within:focus-visible:before,
+.editor__tools .tools__right .right__tool .tool_download:hover:before,
+.editor__tools .tools__right .right__tool .tool_download:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
+
+.main-content__face {
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius-main);
+  border: var(--border-main);
+  padding: var(--padding-block);
+  display: flex;
+  gap: 1em;
+}
+.main-content__face .face__left,
+.main-content__face .face__right {
+  position: relative;
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main-content__face .face__left .left__title {
+  font-size: var(--font-size-2);
+}
+.main-content__face .face__left .left__subtitle {
+  font-size: var(--font-size-4);
+  font-weight: 300;
+  max-width: min(100%, 34rem);
+}
+.main-content__editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}/*# sourceMappingURL=index.css.map */

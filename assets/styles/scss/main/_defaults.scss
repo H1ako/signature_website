@@ -30,6 +30,10 @@ button {
   @include cleanButton;
 }
 
+input {
+  @include cleanInput;
+}
+
 h1, h2, h3, h4, h5, ul, p {
   padding: 0;
   margin: 0;
@@ -65,4 +69,5 @@ p {
 
 b {
   color: var(--color-main);
+  font-weight: 700;
 }

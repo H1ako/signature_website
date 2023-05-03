@@ -1,27 +1,27 @@
 <ul class="socials">
-  <li class="socials__social btn_twitter">
-    <button class="social__btn">
-      <?php include_once('icons/twitter.php'); ?>
-    </button>
+  <li class="socials__social social_twitter">
+    <a class="social__wrapper">
+      <?php include('icons/twitter.php'); ?>
+    </a>
   </li>
-  <li class="socials__social btn_telegram">
-    <button class="social__btn">
-      <?php include_once('icons/telegram.php'); ?>
-    </button>
+  <li class="socials__social social_telegram">
+    <a class="social__wrapper">
+      <?php include('icons/telegram.php'); ?>
+    </a>
   </li>
-  <li class="socials__social btn_facebook">
-    <button class="social__btn">
-      <?php include_once('icons/facebook.php'); ?>
-    </button>
+  <li class="socials__social social_facebook">
+    <a class="social__wrapper">
+      <?php include('icons/facebook.php'); ?>
+    </a>
   </li>
-  <li class="socials__social btn_whatsapp">
-    <button class="social__btn">
-      <?php include_once('icons/whatsapp.php'); ?>
-    </button>
+  <li class="socials__social social_whatsapp">
+    <a class="social__wrapper">
+      <?php include('icons/whatsapp.php'); ?>
+    </a>
   </li>
-  <li class="socials__social btn_twitter">
-    <button class="social__reddit">
-      <?php include_once('icons/reddit.php'); ?>
-    </button>
+  <li class="socials__social social_reddit">
+    <a class="social__wrapper">
+      <?php include('icons/reddit.php'); ?>
+    </a>
   </li>
 </ul>

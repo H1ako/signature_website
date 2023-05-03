@@ -21,8 +21,6 @@
   $color: var(--color-text),
   $font-size: var(--font-size-5),
 ) {
-  @include cleanLink;
-
   color: $color;
   font-size: $font-size;
   outline: transparent;
@@ -36,14 +34,13 @@
 
 @mixin button(
   $padding: var(--padding-button),
-  $font-size: var(--font-size-4),
-  $color: var(--color-text-light)
+  $font-size: var(--font-size-5),
+  $color: var(--color-text-light),
+  $background: var(--color-main),
+  $font-weight: 400,
 ) {
-  @include cleanButton;
-
   padding: $padding;
   font-size: $font-size;
-  font-weight: 400;
   text-transform: capitalize;
   color: $color;
   border-radius: var(--border-radius-small);
@@ -55,6 +52,8 @@
   z-index: 1;
   overflow: hidden;
   position: relative;
+  font-weight: $font-weight;
+  background: $background;
 
   svg {
     height: 1em;
@@ -83,11 +82,9 @@
 
 @mixin baseInput(
   $border-radius: var(--border-radius-small),
-  $background: var(--color-bg-light),
+  $background: var(--color-bg-lightdark),
   $padding: var(--padding-input)
 ) {
-  @include cleanInput();
-
   background:$background;
   border-radius: $border-radius;
   padding: $padding;
@@ -100,7 +97,7 @@
 
 @mixin titledInput(
   $border-radius: var(--border-radius-small),
-  $background: var(--color-bg-light),
+  $background: var(--color-bg-lightdark),
   $padding: var(--padding-input)
 ) {
   display: flex;
@@ -109,6 +106,7 @@
   p {
     margin-left: 1em;
     text-transform: capitalize;
+    font-size: var(--font-size-5);
   }
 
   input {

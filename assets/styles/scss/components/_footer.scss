@@ -1,0 +1,22 @@
+@import "../main/mixins";
+
+.main-footer {
+  background: var(--color-bg-light);
+  
+  &__content {
+    @include mainContentContainer;
+
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+
+    .content__part {
+      // flex: 1 1 50%;
+
+      &.part_contact-btn {
+        display: none;
+      }
+    }
+  }
+}

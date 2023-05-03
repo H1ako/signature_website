@@ -1,0 +1,18 @@
+@import "../main/mixins";
+
+.socials-modal {
+  transition: var(--transition-main);
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  &:not(.socials-modal_active) {
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__window {
+    @include mainContentContainer;
+  }
+}

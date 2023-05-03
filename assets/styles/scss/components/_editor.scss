@@ -1,0 +1,60 @@
+@import "../main/mixins";
+
+.editor {
+  border-radius: var(--border-radius-main);
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-block);
+
+  &__canvas {
+    width: 100%;
+    height: 30em;
+    background: var(--color-bg-light);
+  }
+
+  &__tools {
+    position: relative;
+    background: var(--color-bg-lightdark);
+    padding: .5em .5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .tools__left,
+    .tools__right {
+      position: relative;
+      display: flex;
+      gap: 1em;
+    }
+
+    .tools__left {
+      .left__tool  {
+
+        &.tool_edit,
+        &.tool_eraser {
+          @include button;
+        }
+
+        &.tool_color {
+          aspect-ratio: 1 / 1;
+          background: red;
+
+          .color__input {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .tools__right {
+      .right__tool {
+        .tool_share,
+        .tool_download {
+          @include button($background: var(--color-bg-lightdark), $color: var(--color-text));
+        } 
+      }
+    }
+  }
+}

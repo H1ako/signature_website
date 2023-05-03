@@ -1,0 +1,17 @@
+@import "../main/mixins";
+
+.generator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  &__field {
+    @include titledInput;
+  }
+
+  &__submit {
+    @include button;
+
+    align-self: center;
+  }
+}
