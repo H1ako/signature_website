@@ -1,48 +1,129 @@
 @import "../main/mixins";
 
 .editor {
+  position: relative;
   border-radius: var(--border-radius-main);
   overflow: hidden;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-block);
+  border: var(--border-main);
 
   &__canvas {
     width: 100%;
-    height: 30em;
+    height: 20em;
     background: var(--color-bg-light);
   }
 
   &__tools {
     position: relative;
     background: var(--color-bg-lightdark);
-    padding: .5em .5em;
+    padding: .5em;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
 
     .tools__left,
     .tools__right {
       position: relative;
       display: flex;
-      gap: 1em;
+      align-items: stretch;
     }
 
     .tools__left {
+      gap: 1em;
+      
       .left__tool  {
-
         &.tool_edit,
         &.tool_eraser {
           @include button;
+
+          flex: 1 1 25%;
         }
 
         &.tool_color {
+          position: relative;
+          -webkit-appearance: none;
           aspect-ratio: 1 / 1;
-          background: red;
+          height: 100%;
+          padding: 0;
+          width: auto;
+          overflow: hidden;
+          cursor: pointer;
+          border-radius: var(--border-radius-small);
 
-          .color__input {
-            display: none;
+          &::-webkit-color-swatch-wrapper {
+            padding: 0;
+          }
+
+          &::-webkit-color-swatch {
+            border-radius: var(--border-radius-small);
+          }
+        }
+
+        &.tool_thickness {
+          -webkit-appearance: none;
+          width: 10em;
+          height: 1.15em;
+          background: var(--color-bg-lightdark-accent);
+          border-radius: var(--border-radius-small);
+          align-self: center;
+
+          &:focus-within:focus-visible {
+            &::-moz-range-thumb {
+              filter: brightness(.75);
+            }
+
+            &::-ms-thumb {
+              filter: brightness(.75);
+            }
+
+            &::-webkit-slider-thumb {
+              filter: brightness(.75);
+            }
+          }
+
+          &::-moz-range-thumb {
+            border: none;
+            background: var(--color-main);
+            height: 160%;
+            width: .9em;
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+            transition: var(--transition-main);
+
+            &:hover {
+              filter: brightness(.75);
+            }
+          }
+
+          &::-ms-thumb {
+            border: none;
+            background: var(--color-main);
+            height: 160%;
+            width: .9em;
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+            transition: var(--transition-main);
+
+            &:hover {
+              filter: brightness(.75);
+            }
+          }
+          
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            background: var(--color-main);
+            height: 1.8em;
+            width: .9em;
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+            transition: var(--transition-main);
+
+            &:hover {
+              filter: brightness(.75);
+            }
           }
         }
       }
@@ -50,9 +131,14 @@
 
     .tools__right {
       .right__tool {
-        .tool_share,
-        .tool_download {
-          @include button($background: var(--color-bg-lightdark), $color: var(--color-text));
+        flex: 1 1 100%;
+
+        &.tool_share,
+        &.tool_download {
+          @include button($background: var(--color-bg-lightdark), $color: var(--color-text), $font-size: var(--font-size-3));
+
+          aspect-ratio: 1;
+          padding: .25em;
         } 
       }
     }

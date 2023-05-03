@@ -3,12 +3,15 @@
   align-items: stretch;
   justify-content: space-between;
   gap: 1em;
+  flex-wrap: wrap;
 
   &__social {
-    flex: 1 1 100%;
+    flex: 1 1 10%;
 
     .social__wrapper {
       @include button($font-size: var(--font-size-3));
+      
+      padding-inline: .5em;
     }
 
     &.social_twitter .social__wrapper {

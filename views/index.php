@@ -35,24 +35,12 @@
   </section>
   <section class="main-content__generated-signatures">
     <ul class="generated-signatures__list">
-      <li class="list__signature">
-        <div class="signature__top">
-          <img src="" alt="Signature" class="top__image">
-        </div>
-        <div class="signature__bottom">
-          <div class="bottom__left">
-            <button class="left__edit-btn">
-              <?php include('icons/edit.php'); ?>
-              <span class="edit-btn__text">Edit</span>
-            </button>
-          </div>
-          <div class="bottom__right">
-            <button class="right__btn btn_view"><?php include('icons/view.php'); ?></button>
-            <button class="right__btn btn_share"><?php include('icons/share.php'); ?></button>
-            <button class="right__btn btn_download"><?php include('icons/download.php'); ?></button>
-          </div>
-        </div>
-      </li>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
     </ul>
   </section>
 </main>

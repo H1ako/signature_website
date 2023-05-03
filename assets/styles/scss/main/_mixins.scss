@@ -2,6 +2,7 @@
   text-decoration: none;
   transition: var(--transition-main);
   cursor: pointer;
+  outline: transparent;
 }
 
 @mixin cleanInput {
@@ -23,7 +24,6 @@
 ) {
   color: $color;
   font-size: $font-size;
-  outline: transparent;
 
   &:hover,
   &:focus-within:focus-visible {
@@ -57,8 +57,9 @@
 
   svg {
     height: 1em;
-    color: var(--color-text-light);
-    fill: var(--color-text-light);
+    color: $color;
+    fill: $color;
+    flex-shrink: 0;
   }
 
   &:before {
@@ -127,9 +128,9 @@
   transition: var(--transition-main);
 }
 
-@mixin mainContentContainer {
+@mixin mainContentContainer($width: var(--width-main-content)) {
   position: relative;
-  width: var(--width-main-content);
+  width: $width;
   margin: 0 auto;
   padding: var(--padding-main-content);
 }

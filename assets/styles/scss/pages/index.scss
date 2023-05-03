@@ -3,6 +3,7 @@
 @import "../components/generator-form";
 @import "../components/advertisement";
 @import "../components/editor";
+@import "../components/signature-card";
 
 .main-content {
   &__face {
@@ -34,9 +35,29 @@
       }
     }
   }
+
+  &__socials {
+    .social__wrapper {
+      padding-inline: .5em;
+    }
+  }
+
   &__editor {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: var(--gap-block);
+  }
+
+  &__generated-signatures {
+    
+    .generated-signatures__list {
+      width: 100%;
+      gap: 1em;
+      // display: flex;
+      // flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }

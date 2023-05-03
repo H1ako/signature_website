@@ -3,6 +3,10 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
+  background: var(--color-bg-dark-transparent);
+  display: grid;
+  place-items: center;
+  padding: var(--padding-main-content);
 }
 .socials-modal:not(.socials-modal_active) {
   opacity: 0;
@@ -12,10 +16,59 @@
   pointer-events: none;
 }
 .socials-modal__window {
-  position: relative;
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius-main);
+  border: var(--border-main);
   width: var(--width-main-content);
+}
+.socials-modal__window .window__content {
+  position: relative;
+  width: min(100%, 50em);
   margin: 0 auto;
   padding: var(--padding-main-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.socials-modal__window .window__content .content__titles .titles__title {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  font-size: var(--font-size-2);
+  text-align: center;
+}
+.socials-modal__window .window__content .content__titles .titles__subtitle {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  font-weight: 200;
+  font-size: var(--font-size-4);
+  text-align: center;
+}
+.socials-modal__window .window__content .content__links {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 100%;
+}
+.socials-modal__window .window__content .content__links .links__link {
+  background: var(--color-bg-lightdark);
+  border-radius: var(--border-radius-small);
+  padding: var(--padding-input);
+  color: var(--color-text);
+}
+.socials-modal__window .window__content .content__links .links__link::-moz-placeholder {
+  opacity: 0.75;
+}
+.socials-modal__window .window__content .content__links .links__link::placeholder {
+  opacity: 0.75;
 }
 
 .generator-form {
@@ -72,6 +125,7 @@
   height: 1em;
   color: var(--color-text-light);
   fill: var(--color-text-light);
+  flex-shrink: 0;
 }
 .generator-form__submit:before {
   content: "";
@@ -90,7 +144,7 @@
 
 .advertisement {
   width: 100%;
-  height: 10em;
+  height: 8em;
   background: black;
   color: var(--color-text-light);
   border-radius: var(--border-radius-main);
@@ -99,30 +153,34 @@
 }
 
 .editor {
+  position: relative;
   border-radius: var(--border-radius-main);
   overflow: hidden;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-block);
+  border: var(--border-main);
 }
 .editor__canvas {
   width: 100%;
-  height: 30em;
+  height: 20em;
   background: var(--color-bg-light);
 }
 .editor__tools {
   position: relative;
   background: var(--color-bg-lightdark);
-  padding: 0.5em 0.5em;
+  padding: 0.5em;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
 }
 .editor__tools .tools__left,
 .editor__tools .tools__right {
   position: relative;
   display: flex;
+  align-items: stretch;
+}
+.editor__tools .tools__left {
   gap: 1em;
 }
 .editor__tools .tools__left .left__tool.tool_edit, .editor__tools .tools__left .left__tool.tool_eraser {
@@ -141,11 +199,13 @@
   position: relative;
   font-weight: 400;
   background: var(--color-main);
+  flex: 1 1 25%;
 }
 .editor__tools .tools__left .left__tool.tool_edit svg, .editor__tools .tools__left .left__tool.tool_eraser svg {
   height: 1em;
   color: var(--color-text-light);
   fill: var(--color-text-light);
+  flex-shrink: 0;
 }
 .editor__tools .tools__left .left__tool.tool_edit:before, .editor__tools .tools__left .left__tool.tool_eraser:before {
   content: "";
@@ -162,16 +222,85 @@
   filter: brightness(0.8);
 }
 .editor__tools .tools__left .left__tool.tool_color {
+  position: relative;
+  -webkit-appearance: none;
   aspect-ratio: 1/1;
-  background: red;
+  height: 100%;
+  padding: 0;
+  width: auto;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
 }
-.editor__tools .tools__left .left__tool.tool_color .color__input {
-  display: none;
+.editor__tools .tools__left .left__tool.tool_color::-webkit-color-swatch-wrapper {
+  padding: 0;
 }
-.editor__tools .tools__right .right__tool .tool_share,
-.editor__tools .tools__right .right__tool .tool_download {
+.editor__tools .tools__left .left__tool.tool_color::-webkit-color-swatch {
+  border-radius: var(--border-radius-small);
+}
+.editor__tools .tools__left .left__tool.tool_thickness {
+  -webkit-appearance: none;
+  width: 10em;
+  height: 1.15em;
+  background: var(--color-bg-lightdark-accent);
+  border-radius: var(--border-radius-small);
+  align-self: center;
+}
+.editor__tools .tools__left .left__tool.tool_thickness:focus-within:focus-visible::-moz-range-thumb {
+  filter: brightness(0.75);
+}
+.editor__tools .tools__left .left__tool.tool_thickness:focus-within:focus-visible::-ms-thumb {
+  filter: brightness(0.75);
+}
+.editor__tools .tools__left .left__tool.tool_thickness:focus-within:focus-visible::-webkit-slider-thumb {
+  filter: brightness(0.75);
+}
+.editor__tools .tools__left .left__tool.tool_thickness::-moz-range-thumb {
+  border: none;
+  background: var(--color-main);
+  height: 160%;
+  width: 0.9em;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  -moz-transition: var(--transition-main);
+  transition: var(--transition-main);
+}
+.editor__tools .tools__left .left__tool.tool_thickness::-moz-range-thumb:hover {
+  filter: brightness(0.75);
+}
+.editor__tools .tools__left .left__tool.tool_thickness::-ms-thumb {
+  border: none;
+  background: var(--color-main);
+  height: 160%;
+  width: 0.9em;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  -ms-transition: var(--transition-main);
+  transition: var(--transition-main);
+}
+.editor__tools .tools__left .left__tool.tool_thickness::-ms-thumb:hover {
+  filter: brightness(0.75);
+}
+.editor__tools .tools__left .left__tool.tool_thickness::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  background: var(--color-main);
+  height: 1.8em;
+  width: 0.9em;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  -webkit-transition: var(--transition-main);
+  transition: var(--transition-main);
+}
+.editor__tools .tools__left .left__tool.tool_thickness::-webkit-slider-thumb:hover {
+  filter: brightness(0.75);
+}
+.editor__tools .tools__right .right__tool {
+  flex: 1 1 100%;
+}
+.editor__tools .tools__right .right__tool.tool_share, .editor__tools .tools__right .right__tool.tool_download {
   padding: var(--padding-button);
-  font-size: var(--font-size-5);
+  font-size: var(--font-size-3);
   text-transform: capitalize;
   color: var(--color-text);
   border-radius: var(--border-radius-small);
@@ -185,15 +314,16 @@
   position: relative;
   font-weight: 400;
   background: var(--color-bg-lightdark);
+  aspect-ratio: 1;
+  padding: 0.25em;
 }
-.editor__tools .tools__right .right__tool .tool_share svg,
-.editor__tools .tools__right .right__tool .tool_download svg {
+.editor__tools .tools__right .right__tool.tool_share svg, .editor__tools .tools__right .right__tool.tool_download svg {
   height: 1em;
-  color: var(--color-text-light);
-  fill: var(--color-text-light);
+  color: var(--color-text);
+  fill: var(--color-text);
+  flex-shrink: 0;
 }
-.editor__tools .tools__right .right__tool .tool_share:before,
-.editor__tools .tools__right .right__tool .tool_download:before {
+.editor__tools .tools__right .right__tool.tool_share:before, .editor__tools .tools__right .right__tool.tool_download:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -201,13 +331,129 @@
   background: inherit;
   z-index: -1;
 }
-.editor__tools .tools__right .right__tool .tool_share *,
-.editor__tools .tools__right .right__tool .tool_download * {
+.editor__tools .tools__right .right__tool.tool_share *, .editor__tools .tools__right .right__tool.tool_download * {
   z-index: 999;
 }
-.editor__tools .tools__right .right__tool .tool_share:hover:before, .editor__tools .tools__right .right__tool .tool_share:focus-within:focus-visible:before,
-.editor__tools .tools__right .right__tool .tool_download:hover:before,
-.editor__tools .tools__right .right__tool .tool_download:focus-within:focus-visible:before {
+.editor__tools .tools__right .right__tool.tool_share:hover:before, .editor__tools .tools__right .right__tool.tool_share:focus-within:focus-visible:before, .editor__tools .tools__right .right__tool.tool_download:hover:before, .editor__tools .tools__right .right__tool.tool_download:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
+
+.signature-card {
+  flex: 1 1 30%;
+  min-width: 15em;
+  display: flex;
+  flex-direction: column;
+  border: var(--border-main);
+  border-radius: var(--border-radius-main);
+  overflow: hidden;
+}
+.signature-card__top {
+  padding: 0;
+}
+.signature-card__top .top__image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  color: var(--color-text);
+  display: grid;
+  place-content: center;
+  transition: var(--transition-main);
+  width: 100%;
+  height: 10em;
+  background: var(--color-bg-light);
+}
+.signature-card__bottom {
+  display: flex;
+  align-items: stretch;
+  gap: 1em;
+  justify-content: space-between;
+  background: var(--color-bg-lightdark);
+  padding: 0.5em;
+}
+.signature-card__bottom .bottom__left,
+.signature-card__bottom .bottom__right {
+  display: flex;
+  align-items: stretch;
+}
+.signature-card__bottom .bottom__left {
+  gap: 1em;
+}
+.signature-card__bottom .bottom__left .left__edit-btn {
+  padding: var(--padding-button);
+  font-size: var(--font-size-5);
+  text-transform: capitalize;
+  color: var(--color-text-light);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-main);
+}
+.signature-card__bottom .bottom__left .left__edit-btn svg {
+  height: 1em;
+  color: var(--color-text-light);
+  fill: var(--color-text-light);
+  flex-shrink: 0;
+}
+.signature-card__bottom .bottom__left .left__edit-btn:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.signature-card__bottom .bottom__left .left__edit-btn * {
+  z-index: 999;
+}
+.signature-card__bottom .bottom__left .left__edit-btn:hover:before, .signature-card__bottom .bottom__left .left__edit-btn:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
+.signature-card__bottom .bottom__right .right__btn {
+  padding: var(--padding-button);
+  font-size: var(--font-size-4);
+  text-transform: capitalize;
+  color: var(--color-text);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-bg-lightdark);
+  flex: 1 1 100%;
+  aspect-ratio: 1;
+  padding: 0.35em;
+}
+.signature-card__bottom .bottom__right .right__btn svg {
+  height: 1em;
+  color: var(--color-text);
+  fill: var(--color-text);
+  flex-shrink: 0;
+}
+.signature-card__bottom .bottom__right .right__btn:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.signature-card__bottom .bottom__right .right__btn * {
+  z-index: 999;
+}
+.signature-card__bottom .bottom__right .right__btn:hover:before, .signature-card__bottom .bottom__right .right__btn:focus-within:focus-visible:before {
   filter: brightness(0.8);
 }
 
@@ -235,8 +481,18 @@
   font-weight: 300;
   max-width: min(100%, 34rem);
 }
+.main-content__socials .social__wrapper {
+  padding-inline: 0.5em;
+}
 .main-content__editor {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--gap-block);
+}
+.main-content__generated-signatures .generated-signatures__list {
+  width: 100%;
+  gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }/*# sourceMappingURL=index.css.map */

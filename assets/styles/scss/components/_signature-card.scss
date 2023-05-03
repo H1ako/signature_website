@@ -1,0 +1,57 @@
+@import "../main/mixins";
+
+.signature-card {
+  flex: 1 1 30%;
+  min-width: 15em;
+  display: flex;
+  flex-direction: column;
+  border: var(--border-main);
+  border-radius: var(--border-radius-main);
+  overflow: hidden;
+
+  &__top {
+    padding: 0;
+    .top__image {
+      @include image;
+
+      width: 100%;
+      height: 10em;
+      background: var(--color-bg-light);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: stretch;
+    gap: 1em;
+    justify-content: space-between;
+    background: var(--color-bg-lightdark);
+    padding: .5em;
+
+    .bottom__left,
+    .bottom__right {
+      display: flex;
+      align-items: stretch;
+      
+    }
+
+    .bottom__left {
+      gap: 1em;
+
+      .left__edit-btn {
+        @include button;
+      }
+    }
+
+    .bottom__right {
+      .right__btn {
+        @include button($background: var(--color-bg-lightdark), $color: var(--color-text), $font-size: var(--font-size-4));
+
+        flex: 1 1 100%;
+
+        aspect-ratio: 1;
+        padding: .35em;
+      }
+    }
+  }
+}

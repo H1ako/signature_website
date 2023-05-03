@@ -10,9 +10,8 @@
         <?php include('icons/eraser.php'); ?>
         <span class="tool__text">Eraser</span>
       </button>
-      <label class="left__tool tool_color">
-        <input default="#000000" type="color" class="color__input" name="editor-color" id="editor-color">
-      </label>
+      <input value="#000000" type="color" class="left__tool tool_color" name="editor-color" id="editor-color">
+      <input value="1" type="range" min="1" max="10" class="left__tool tool_thickness">
     </span>
     <span class="tools__right">
       <button class="right__tool tool_share">
