@@ -46,5 +46,6 @@
 </main>
 <?php include('components/footer.php'); ?>
 <?php include('components/socials-modal.php'); ?>
+<script src="assets/scripts/socials-modal.js"></script>
 </body>
 </html>

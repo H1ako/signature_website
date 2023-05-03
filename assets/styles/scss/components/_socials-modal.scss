@@ -2,60 +2,48 @@
 
 .socials-modal {
   transition: var(--transition-main);
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: var(--color-bg-dark-transparent);
-  display: grid;
-  place-items: center;
-  padding: var(--padding-main-content);
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius-main);
+  border: var(--border-main);
+  width: var(--width-main-content);
 
-  &:not(.socials-modal_active) {
-    opacity: 0;
-    user-select: none;
-    pointer-events: none;
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.75);
   }
 
-  &__window {
-    background: var(--color-bg-light);
-    border-radius: var(--border-radius-main);
-    border: var(--border-main);
-    width: var(--width-main-content);
+  &__content {
+    @include mainContentContainer(min(100%, 50em));
 
-    .window__content {
-      @include mainContentContainer(min(100%, 50em));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
 
+    .content__titles {
+      .titles__title {
+        @include wrapWords;
+
+        font-size: var(--font-size-2);
+        text-align: center;
+      }
+  
+      .titles__subtitle {
+        @include wrapWords;
+
+        font-weight: 200;
+        font-size: var(--font-size-4);
+        text-align: center;
+      }
+    }
+
+    .content__links {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 2em;
+      width: 100%;
 
-      .content__titles {
-        .titles__title {
-          @include wrapWords;
-
-          font-size: var(--font-size-2);
-          text-align: center;
-        }
-    
-        .titles__subtitle {
-          @include wrapWords;
-
-          font-weight: 200;
-          font-size: var(--font-size-4);
-          text-align: center;
-        }
-      }
-
-      .content__links {
-        display: flex;
-        flex-direction: column;
-        gap: 2em;
-        width: 100%;
-
-        .links__link {
-          @include baseInput;
-        }
+      .links__link {
+        @include baseInput;
       }
     }
   }

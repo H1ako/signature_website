@@ -1,27 +1,14 @@
 .socials-modal {
   transition: var(--transition-main);
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: var(--color-bg-dark-transparent);
-  display: grid;
-  place-items: center;
-  padding: var(--padding-main-content);
-}
-.socials-modal:not(.socials-modal_active) {
-  opacity: 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  pointer-events: none;
-}
-.socials-modal__window {
   background: var(--color-bg-light);
   border-radius: var(--border-radius-main);
   border: var(--border-main);
   width: var(--width-main-content);
 }
-.socials-modal__window .window__content {
+.socials-modal::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+.socials-modal__content {
   position: relative;
   width: min(100%, 50em);
   margin: 0 auto;
@@ -31,7 +18,7 @@
   align-items: center;
   gap: 2em;
 }
-.socials-modal__window .window__content .content__titles .titles__title {
+.socials-modal__content .content__titles .titles__title {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-all;
@@ -41,7 +28,7 @@
   font-size: var(--font-size-2);
   text-align: center;
 }
-.socials-modal__window .window__content .content__titles .titles__subtitle {
+.socials-modal__content .content__titles .titles__subtitle {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-all;
@@ -52,22 +39,22 @@
   font-size: var(--font-size-4);
   text-align: center;
 }
-.socials-modal__window .window__content .content__links {
+.socials-modal__content .content__links {
   display: flex;
   flex-direction: column;
   gap: 2em;
   width: 100%;
 }
-.socials-modal__window .window__content .content__links .links__link {
+.socials-modal__content .content__links .links__link {
   background: var(--color-bg-lightdark);
   border-radius: var(--border-radius-small);
   padding: var(--padding-input);
   color: var(--color-text);
 }
-.socials-modal__window .window__content .content__links .links__link::-moz-placeholder {
+.socials-modal__content .content__links .links__link::-moz-placeholder {
   opacity: 0.75;
 }
-.socials-modal__window .window__content .content__links .links__link::placeholder {
+.socials-modal__content .content__links .links__link::placeholder {
   opacity: 0.75;
 }
 

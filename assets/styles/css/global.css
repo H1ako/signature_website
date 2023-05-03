@@ -395,7 +395,7 @@ b {
   --color-text-light: white;
   --color-bg: #F0F8FF;
   --color-bg-dark: black;
-  --color-bg-dark-transparent: rgba(0, 0, 0, .75);
+  --color-bg-dark-transparent: rgba(0, 0, 0, 0.75);
   --color-bg-light: white;
   --color-bg-lightdark: #EDEDED;
   --color-bg-lightdark-accent: #D9D9D9;

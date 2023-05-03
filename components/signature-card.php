@@ -11,7 +11,7 @@
     </div>
     <div class="bottom__right">
       <button class="right__btn btn_view"><?php include('icons/view.php'); ?></button>
-      <button class="right__btn btn_share"><?php include('icons/share.php'); ?></button>
+      <button open-socials-modal class="right__btn btn_share"><?php include('icons/share.php'); ?></button>
       <a href="download:#" class="right__btn btn_download"><?php include('icons/download.php'); ?></a>
     </div>
   </div>
