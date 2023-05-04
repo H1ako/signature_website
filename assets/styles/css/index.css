@@ -93,7 +93,6 @@
 .generator-form__submit {
   padding: var(--padding-button);
   font-size: var(--font-size-5);
-  text-transform: capitalize;
   color: var(--color-text-light);
   border-radius: var(--border-radius-small);
   display: flex;
@@ -170,10 +169,9 @@
 .editor__tools .tools__left {
   gap: 1em;
 }
-.editor__tools .tools__left .left__tool.tool_edit, .editor__tools .tools__left .left__tool.tool_eraser {
+.editor__tools .tools__left .left__tool.tool_edit, .editor__tools .tools__left .left__tool.tool_clear {
   padding: var(--padding-button);
   font-size: var(--font-size-5);
-  text-transform: capitalize;
   color: var(--color-text-light);
   border-radius: var(--border-radius-small);
   display: flex;
@@ -188,13 +186,13 @@
   background: var(--color-main);
   flex: 1 1 25%;
 }
-.editor__tools .tools__left .left__tool.tool_edit svg, .editor__tools .tools__left .left__tool.tool_eraser svg {
+.editor__tools .tools__left .left__tool.tool_edit svg, .editor__tools .tools__left .left__tool.tool_clear svg {
   height: 1em;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;
 }
-.editor__tools .tools__left .left__tool.tool_edit:before, .editor__tools .tools__left .left__tool.tool_eraser:before {
+.editor__tools .tools__left .left__tool.tool_edit:before, .editor__tools .tools__left .left__tool.tool_clear:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -202,10 +200,10 @@
   background: inherit;
   z-index: -1;
 }
-.editor__tools .tools__left .left__tool.tool_edit *, .editor__tools .tools__left .left__tool.tool_eraser * {
+.editor__tools .tools__left .left__tool.tool_edit *, .editor__tools .tools__left .left__tool.tool_clear * {
   z-index: 999;
 }
-.editor__tools .tools__left .left__tool.tool_edit:hover:before, .editor__tools .tools__left .left__tool.tool_edit:focus-within:focus-visible:before, .editor__tools .tools__left .left__tool.tool_eraser:hover:before, .editor__tools .tools__left .left__tool.tool_eraser:focus-within:focus-visible:before {
+.editor__tools .tools__left .left__tool.tool_edit:hover:before, .editor__tools .tools__left .left__tool.tool_edit:focus-within:focus-visible:before, .editor__tools .tools__left .left__tool.tool_clear:hover:before, .editor__tools .tools__left .left__tool.tool_clear:focus-within:focus-visible:before {
   filter: brightness(0.8);
 }
 .editor__tools .tools__left .left__tool.tool_color {
@@ -288,7 +286,6 @@
 .editor__tools .tools__right .right__tool.tool_share, .editor__tools .tools__right .right__tool.tool_download {
   padding: var(--padding-button);
   font-size: var(--font-size-3);
-  text-transform: capitalize;
   color: var(--color-text);
   border-radius: var(--border-radius-small);
   display: flex;
@@ -369,7 +366,6 @@
 .signature-card__bottom .bottom__left .left__edit-btn {
   padding: var(--padding-button);
   font-size: var(--font-size-5);
-  text-transform: capitalize;
   color: var(--color-text-light);
   border-radius: var(--border-radius-small);
   display: flex;
@@ -406,7 +402,6 @@
 .signature-card__bottom .bottom__right .right__btn {
   padding: var(--padding-button);
   font-size: var(--font-size-4);
-  text-transform: capitalize;
   color: var(--color-text);
   border-radius: var(--border-radius-small);
   display: flex;
@@ -461,9 +456,21 @@
   justify-content: center;
 }
 .main-content__face .face__left .left__title {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
   font-size: var(--font-size-2);
 }
 .main-content__face .face__left .left__subtitle {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
   font-size: var(--font-size-4);
   font-weight: 300;
   max-width: min(100%, 34rem);

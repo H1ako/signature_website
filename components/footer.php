@@ -1,6 +1,6 @@
 <footer class="main-footer">
   <div class="main-footer__content">
-    <a href="#" class="content__part part_link">
+    <a href="/privacy-policy" class="content__part part_link">
       Privacy Policy
     </a>
     <p class="main-footer__part">© 2023 All Right Reserved</p>

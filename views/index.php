@@ -1,3 +1,4 @@
+<?php global $SITE_URL; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signature Generator</title>
   <?php include_once('components/base-head.php'); ?>
-  <link rel="stylesheet" href="assets/styles/css/index.css">
+  <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/index.css">
+  
+  <script async defer src="https://cdn.jsdelivr.net/npm/transliteration@2.1.8/dist/browser/bundle.umd.min.js"></script>
+  <script src="assets/scripts/socials-modal.js" defer></script>
+  <script src="assets/scripts/editor.js" defer></script>
+  <script src="assets/scripts/index.js" defer></script>
 </head>
 <body>
 <?php include_once('components/header.php'); ?>
@@ -34,7 +40,7 @@
     <?php include('components/advertisement.php'); ?>
   </section>
   <section class="main-content__generated-signatures">
-    <ul class="generated-signatures__list">
+    <ul class="generated-signatures__list" id="signatures-list">
       <?php include('components/signature-card.php'); ?>
       <?php include('components/signature-card.php'); ?>
       <?php include('components/signature-card.php'); ?>
@@ -46,6 +52,5 @@
 </main>
 <?php include('components/footer.php'); ?>
 <?php include('components/socials-modal.php'); ?>
-<script src="assets/scripts/socials-modal.js"></script>
 </body>
 </html>

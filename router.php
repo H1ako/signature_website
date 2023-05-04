@@ -25,13 +25,11 @@ function route($route, $path_to_include){
   }    
   $request_url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
   $request_url = rtrim($request_url, '/');
-  $request_url = strtok($request_url, '?');
-  if($request_url == $route && $route == "/404"){
-    include_once __DIR__."/$path_to_include";
-    exit();
-  }
+  $request_url = strtok($request_url, '?').'/';
   $route_parts = explode('/', $route);
   $request_url_parts = explode('/', $request_url);
+  if ($request_url != $route) return;
+
   array_shift($route_parts);
   array_shift($request_url_parts);
   if( $route_parts[0] == '' && count($request_url_parts) == 0 ){
@@ -60,7 +58,7 @@ function route($route, $path_to_include){
   if( is_callable($callback) ){
     $template = get_callback_template_or_exit($callback, $parameters);
     $path_to_include = $template;
-  }    
+  }
   include_once __DIR__."/$path_to_include";
   exit();
 }
@@ -78,7 +76,6 @@ function get_callback_template_or_exit($callback, $parameters) {
   if ($template) {
     return $template;
   }
-
   exit();
 }
 function out($text){echo htmlspecialchars($text);}

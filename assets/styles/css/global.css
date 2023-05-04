@@ -444,6 +444,23 @@ b {
   display: none;
 }
 
+.language-chooser {
+  background: var(--color-bg-light);
+  border: var(--border-main);
+  border-radius: var(--border-radius-main);
+  padding: 0.35em 0.75em;
+  font-weight: 500;
+  cursor: pointer;
+  width: 10em;
+}
+.language-chooser option {
+  padding: 0.35em 0.75em;
+  background: var(--color-bg-light);
+  border: var(--border-main);
+  border-radius: var(--border-radius-main);
+  overflow: hidden;
+}
+
 .main-header {
   position: relative;
   width: var(--width-main-content);
@@ -468,7 +485,6 @@ b {
 .socials__social .social__wrapper {
   padding: var(--padding-button);
   font-size: var(--font-size-3);
-  text-transform: capitalize;
   color: var(--color-text-light);
   border-radius: var(--border-radius-small);
   display: flex;

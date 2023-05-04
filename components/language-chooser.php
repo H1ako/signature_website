@@ -1,13 +1,13 @@
 <select name="language" id="language-chooser" class="language-chooser">
-  <option value="english" default>English</option>
-  <option value="russian" default>Russian</option>
-  <option value="ukrainian" default>Ukrainian</option>
-  <option value="polish" default>Polish</option>
-  <option value="spanish" default>Spanish</option>
-  <option value="italian" default>Italian</option>
-  <option value="french" default>French</option>
-  <option value="german" default>German</option>
-  <option value="veitnamese" default>Veitnamese</option>
-  <option value="turkish" default>Turkish</option>
-  <option value="portuguese" default>Portuguese</option>
+  <option value="english" selected>🇺🇸 English</option>
+  <option value="russian">🇷🇺 Russian</option>
+  <option value="ukrainian">🇺🇦 Ukrainian</option>
+  <option value="polish">🇵🇱 Polish</option>
+  <option value="spanish">🇪🇸 Spanish</option>
+  <option value="italian">🇮🇹 Italian</option>
+  <option value="french">🇫🇷 French</option>
+  <option value="german">🇩🇪 German</option>
+  <option value="veitnamese">🇻🇳 Veitnamese</option>
+  <option value="turkish">🇹🇷 Turkish</option>
+  <option value="portuguese">🇵🇹 Portuguese</option>
 </select>

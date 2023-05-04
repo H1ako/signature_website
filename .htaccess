@@ -2,7 +2,8 @@
 RewriteEngine On
 RewriteBase /signature_generator/
 RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$
-RewriteRule ^routes\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*[^/])$ /signature_generator/$1/ [L,R=301]
 RewriteCond %{REQUEST_URI} !^/signature_generator/assets/
 RewriteRule (.*) routes.php [QSA,L]
 </IfModule>

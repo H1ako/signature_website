@@ -35,7 +35,7 @@
       
       .left__tool  {
         &.tool_edit,
-        &.tool_eraser {
+        &.tool_clear {
           @include button;
 
           flex: 1 1 25%;

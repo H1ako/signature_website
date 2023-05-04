@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/settings.php';
 require_once __DIR__.'/router.php';
 
 // ##################################################
@@ -10,8 +10,13 @@ require_once __DIR__.'/router.php';
 // In the URL -> http://localhost
 // The output -> Index
 // get('/signature_website', 'views/index.php');
-get('/', function() {
+get('/signature_generator/', function() {
   return 'views/index.php';
+});
+get('/signature_generator/privacy-policy/', 'views/privacy-policy.php');
+
+
+get('/signature_generator/api/get-signatures', function () {
 });
 
 // Dynamic GET. Example with 1 variable
@@ -57,4 +62,4 @@ get('/', function() {
 // For GET or POST
 // The 404.php which is inside the views folder will be called
 // The 404.php has access to $_GET and $_POST
-any('/404','views/404.php');
+any('/signature_generator/404/','views/404.php');

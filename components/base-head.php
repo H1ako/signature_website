@@ -1,1 +1,1 @@
-<link rel="stylesheet" href="assets/styles/css/global.css">
+<link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/global.css">

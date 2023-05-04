@@ -25,10 +25,14 @@
 
     .face__left {
       .left__title {
+        @include wrapWords;
+
         font-size: var(--font-size-2);
       }
 
       .left__subtitle {
+        @include wrapWords;
+        
         font-size: var(--font-size-4);
         font-weight: 300;
         max-width: min(100%, 34rem);
