@@ -14,10 +14,10 @@
       <input value="3" type="range" min="3" max="8" class="left__tool tool_thickness" id="editor-thickness">
     </span>
     <span class="tools__right">
-      <button class="right__tool tool_share">
+      <button class="right__tool tool_share" open-socials-modal id="editor-share">
         <?php include('icons/share.php'); ?>
       </button>
-      <a href="download:" class="right__tool tool_download">
+      <a href="download:" class="right__tool tool_download" id="editor-download">
         <?php include('icons/download.php'); ?>
       </a>
     </span>

@@ -4,6 +4,9 @@ const editBtn = editor && editor.querySelector('#editor-edit')
 const clearBtn = editor && editor.querySelector('#editor-clear')
 const colorInput = editor && editor.querySelector('#editor-color')
 const thicknessInput = editor && editor.querySelector('#editor-thickness')
+const editorDownloadBtn = editor && editor.querySelector('#editor-download')
+
+const signaturesEditBtns = editor && document.querySelectorAll('[edit-signature]')
 
 var canvasRect = editorCanvas.getBoundingClientRect()
 var ctx = editorCanvas.getContext('2d')
@@ -74,6 +77,44 @@ function disableEditing() {
   isEditing = false
 }
 
+function downloadEditorSignature(e) {
+  editorDownloadBtn.download = 'signature.png'
+  editorDownloadBtn.href = editorCanvas.toDataURL('image/png');
+}
+
+function editSignature(e) {
+  clearCanvas()
+
+  const imageSrc = e.target.getAttribute('data-image-src')
+
+  drawImage(imageSrc)
+  goToEditor()
+}
+
+function goToEditor() {
+  editor.scrollIntoView({
+    block: 'center'
+  })
+}
+
+function drawImage(src) {
+  const image = new Image()
+  image.src = src
+
+  image.onload = () => {
+    const canvasWidth = editorCanvas.width
+    const canvasHeight = editorCanvas.height
+    const imageWidth = image.width * coordinatesMultipliers.x
+    const imageHeight = image.height * coordinatesMultipliers.y
+    console.log(imageHeight, imageWidth)
+
+    const x = (canvasWidth - imageWidth) / 2
+    const y = (canvasHeight - imageHeight) / 2
+
+    ctx.drawImage(image, x, y, imageWidth, imageHeight)
+  }
+}
+
 if (editor) {
   window.addEventListener('resize', resize)
   document.addEventListener('mousemove', draw)
@@ -85,6 +126,11 @@ if (editor) {
   // eraserBtn.addEventListener('click', setEraserMode)
   colorInput.addEventListener('change', changeColor)
   thicknessInput.addEventListener('change', changeThickness)
+  editorDownloadBtn.addEventListener('click', downloadEditorSignature)
+
+  signaturesEditBtns.forEach(btn => {
+    btn.addEventListener('click', editSignature)
+  })
 
   resize()
 }

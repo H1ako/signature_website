@@ -1,6 +1,11 @@
 const socialsModal = document.querySelector('.socials-modal')
 const openSocialsModalBtns = socialsModal && document.querySelectorAll('[open-socials-modal]')
 
+function openSocialsModal(e) {
+  console.log(e)
+  openModal(socialsModal)
+}
+
 function openModal(modal) {
   modal && modal.showModal()
   document.body.style.overflow = 'hidden'
@@ -27,7 +32,7 @@ function checkIfOuterClick(element, event) {
 }
 
 socialsModal && openSocialsModalBtns.forEach(btn => {
-  btn.addEventListener('click', () => openModal(socialsModal))
+  btn.addEventListener('click', openSocialsModal)
 })
 
 socialsModal && socialsModal.addEventListener('click', closeSocialsModalIfOuterClick)
