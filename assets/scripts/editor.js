@@ -106,7 +106,6 @@ function drawImage(src) {
     const canvasHeight = editorCanvas.height
     const imageWidth = image.width * coordinatesMultipliers.x
     const imageHeight = image.height * coordinatesMultipliers.y
-    console.log(imageHeight, imageWidth)
 
     const x = (canvasWidth - imageWidth) / 2
     const y = (canvasHeight - imageHeight) / 2
