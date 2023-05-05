@@ -11,6 +11,7 @@ ctx.lineCap = 'round'
 
 var pos = { x: 0, y: 0 }
 var coordinatesMultipliers = { x: 0, y: 0 }
+var isEditing = false
 
 function setPosition(e) {
   canvasRect = editorCanvas.getBoundingClientRect()
@@ -30,7 +31,7 @@ function resize() {
 }
 
 function draw(e) {
-  if (e.buttons !== 1) return
+  if (e.buttons !== 1 || !isEditing) return
 
   ctx.beginPath()
   ctx.moveTo(pos.x, pos.y)
@@ -64,11 +65,21 @@ function setThickness(thickness) {
   ctx.lineWidth = thickness * coordinatesMultipliers.x
 }
 
+function enableEditing(e) {
+  isEditing = true
+  setPosition(e)
+}
+
+function disableEditing() {
+  isEditing = false
+}
+
 if (editor) {
   window.addEventListener('resize', resize)
   document.addEventListener('mousemove', draw)
-  document.addEventListener('mousedown', setPosition)
   document.addEventListener('mouseenter', setPosition)
+  editorCanvas.addEventListener('mousedown', enableEditing)
+  document.addEventListener('mouseup', disableEditing)
 
   clearBtn.addEventListener('click', clearCanvas)
   // eraserBtn.addEventListener('click', setEraserMode)
