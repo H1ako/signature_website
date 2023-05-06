@@ -7,6 +7,9 @@ const generatorForm = document.querySelector('#generator-form')
 const generatorLoader = document.querySelector('#generator-loader')
 const signaturesList = document.querySelector('#signatures-list')
 
+const signaturePreviwBtns = document.querySelectorAll('[preview-signature]')
+const signatureShareBtns = document.querySelectorAll('[share-signature]')
+
 function generatorFormHandler(e) {
   e.preventDefault()
   
@@ -102,6 +105,40 @@ async function appendGeneratedSignatures() {
   const newSignatures = await generateSignatures()
 }
 
+async function shareSignature(e) {
+  const imageLink = await e.target.getAttribute('image-link')
+  const imageBlob = await getBlobFromString(imageLink)
+
+  shareImage('My Signature', 'Check out my Signature', imageBlob)
+}
+
+async function getBlobFromString(blobString) {
+  const response = await fetch(blobString)
+  const blob = await response.blob()
+  
+  return blob
+}
+
+async function shareImage(title, text, blob) {
+  const data = {
+    files: [
+      new File([blob], 'signature.png', {
+        type: blob.type,
+      }),
+    ],
+    title: title,
+    text: text,
+  };
+  try {
+    if (!navigator.share || !(navigator.canShare(data))) {
+      throw new Error("Can't share data.", data);
+    }
+    await navigator.share(data);
+  } catch (err) {
+    console.error(err.name, err.message);
+  }
+}
+
 generatorForm && generatorForm.addEventListener('submit', generatorFormHandler)
 const generatorLoaderObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -113,3 +150,6 @@ const generatorLoaderObserver = new IntersectionObserver((entries) => {
   threshold: 0.1
 })
 generatorLoader && generatorLoaderObserver.observe(generatorLoader)
+signatureShareBtns.forEach(btn => {
+  btn.addEventListener('click', shareSignature)
+})

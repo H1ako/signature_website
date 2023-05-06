@@ -52,5 +52,6 @@
 </main>
 <?php include('components/footer.php'); ?>
 <?php include('components/socials-modal.php'); ?>
+<?php include('components/preview-lightbox.php'); ?>
 </body>
 </html>

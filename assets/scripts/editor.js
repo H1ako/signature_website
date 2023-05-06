@@ -82,10 +82,10 @@ function downloadEditorSignature(e) {
   editorDownloadBtn.href = editorCanvas.toDataURL('image/png');
 }
 
-function editSignature(e) {
+async function editSignature(e) {
   clearCanvas()
 
-  const imageSrc = e.target.getAttribute('data-image-src')
+  const imageSrc = e.target.closest('[edit-signature]').getAttribute('data-image-src')
 
   drawImage(imageSrc)
   goToEditor()
@@ -99,19 +99,19 @@ function goToEditor() {
 
 function drawImage(src) {
   const image = new Image()
-  image.src = src
 
   image.onload = () => {
     const canvasWidth = editorCanvas.width
     const canvasHeight = editorCanvas.height
     const imageWidth = image.width * coordinatesMultipliers.x
     const imageHeight = image.height * coordinatesMultipliers.y
-
     const x = (canvasWidth - imageWidth) / 2
     const y = (canvasHeight - imageHeight) / 2
-
+    
     ctx.drawImage(image, x, y, imageWidth, imageHeight)
   }
+  
+  image.src = src
 }
 
 if (editor) {

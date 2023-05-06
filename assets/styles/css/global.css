@@ -440,6 +440,14 @@ b {
   gap: 1em;
   justify-content: space-between;
 }
+.main-footer__content .content__part.part_link, .main-footer__content .content__part .part__link {
+  color: var(--color-text);
+  font-size: var(--font-size-5);
+}
+.main-footer__content .content__part.part_link:hover, .main-footer__content .content__part.part_link:focus-within:focus-visible, .main-footer__content .content__part .part__link:hover, .main-footer__content .content__part .part__link:focus-within:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--color-main);
+}
 .main-footer__content .content__part.part_contact-btn {
   display: none;
 }

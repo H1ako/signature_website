@@ -1,9 +1,46 @@
 const socialsModal = document.querySelector('.socials-modal')
+const socialTwitterBtn = socialsModal && socialsModal.querySelector('.social_twitter a')
+const socialTelegramBtn = socialsModal && socialsModal.querySelector('.social_telegram a')
+const socialWhatsappBtn = socialsModal && socialsModal.querySelector('.social_whatsapp a')
+const socialFacebookBtn = socialsModal && socialsModal.querySelector('.social_facebook a')
+const socialRedditBtn = socialsModal && socialsModal.querySelector('.social_reddit a')
+const socialsModalLinkText = socialsModal && socialsModal.querySelector('#socials-modal-link')
 const openSocialsModalBtns = socialsModal && document.querySelectorAll('[open-socials-modal]')
 
 function openSocialsModal(e) {
-  console.log(e)
+  const imageLink = e.target.getAttribute('image-link')
+
+  updateSocialsShareLink(imageLink)
   openModal(socialsModal)
+}
+
+function updateSocialsShareLink(link) {
+  socialTwitterBtn.href = getTwitterShareLink(link)
+  socialTelegramBtn.href = getTelegramShareLink(link)
+  socialWhatsappBtn.href = getWhatsappShareLink(link)
+  socialFacebookBtn.href = getFacebookShareLink(link)
+  socialRedditBtn.href = getFacebookShareLink(link)
+  socialsModalLinkText.innerText = link
+}
+
+function getTwitterShareLink(link) {
+  return `${link}`
+}
+
+function getTelegramShareLink(link) {
+  return `${link}`
+}
+
+function getWhatsappShareLink(link) {
+  return `${link}`
+}
+
+function getFacebookShareLink(link) {
+  return `${link}`
+}
+
+function getRedditShareLink(link) {
+  return `${link}`
 }
 
 function openModal(modal) {
