@@ -353,7 +353,7 @@
 .signature-card__bottom {
   display: flex;
   align-items: stretch;
-  gap: 1em;
+  gap: 0.5em;
   justify-content: space-between;
   background: var(--color-bg-lightdark);
   padding: 0.5em;
@@ -402,6 +402,9 @@
 .signature-card__bottom .bottom__left .left__edit-btn:hover:before, .signature-card__bottom .bottom__left .left__edit-btn:focus-within:focus-visible:before {
   filter: brightness(0.8);
 }
+.signature-card__bottom .bottom__right {
+  justify-content: flex-end;
+}
 .signature-card__bottom .bottom__right .right__btn {
   padding: var(--padding-button);
   font-size: var(--font-size-4);
@@ -418,7 +421,6 @@
   font-weight: 400;
   background: var(--color-bg-lightdark);
   flex: 1 1 100%;
-  aspect-ratio: 1;
   padding: 0.35em;
 }
 .signature-card__bottom .bottom__right .right__btn svg {
@@ -440,6 +442,24 @@
 }
 .signature-card__bottom .bottom__right .right__btn:hover:before, .signature-card__bottom .bottom__right .right__btn:focus-within:focus-visible:before {
   filter: brightness(0.8);
+}
+@media screen and (width < 800px) {
+  .signature-card__bottom {
+    gap: 0.15em !important;
+  }
+  .signature-card__bottom .bottom__left {
+    flex: 1 1 25%;
+    justify-content: stretch;
+  }
+  .signature-card__bottom .bottom__left .left__edit-btn {
+    flex-grow: 1;
+    padding: 0.35em 0.75em;
+  }
+  .signature-card__bottom .bottom__right {
+    flex: 1 1 75%;
+    flex-grow: 1;
+    gap: 0.15em;
+  }
 }
 
 .main-content__face {
@@ -478,6 +498,21 @@
   font-weight: 300;
   max-width: min(100%, 34rem);
 }
+@media screen and (width < 680px) {
+  .main-content__face {
+    flex-direction: column;
+  }
+  .main-content__face .face__left {
+    align-items: center;
+  }
+  .main-content__face .face__left .left__title,
+  .main-content__face .face__left .left__subtitle {
+    text-align: center;
+  }
+  .main-content__face .generator-form__submit {
+    align-self: stretch;
+  }
+}
 .main-content__socials .social__wrapper {
   padding-inline: 0.5em;
 }
@@ -487,9 +522,29 @@
   align-items: center;
   gap: var(--gap-block);
 }
+.main-content__editor .editor__heading {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  text-align: center;
+}
 .main-content__generated-signatures .generated-signatures__list {
   width: 100%;
   gap: 1em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  transition: var(--transition-main);
+}
+@media screen and (width < 800px) {
+  .main-content__generated-signatures .generated-signatures__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (width < 500px) {
+  .main-content__generated-signatures .generated-signatures__list {
+    grid-template-columns: 1fr;
+  }
 }/*# sourceMappingURL=index.css.map */

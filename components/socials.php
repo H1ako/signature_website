@@ -1,26 +1,27 @@
+<?php global $SITE_NAME, $SITE_URL; ?>
 <ul class="socials">
   <li class="socials__social social_twitter">
-    <a class="social__wrapper">
+    <a href="http://www.twitter.com/share?url=<?= $SITE_URL ?>" target="_blank" class="social__wrapper">
       <?php include('icons/twitter.php'); ?>
     </a>
   </li>
   <li class="socials__social social_telegram">
-    <a class="social__wrapper">
+    <a href="https://telegram.me/share/url?url=<?= $SITE_URL ?>" target="_blank" class="social__wrapper">
       <?php include('icons/telegram.php'); ?>
     </a>
   </li>
   <li class="socials__social social_facebook">
-    <a class="social__wrapper">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $SITE_URL ?>" target="_blank" class="social__wrapper">
       <?php include('icons/facebook.php'); ?>
     </a>
   </li>
   <li class="socials__social social_whatsapp">
-    <a class="social__wrapper">
+    <a href="https://wa.me/?text=<?= $SITE_URL ?>" target="_blank" class="social__wrapper">
       <?php include('icons/whatsapp.php'); ?>
     </a>
   </li>
   <li class="socials__social social_reddit">
-    <a class="social__wrapper">
+    <a href="https://www.reddit.com/submit?url=<?= $SITE_URL ?>&title=<?= urlencode($SITE_NAME) ?>" target="_blank" class="social__wrapper">
       <?php include('icons/reddit.php'); ?>
     </a>
   </li>

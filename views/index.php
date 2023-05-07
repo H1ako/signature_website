@@ -42,11 +42,11 @@
   <section class="main-content__generated-signatures">
     <ul class="generated-signatures__list" id="signatures-list">
       <?php include('components/signature-card.php'); ?>
-      <?php  include('components/signature-card.php'); ?>
-      <?php  include('components/signature-card.php'); ?>
-      <?php  include('components/signature-card.php'); ?>
-      <?php  include('components/signature-card.php'); ?>
-      <?php  include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
+      <?php include('components/signature-card.php'); ?>
     </ul>
   </section>
 </main>

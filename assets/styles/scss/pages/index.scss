@@ -39,6 +39,23 @@
         max-width: min(100%, 34rem);
       }
     }
+    
+    @media screen and (width < 680px) {
+      flex-direction: column;
+
+      .face__left {
+        align-items: center;
+
+        .left__title,
+        .left__subtitle {
+          text-align: center;
+        }
+      }
+
+      .generator-form__submit {
+        align-self: stretch;
+      }
+    }
   }
 
   &__socials {
@@ -52,10 +69,15 @@
     flex-direction: column;
     align-items: center;
     gap: var(--gap-block);
+
+    .editor__heading {
+      @include wrapWords;
+
+      text-align: center;
+    }
   }
 
   &__generated-signatures {
-    
     .generated-signatures__list {
       width: 100%;
       gap: 1em;
@@ -63,6 +85,15 @@
       // flex-wrap: wrap;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      transition: var(--transition-main);
+
+      @media screen and (width < 800px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and (width < 500px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }

@@ -440,6 +440,9 @@ b {
   gap: 1em;
   justify-content: space-between;
 }
+.main-footer__content .content__part {
+  text-align: center;
+}
 .main-footer__content .content__part.part_link, .main-footer__content .content__part .part__link {
   color: var(--color-text);
   font-size: var(--font-size-5);

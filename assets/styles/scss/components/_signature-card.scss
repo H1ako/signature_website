@@ -26,7 +26,7 @@
   &__bottom {
     display: flex;
     align-items: stretch;
-    gap: 1em;
+    gap: .5em;
     justify-content: space-between;
     background: var(--color-bg-lightdark);
     padding: .5em;
@@ -35,7 +35,7 @@
     .bottom__right {
       display: flex;
       align-items: stretch;
-      
+      // flex: 1 1 50%;
     }
 
     .bottom__left {
@@ -47,13 +47,37 @@
     }
 
     .bottom__right {
+      justify-content: flex-end;
+
       .right__btn {
         @include button($background: var(--color-bg-lightdark), $color: var(--color-text), $font-size: var(--font-size-4));
 
         flex: 1 1 100%;
-
-        aspect-ratio: 1;
         padding: .35em;
+      }
+    }
+
+    @media screen and (width < 800px) {
+      gap: .15em !important;
+
+      .bottom__left {
+        flex: 1 1 25%;
+        justify-content: stretch;
+
+        .left__edit-btn {
+          flex-grow: 1;
+          padding: .35em .75em;
+
+          svg {
+            // display: none;
+          }
+        }
+      }
+
+      .bottom__right {
+        flex: 1 1 75%;
+        flex-grow: 1;
+        gap: .15em;
       }
     }
   }
