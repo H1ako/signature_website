@@ -5,12 +5,9 @@ const socialWhatsappBtn = socialsModal && socialsModal.querySelector('.social_wh
 const socialFacebookBtn = socialsModal && socialsModal.querySelector('.social_facebook a')
 const socialRedditBtn = socialsModal && socialsModal.querySelector('.social_reddit a')
 const socialsModalLinkText = socialsModal && socialsModal.querySelector('#socials-modal-link')
-const openSocialsModalBtns = socialsModal && document.querySelectorAll('[open-socials-modal]')
 
-function openSocialsModal(e) {
-  const imageLink = e.target.getAttribute('image-link')
-
-  updateSocialsShareLink(imageLink)
+function openSocialsModal(link) {
+  updateSocialsShareLink(link)
   openModal(socialsModal)
 }
 
@@ -67,9 +64,5 @@ function checkIfOuterClick(element, event) {
           event.clientY < elementBox.top ||
           event.clientY > elementBox.bottom)
 }
-
-socialsModal && openSocialsModalBtns.forEach(btn => {
-  btn.addEventListener('click', openSocialsModal)
-})
 
 socialsModal && socialsModal.addEventListener('click', closeSocialsModalIfOuterClick)

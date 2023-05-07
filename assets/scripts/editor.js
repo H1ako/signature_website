@@ -1,3 +1,5 @@
+const isNavigateShareWorks = !!navigator.share
+
 const editor = document.querySelector('#editor')
 const editorCanvas = editor && editor.querySelector('#editor-area')
 const editBtn = editor && editor.querySelector('#editor-edit')
@@ -5,7 +7,7 @@ const clearBtn = editor && editor.querySelector('#editor-clear')
 const colorInput = editor && editor.querySelector('#editor-color')
 const thicknessInput = editor && editor.querySelector('#editor-thickness')
 const editorDownloadBtn = editor && editor.querySelector('#editor-download')
-
+const editorShareBtn = editor && editor.querySelector('#editor-share')
 const signaturesEditBtns = editor && document.querySelectorAll('[edit-signature]')
 
 var canvasRect = editorCanvas.getBoundingClientRect()
@@ -85,16 +87,10 @@ function downloadEditorSignature(e) {
 async function editSignature(e) {
   clearCanvas()
 
-  const imageSrc = e.target.closest('[edit-signature]').getAttribute('data-image-src')
+  const imageSrc = e.target.closest('[data-signature-src]').getAttribute('data-signature-src')
 
   drawImage(imageSrc)
   goToEditor()
-}
-
-function goToEditor() {
-  editor.scrollIntoView({
-    block: 'center'
-  })
 }
 
 function drawImage(src) {
@@ -103,8 +99,8 @@ function drawImage(src) {
   image.onload = () => {
     const canvasWidth = editorCanvas.width
     const canvasHeight = editorCanvas.height
-    const imageWidth = image.width * coordinatesMultipliers.x
-    const imageHeight = image.height * coordinatesMultipliers.y
+    const imageWidth = image.width * coordinatesMultipliers.x / 2
+    const imageHeight = image.height * coordinatesMultipliers.y / 2
     const x = (canvasWidth - imageWidth) / 2
     const y = (canvasHeight - imageHeight) / 2
     
@@ -112,6 +108,24 @@ function drawImage(src) {
   }
   
   image.src = src
+}
+
+function goToEditor() {
+  editor.scrollIntoView({
+    block: 'center'
+  })
+}
+
+async function shareEditorSignature() {
+  editorCanvas.toBlob(blob => {
+    shareImage('', '', blob)
+  })
+}
+
+function disableShareBtnIfCantShare() {
+  if (isNavigateShareWorks) return
+
+  editorShareBtn?.remove()
 }
 
 if (editor) {
@@ -126,6 +140,8 @@ if (editor) {
   colorInput.addEventListener('change', changeColor)
   thicknessInput.addEventListener('change', changeThickness)
   editorDownloadBtn.addEventListener('click', downloadEditorSignature)
+  editorShareBtn.addEventListener('click', shareEditorSignature)
+  disableShareBtnIfCantShare()
 
   signaturesEditBtns.forEach(btn => {
     btn.addEventListener('click', editSignature)

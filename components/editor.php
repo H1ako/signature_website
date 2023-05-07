@@ -11,7 +11,7 @@
         <span class="tool__text">Clear</span>
       </button>
       <input value="#000000" type="color" class="left__tool tool_color" name="editor-color" id="editor-color" title="Color">
-      <input value="3" type="range" min="3" max="8" class="left__tool tool_thickness" id="editor-thickness" title="Thickness">
+      <input value="3" type="range" min="3" max="30" class="left__tool tool_thickness" id="editor-thickness" title="Thickness">
     </span>
     <span class="tools__right">
       <button class="right__tool tool_share" id="editor-share" title="Share">
