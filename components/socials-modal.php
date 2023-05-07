@@ -6,9 +6,7 @@
     </section>
     <section class="content__links">
       <?php include('components/socials.php'); ?>
-      <p class="links__link" id="socials-modal-link">
-        https://localhost:3000/
-      </p>
+      <input type="text" readonly class="links__link" id="socials-modal-link">
     </section>
   </div>
 </dialog>

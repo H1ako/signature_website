@@ -17,7 +17,7 @@ function updateSocialsShareLink(link) {
   socialWhatsappBtn.href = getWhatsappShareLink(link)
   socialFacebookBtn.href = getFacebookShareLink(link)
   socialRedditBtn.href = getFacebookShareLink(link)
-  socialsModalLinkText.innerText = link
+  socialsModalLinkText.value = link
 }
 
 function getTwitterShareLink(link) {

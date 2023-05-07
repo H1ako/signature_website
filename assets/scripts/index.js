@@ -28,7 +28,7 @@ function fillGeneratorFormWithQuery() {
   }
 }
 
-function generateOnLoadIfDataFilled() {
+function generateIfDataFilled() {
   replaceWithGeneratedSignatures()
 }
 
@@ -105,9 +105,9 @@ async function getGeneratedSignatures() {
   updateUrlQueryByFormData()
   const formData = new FormData(generatorForm)
   const cleanFormData = getTransliteratedGeneratorData(formData)
-  const firstName = getTransliteratedGeneratorData.firstName
-  const lastName = getTransliteratedGeneratorData.lastName
-  const middleName = getTransliteratedGeneratorData.middleName
+  const firstName = cleanFormData.firstName
+  const lastName = cleanFormData.lastName
+  const middleName = cleanFormData.middleName
   
   const response = await fetch(`/signature_generator/api/get-signatures?first-name=${firstName}&last-name=${lastName}&middle-name=${middleName}&style=${page}`, {
     method: 'GET',
@@ -205,7 +205,7 @@ function previewSignature(e) {
 }
 
 fillGeneratorFormWithQuery()
-generateOnLoadIfDataFilled()
+generateIfDataFilled()
 generatorForm && generatorForm.addEventListener('submit', generatorFormHandler)
 const generatorLoaderObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
