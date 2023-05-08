@@ -1,4 +1,8 @@
+@import "../main/mixins";
+
 .advertisement {
+  @include wrapWords;
+
   width: 100%;
   height: 8em;
   background: black;
@@ -6,4 +10,5 @@
   border-radius: var(--border-radius-main);
   display: grid;
   place-items: center;
+  text-align: center;
 }
