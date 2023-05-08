@@ -13,6 +13,8 @@ const signaturesEditBtns = editor && document.querySelectorAll('[edit-signature]
 var canvasRect = editorCanvas.getBoundingClientRect()
 var ctx = editorCanvas.getContext('2d')
 ctx.lineCap = 'round'
+var inMemCanvas = document.createElement('canvas')
+var inMemCtx = inMemCanvas.getContext('2d')
 
 var pos = { x: 0, y: 0 }
 var coordinatesMultipliers = { x: 0, y: 0 }
@@ -25,8 +27,45 @@ function setPosition(e) {
 }
 
 function resize() {
-  ctx.canvas.width = window.innerWidth
-  ctx.canvas.height = window.innerHeight
+  // var newWidth = window.innerWidth
+  // var newHeight = window.innerHeight
+  // var ratio = editorCanvas.width / editorCanvas.height
+  // var newRatio = newWidth / newHeight
+  // if (newRatio > ratio) {
+  //   newHeight = newWidth / ratio
+  // } else {
+  //   newWidth = newHeight * ratio
+  // }
+  
+  // inMemCanvas.width = editorCanvas.width
+  // inMemCanvas.height = editorCanvas.height
+  ctx.save()
+  const newWidth = window.innerWidth
+  const newHeight = window.innerHeight
+  const oldWidth = editorCanvas.width
+  const oldHeight = editorCanvas.height
+  let scale = Math.min(newWidth / oldWidth, newHeight / oldHeight)
+  let scaleX = newWidth / oldWidth
+  let scaleY = newHeight / oldHeight
+  let x = (newWidth - oldWidth * scaleX) / 2
+  let y = (newHeight - oldHeight * scaleY) / 2
+
+  editorCanvas.width = newWidth
+  editorCanvas.height = newHeight
+
+  console.log(scale)
+  ctx.translate(x, y)
+  // ctx.scale(scaleX, scaleY)
+  ctx.restore()
+  
+
+  // var xOffset = (newWidth - canvas.width) / 2
+  // var yOffset = (newHeight - canvas.height) / 2
+
+  // inMemCtx.drawImage(editorCanvas, 0, 0)
+  
+  // ctx.drawImage(inMemCanvas, 0, 0);
+  ctx.lineCap = 'round'
 
   coordinatesMultipliers.x = window.innerWidth / editorCanvas.offsetWidth
   coordinatesMultipliers.y = window.innerHeight / editorCanvas.offsetHeight
@@ -85,6 +124,7 @@ function downloadEditorSignature(e) {
 }
 
 async function editSignature(e) {
+  console.log(e)
   clearCanvas()
 
   const imageSrc = e.target.closest('[data-signature-src]').getAttribute('data-signature-src')

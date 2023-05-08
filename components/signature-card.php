@@ -7,7 +7,7 @@ $blob = "data:image/PNG;base64,iVBORw0KGgoAAAANSUhEUgAAA4sAAAJFCAAAAABR7T3PAAAAB
   </button>
   <div class="signature-card__bottom">
     <div class="bottom__left">
-      <button class="left__edit-btn" edit-signature">
+      <button class="left__edit-btn" edit-signature>
         <?php include('icons/edit.php'); ?>
         <span class="edit-btn__text">Edit</span>
       </button>
