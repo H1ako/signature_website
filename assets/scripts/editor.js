@@ -10,8 +10,8 @@ const editorDownloadBtn = editor && editor.querySelector('#editor-download')
 const editorShareBtn = editor && editor.querySelector('#editor-share')
 const signaturesEditBtns = editor && document.querySelectorAll('[edit-signature]')
 
-var canvasRect = editorCanvas.getBoundingClientRect()
 var ctx = editorCanvas.getContext('2d')
+var canvasRect = editorCanvas.getBoundingClientRect()
 ctx.lineCap = 'round'
 var inMemCanvas = document.createElement('canvas')
 var inMemCtx = inMemCanvas.getContext('2d')
@@ -22,8 +22,10 @@ var isEditing = false
 
 function setPosition(e) {
   canvasRect = editorCanvas.getBoundingClientRect()
-  pos.x = (e.clientX - canvasRect.left) * coordinatesMultipliers.x
-  pos.y = (e.clientY - canvasRect.top) * coordinatesMultipliers.y
+  const clientX = e.touches?.length ? e.touches[0].clientX : e.clientX
+  const clientY = e.touches?.length ? e.touches[0].clientY : e.clientY
+  pos.x = (clientX - canvasRect.left) * coordinatesMultipliers.x
+  pos.y = (clientY - canvasRect.top) * coordinatesMultipliers.y
 }
 
 function resize() {
@@ -39,32 +41,38 @@ function resize() {
   
   // inMemCanvas.width = editorCanvas.width
   // inMemCanvas.height = editorCanvas.height
-  ctx.save()
-  const newWidth = window.innerWidth
-  const newHeight = window.innerHeight
-  const oldWidth = editorCanvas.width
-  const oldHeight = editorCanvas.height
-  let scale = Math.min(newWidth / oldWidth, newHeight / oldHeight)
-  let scaleX = newWidth / oldWidth
-  let scaleY = newHeight / oldHeight
-  let x = (newWidth - oldWidth * scaleX) / 2
-  let y = (newHeight - oldHeight * scaleY) / 2
+  // inMemCtx.drawImage(editorCanvas, 0, 0)
 
-  editorCanvas.width = newWidth
-  editorCanvas.height = newHeight
+  // const newWidth = window.innerWidth
+  // const newHeight = window.innerHeight
+  // const oldWidth = editorCanvas.width
+  // const oldHeight = editorCanvas.height
 
-  console.log(scale)
-  ctx.translate(x, y)
-  // ctx.scale(scaleX, scaleY)
-  ctx.restore()
+  inMemCanvas.width = editorCanvas.width
+  inMemCanvas.height = editorCanvas.height
+  inMemCtx.drawImage(editorCanvas, 0, 0)
+
+  editorCanvas.width = window.innerWidth
+  editorCanvas.height = window.innerHeight
+
+  let scale = Math.min(editorCanvas.width / inMemCanvas.width, editorCanvas.height / inMemCanvas.height)
+  let newWidth = inMemCanvas.width * scale
+  let newHeight = inMemCanvas.height * scale
+
+  let x = (editorCanvas.width - newWidth) / 2
+  let y = (editorCanvas.height - newHeight) / 2
+
+  // Clear the canvas and draw the scaled drawings in their new position
+  ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
+  ctx.drawImage(inMemCanvas, 0, 0, inMemCanvas.width, inMemCanvas.height, x, y, newWidth, newHeight)
+  console.log(inMemCanvas, 0, 0, inMemCanvas.width, inMemCanvas.height, x, y, newWidth, newHeight)
   
 
   // var xOffset = (newWidth - canvas.width) / 2
   // var yOffset = (newHeight - canvas.height) / 2
 
-  // inMemCtx.drawImage(editorCanvas, 0, 0)
   
-  // ctx.drawImage(inMemCanvas, 0, 0);
+  // ctx.drawImage(inMemCanvas, 0, 0)
   ctx.lineCap = 'round'
 
   coordinatesMultipliers.x = window.innerWidth / editorCanvas.offsetWidth
@@ -75,7 +83,7 @@ function resize() {
 }
 
 function draw(e) {
-  if (e.buttons !== 1 || !isEditing) return
+  if ((e.buttons !== 1 && e.type !== 'touchmove') || !isEditing) return
 
   ctx.beginPath()
   ctx.moveTo(pos.x, pos.y)
@@ -86,7 +94,7 @@ function draw(e) {
 }
 
 function clearCanvas(e) {
-  ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height);
+  ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
 }
 
 function changeColor(e) {
@@ -120,7 +128,7 @@ function disableEditing() {
 
 function downloadEditorSignature(e) {
   editorDownloadBtn.download = 'signature.png'
-  editorDownloadBtn.href = editorCanvas.toDataURL('image/png');
+  editorDownloadBtn.href = editorCanvas.toDataURL('image/png')
 }
 
 async function editSignature(e) {
@@ -171,9 +179,16 @@ function disableShareBtnIfCantShare() {
 if (editor) {
   window.addEventListener('resize', resize)
   document.addEventListener('mousemove', draw)
-  document.addEventListener('mouseenter', setPosition)
   editorCanvas.addEventListener('mousedown', enableEditing)
   document.addEventListener('mouseup', disableEditing)
+  editorCanvas.addEventListener('wheel', e => e.preventDefault())
+  editorCanvas.addEventListener('mousewheel', e => e.preventDefault())
+  editorCanvas.addEventListener('touchmove', e => e.preventDefault())
+  
+
+  editorCanvas.addEventListener("touchstart", enableEditing)
+  document.addEventListener("touchmove", draw)
+  document.addEventListener("touchend", disableEditing)
 
   clearBtn.addEventListener('click', clearCanvas)
   // eraserBtn.addEventListener('click', setEraserMode)
