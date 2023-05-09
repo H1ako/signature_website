@@ -5,6 +5,7 @@
 @import "../components/editor";
 @import "../components/signature-card";
 @import "../components/preview-lightbox";
+@import "../components/go-top";
 
 .main-content {
   &__face {
@@ -81,8 +82,6 @@
     .generated-signatures__list {
       width: 100%;
       gap: 1em;
-      // display: flex;
-      // flex-wrap: wrap;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       transition: var(--transition-main);
@@ -93,6 +92,39 @@
 
       @media screen and (width < 500px) {
         grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-block);
+
+    .about__block {
+      background: var(--color-bg-light);
+      border-radius: var(--border-radius-main);
+      border: var(--border-main);
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      padding: var(--padding-block);
+      width: 100%;
+
+      .block__img {
+        @include image;
+  
+        border-radius: var(--border-radius-main);
+        width: 100%;
+        aspect-ratio: 3 / 1;
+      }
+  
+      .block__description {
+  
+        & > * {
+          text-align: justify;
+        }
       }
     }
   }

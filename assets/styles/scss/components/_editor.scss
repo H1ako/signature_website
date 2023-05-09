@@ -141,16 +141,35 @@
     }
 
     .tools__right {
+      gap: .25em;
+      
       .right__tool {
         flex: 1 1 100%;
 
-        &.tool_share,
-        &.tool_download {
+        &.tool_share {
           @include button($background: var(--color-bg-lightdark), $color: var(--color-text), $font-size: var(--font-size-3));
 
           aspect-ratio: 1;
           padding: .25em;
-        } 
+        }
+
+        &.tool_download {
+          @include button($font-size: var(--font-size-5));
+
+          
+          .tool__text {
+            font-size: var(--font-size-5);
+          }
+          
+          @media screen and (width < 600px) {
+            padding: .5em;
+            aspect-ratio: 1;
+
+            .tool__text {
+              display: none;
+            }
+          }
+        }
       }
     }
   }

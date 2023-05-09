@@ -7,16 +7,16 @@ $blob = "data:image/PNG;base64,iVBORw0KGgoAAAANSUhEUgAAA4sAAAJFCAAAAABR7T3PAAAAB
   </button>
   <div class="signature-card__bottom">
     <div class="bottom__left">
-      <button class="left__edit-btn" edit-signature>
+      <button title="Edit" class="left__edit-btn" edit-signature>
         <?php include('icons/edit.php'); ?>
         <span class="edit-btn__text">Edit</span>
       </button>
     </div>
     <div class="bottom__right">
-      <button class="right__btn btn_view" preview-signature><?php include('icons/view.php'); ?></button>
-      <button class="right__btn btn_share" share-signature><?php include('icons/share.php'); ?></button>
+      <button title="Preview" class="right__btn btn_view" preview-signature><?php include('icons/view.php'); ?></button>
+      <button title="Share" class="right__btn btn_share" share-signature><?php include('icons/share.php'); ?></button>
       <!-- <button open-socials-modal class="right__btn btn_share" image-link="/assets/images/test.jpg"><?php // include('icons/share.php'); ?></button> -->
-      <a href="<?= $blob ?>" class="right__btn btn_download" download="signature-1.png"><?php include('icons/download.php'); ?></a>
+      <a title="Download" href="<?= $blob ?>" class="right__btn btn_download" download="signature-1.png"><?php include('icons/download.php'); ?></a>
     </div>
   </div>
 </li>

@@ -40,16 +40,6 @@ function getRedditShareLink(link) {
   return `${link}`
 }
 
-function openModal(modal) {
-  modal && modal.showModal()
-  document.body.style.overflow = 'hidden'
-}
-
-function closeModal(modal) {
-  modal && modal.close()
-  document.body.style.removeProperty('overflow')
-}
-
 function closeSocialsModalIfOuterClick(e) {
   if (!checkIfOuterClick(socialsModal, e)) return
 

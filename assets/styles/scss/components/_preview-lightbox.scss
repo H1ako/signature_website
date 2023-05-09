@@ -1,3 +1,23 @@
+@import "../main/mixins";
+
 .preview-lightbox {
+  border: none;
+  width: var(--width-main-content);
+  background: var(--color-bg-light);
+  border: var(--border-main);
+  border-radius: var(--border-radius-main);
+  overflow: hidden;
   
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  &__image {
+    @include image;
+
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+  }
 }

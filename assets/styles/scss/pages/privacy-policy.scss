@@ -37,9 +37,6 @@
     padding: var(--padding-block);
 
     & > p {
-      @include wrapWords;
-
-      line-height: var(--line-height-main);
       text-align: justify;
     }
   }

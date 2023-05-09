@@ -299,10 +299,13 @@
 .editor__tools .tools__left .left__tool.tool_thickness::-webkit-slider-thumb:hover {
   filter: brightness(0.75);
 }
+.editor__tools .tools__right {
+  gap: 0.25em;
+}
 .editor__tools .tools__right .right__tool {
   flex: 1 1 100%;
 }
-.editor__tools .tools__right .right__tool.tool_share, .editor__tools .tools__right .right__tool.tool_download {
+.editor__tools .tools__right .right__tool.tool_share {
   padding: var(--padding-button);
   font-size: var(--font-size-3);
   color: var(--color-text);
@@ -320,13 +323,13 @@
   aspect-ratio: 1;
   padding: 0.25em;
 }
-.editor__tools .tools__right .right__tool.tool_share svg, .editor__tools .tools__right .right__tool.tool_download svg {
+.editor__tools .tools__right .right__tool.tool_share svg {
   height: 1em;
   color: var(--color-text);
   fill: var(--color-text);
   flex-shrink: 0;
 }
-.editor__tools .tools__right .right__tool.tool_share:before, .editor__tools .tools__right .right__tool.tool_download:before {
+.editor__tools .tools__right .right__tool.tool_share:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -334,11 +337,59 @@
   background: inherit;
   z-index: -1;
 }
-.editor__tools .tools__right .right__tool.tool_share *, .editor__tools .tools__right .right__tool.tool_download * {
+.editor__tools .tools__right .right__tool.tool_share * {
   z-index: 999;
 }
-.editor__tools .tools__right .right__tool.tool_share:hover:before, .editor__tools .tools__right .right__tool.tool_share:focus-within:focus-visible:before, .editor__tools .tools__right .right__tool.tool_download:hover:before, .editor__tools .tools__right .right__tool.tool_download:focus-within:focus-visible:before {
+.editor__tools .tools__right .right__tool.tool_share:hover:before, .editor__tools .tools__right .right__tool.tool_share:focus-within:focus-visible:before {
   filter: brightness(0.8);
+}
+.editor__tools .tools__right .right__tool.tool_download {
+  padding: var(--padding-button);
+  font-size: var(--font-size-5);
+  color: var(--color-text-light);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-main);
+}
+.editor__tools .tools__right .right__tool.tool_download svg {
+  height: 1em;
+  color: var(--color-text-light);
+  fill: var(--color-text-light);
+  flex-shrink: 0;
+}
+.editor__tools .tools__right .right__tool.tool_download:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.editor__tools .tools__right .right__tool.tool_download * {
+  z-index: 999;
+}
+.editor__tools .tools__right .right__tool.tool_download:hover:before, .editor__tools .tools__right .right__tool.tool_download:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
+.editor__tools .tools__right .right__tool.tool_download .tool__text {
+  font-size: var(--font-size-5);
+}
+@media screen and (width < 600px) {
+  .editor__tools .tools__right .right__tool.tool_download {
+    padding: 0.5em;
+    aspect-ratio: 1;
+  }
+  .editor__tools .tools__right .right__tool.tool_download .tool__text {
+    display: none;
+  }
 }
 
 .signature-card {
@@ -481,6 +532,84 @@
   }
 }
 
+.preview-lightbox {
+  border: none;
+  width: var(--width-main-content);
+  background: var(--color-bg-light);
+  border: var(--border-main);
+  border-radius: var(--border-radius-main);
+  overflow: hidden;
+}
+.preview-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+.preview-lightbox__image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  color: var(--color-text);
+  display: grid;
+  place-content: center;
+  transition: var(--transition-main);
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.go-top {
+  padding: 0.75em;
+  font-size: var(--font-size-3);
+  color: var(--color-text);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-bg-light);
+  position: fixed;
+  bottom: 0.5em;
+  right: 0.5em;
+  border: var(--border-main);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.go-top svg {
+  height: 1em;
+  color: var(--color-text);
+  fill: var(--color-text);
+  flex-shrink: 0;
+}
+.go-top:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.go-top * {
+  z-index: 999;
+}
+.go-top:hover:before, .go-top:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
+.go-top:not(.active) {
+  translate: 0 50%;
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
 .main-content__face {
   background: var(--color-bg-light);
   border-radius: var(--border-radius-main);
@@ -566,4 +695,36 @@
   .main-content__generated-signatures .generated-signatures__list {
     grid-template-columns: 1fr;
   }
+}
+.main-content__about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-block);
+}
+.main-content__about .about__block {
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius-main);
+  border: var(--border-main);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: var(--padding-block);
+  width: 100%;
+}
+.main-content__about .about__block .block__img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  color: var(--color-text);
+  display: grid;
+  place-content: center;
+  transition: var(--transition-main);
+  border-radius: var(--border-radius-main);
+  width: 100%;
+  aspect-ratio: 3/1;
+}
+.main-content__about .about__block .block__description > * {
+  text-align: justify;
 }/*# sourceMappingURL=index.css.map */

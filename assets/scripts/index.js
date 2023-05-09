@@ -7,6 +7,9 @@ const generatorLoader = document.querySelector('#generator-loader')
 const signaturesList = document.querySelector('#signatures-list')
 const signaturePreviwBtns = document.querySelectorAll('[preview-signature]')
 const signatureShareBtns = document.querySelectorAll('[share-signature]')
+const goToTopBtn = document.querySelector('[go-top]')
+const previewLightbox = document.querySelector('#preview-lightbox')
+const previewLightboxImage = previewLightbox && previewLightbox.querySelector('img')
 
 function fillGeneratorFormWithQuery() {
   const urlParams = new URLSearchParams(window.location.search)
@@ -201,7 +204,47 @@ async function shareImage(title, text, blob) {
 }
 
 function previewSignature(e) {
-  console.log(e.target.closest('[data-signature-src]'))
+  const signatureSrc = e.target.closest('[data-signature-src]').getAttribute('data-signature-src')
+
+  openPreviewLightbox(signatureSrc)
+}
+
+function openPreviewLightbox(imageSrc) {
+  previewLightboxImage.src = imageSrc
+  
+  openModal(previewLightbox)
+}
+
+function openModal(modal) {
+  modal && modal.showModal()
+  document.body.style.overflow = 'hidden'
+}
+
+function closePreviewLightbox() {
+  previewLightboxImage.src = ''
+  
+  closeModal(previewLightbox)
+}
+
+function closeModal(modal) {
+  modal && modal.close()
+  document.body.style.removeProperty('overflow')
+}
+
+function closePreviewLightboxlIfOuterClick(e) {
+  if (!checkIfOuterClick(previewLightbox, e)) return
+
+  closePreviewLightbox()
+}
+
+function goToTop() {
+  window.scroll({
+    top: 0
+  })
+}
+
+function enableGoTopBtnIfScrolled() {
+  goToTopBtn.classList.toggle('active', window.scrollY > window.screen.height / 2)
 }
 
 fillGeneratorFormWithQuery()
@@ -220,6 +263,14 @@ generatorLoader && generatorLoaderObserver.observe(generatorLoader)
 signatureShareBtns.forEach(btn => {
   btn.addEventListener('click', shareSignature)
 })
-signaturePreviwBtns.forEach(btn => {
-  btn.addEventListener('click', previewSignature)
-})
+
+if (goToTopBtn) {
+  goToTopBtn.addEventListener('click', goToTop)
+  document.addEventListener('scroll', enableGoTopBtnIfScrolled)
+}
+if (previewLightbox) {
+  signaturePreviwBtns.forEach(btn => {
+    btn.addEventListener('click', previewSignature)
+  })
+  previewLightbox.addEventListener('click', closePreviewLightboxlIfOuterClick)
+}

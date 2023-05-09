@@ -72,6 +72,8 @@ function draw(e) {
 }
 
 function clearCanvas(e) {
+  thicknessInput.value = thicknessInput.min
+  setThickness(thicknessInput.min)
   ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
 }
 

@@ -596,6 +596,65 @@ b {
   gap: var(--gap-block);
 }
 
+.big-text p {
+  line-height: var(--line-height-main);
+}
+.big-text p, .big-text li, .big-text ol, .big-text img, .big-text blockquote {
+  margin-block: 0.5em;
+}
+.big-text blockquote {
+  position: relative;
+  background: var(--color-bg-dark);
+  margin: 0;
+  padding: 2em 2em;
+  color: var(--color-text-dark) !important;
+  padding-left: 3.5em;
+}
+.big-text blockquote::before {
+  content: url("../../../images/quote-left-solid.svg");
+  position: absolute;
+  left: 0.5em;
+  top: 0.5em;
+  display: block;
+  width: 2em;
+}
+.big-text li::marker {
+  color: var(--color-main);
+}
+.big-text li:not(:first-of-type) {
+  margin-top: 1em;
+}
+.big-text ol {
+  margin-left: 1.5em;
+  list-style: none;
+  padding: 0;
+  counter-reset: section;
+}
+.big-text ol li {
+  position: relative;
+  padding-left: 2.5em;
+  counter-increment: section;
+}
+.big-text ol li::before {
+  content: counter(section);
+  color: var(--color-text);
+  position: absolute;
+  width: 2em;
+  border: 3px solid var(--color-main);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  top: 0.5em;
+  left: 0;
+  font-size: var(--font-size-5);
+  translate: 0 -50%;
+}
+.big-text ul {
+  list-style: square;
+  margin-left: 4em;
+}
+
 @keyframes errorAnimation {
   0% {
     transform: translate(30px);
