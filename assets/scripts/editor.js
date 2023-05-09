@@ -58,7 +58,6 @@ function resize() {
 
   // ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
   // ctx.drawImage(inMemCanvas, 0, 0, inMemCanvas.width, inMemCanvas.height, x, y, newWidth, newHeight)
-  //
 }
 
 function draw(e) {
