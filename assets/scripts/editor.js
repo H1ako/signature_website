@@ -12,7 +12,6 @@ const signaturesEditBtns = editor && document.querySelectorAll('[edit-signature]
 
 var ctx = editorCanvas.getContext('2d')
 var canvasRect = editorCanvas.getBoundingClientRect()
-ctx.lineCap = 'round'
 var inMemCanvas = document.createElement('canvas')
 var inMemCtx = inMemCanvas.getContext('2d')
 
@@ -24,30 +23,12 @@ function setPosition(e) {
   canvasRect = editorCanvas.getBoundingClientRect()
   const clientX = e.touches?.length ? e.touches[0].clientX : e.clientX
   const clientY = e.touches?.length ? e.touches[0].clientY : e.clientY
+
   pos.x = (clientX - canvasRect.left) * coordinatesMultipliers.x
   pos.y = (clientY - canvasRect.top) * coordinatesMultipliers.y
 }
 
 function resize() {
-  // var newWidth = window.innerWidth
-  // var newHeight = window.innerHeight
-  // var ratio = editorCanvas.width / editorCanvas.height
-  // var newRatio = newWidth / newHeight
-  // if (newRatio > ratio) {
-  //   newHeight = newWidth / ratio
-  // } else {
-  //   newWidth = newHeight * ratio
-  // }
-  
-  // inMemCanvas.width = editorCanvas.width
-  // inMemCanvas.height = editorCanvas.height
-  // inMemCtx.drawImage(editorCanvas, 0, 0)
-
-  // const newWidth = window.innerWidth
-  // const newHeight = window.innerHeight
-  // const oldWidth = editorCanvas.width
-  // const oldHeight = editorCanvas.height
-
   inMemCanvas.width = editorCanvas.width
   inMemCanvas.height = editorCanvas.height
   inMemCtx.drawImage(editorCanvas, 0, 0)
@@ -55,31 +36,28 @@ function resize() {
   editorCanvas.width = window.innerWidth
   editorCanvas.height = window.innerHeight
 
-  let scale = Math.min(editorCanvas.width / inMemCanvas.width, editorCanvas.height / inMemCanvas.height)
-  let newWidth = inMemCanvas.width * scale
-  let newHeight = inMemCanvas.height * scale
-
-  let x = (editorCanvas.width - newWidth) / 2
-  let y = (editorCanvas.height - newHeight) / 2
-
-  // Clear the canvas and draw the scaled drawings in their new position
   ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
-  ctx.drawImage(inMemCanvas, 0, 0, inMemCanvas.width, inMemCanvas.height, x, y, newWidth, newHeight)
-  console.log(inMemCanvas, 0, 0, inMemCanvas.width, inMemCanvas.height, x, y, newWidth, newHeight)
-  
-
-  // var xOffset = (newWidth - canvas.width) / 2
-  // var yOffset = (newHeight - canvas.height) / 2
+  ctx.drawImage(inMemCanvas, 0, 0, editorCanvas.width, editorCanvas.height)
 
   
-  // ctx.drawImage(inMemCanvas, 0, 0)
   ctx.lineCap = 'round'
-
+  
   coordinatesMultipliers.x = window.innerWidth / editorCanvas.offsetWidth
   coordinatesMultipliers.y = window.innerHeight / editorCanvas.offsetHeight
-
+  
   setColor(colorInput.value)
   setThickness(thicknessInput.value)
+
+  // TODO: delete if no need to scale content on width change
+  // let scale = Math.min(editorCanvas.width / inMemCanvas.width, editorCanvas.height / inMemCanvas.height)
+  // let newWidth = inMemCanvas.width * scale
+  // let newHeight = inMemCanvas.height * scale
+
+  // let x = (editorCanvas.width - newWidth) / 2
+  // let y = (editorCanvas.height - newHeight) / 2
+
+  // ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
+  // ctx.drawImage(inMemCanvas, 0, 0, inMemCanvas.width, inMemCanvas.height, x, y, newWidth, newHeight)
 }
 
 function draw(e) {
@@ -132,7 +110,6 @@ function downloadEditorSignature(e) {
 }
 
 async function editSignature(e) {
-  console.log(e)
   clearCanvas()
 
   const imageSrc = e.target.closest('[data-signature-src]').getAttribute('data-signature-src')
@@ -181,11 +158,8 @@ if (editor) {
   document.addEventListener('mousemove', draw)
   editorCanvas.addEventListener('mousedown', enableEditing)
   document.addEventListener('mouseup', disableEditing)
-  editorCanvas.addEventListener('wheel', e => e.preventDefault())
-  editorCanvas.addEventListener('mousewheel', e => e.preventDefault())
   editorCanvas.addEventListener('touchmove', e => e.preventDefault())
   
-
   editorCanvas.addEventListener("touchstart", enableEditing)
   document.addEventListener("touchmove", draw)
   document.addEventListener("touchend", disableEditing)
