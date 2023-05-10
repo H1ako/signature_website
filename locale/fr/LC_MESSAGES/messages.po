@@ -1,0 +1,145 @@
+# French translations for PACKAGE package
+# Traductions fran�aises du paquet PACKAGE.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-10 12:43+0400\n"
+"PO-Revision-Date: 2023-05-10 12:45+0400\n"
+"Last-Translator: <EMAIL@ADDRESS>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: views/404.php:8
+msgid "404 Not Found Page Title"
+msgstr ""
+
+#: views/404.php:16 views/index.php:21 views/privacy-policy.php:17
+msgid "Signature Generator"
+msgstr ""
+
+#: views/404.php:17
+msgid "404 Not Found"
+msgstr ""
+
+#: views/404.php:18
+msgid "Go to homepage"
+msgstr ""
+
+#: views/index.php:8
+msgid "Home Page Title"
+msgstr ""
+
+#: views/index.php:22
+msgid "Generate your own unique signature or <b>draw</b> it by yourself"
+msgstr ""
+
+#: views/index.php:35
+msgid "Create your own <b>Signature</b>"
+msgstr ""
+
+#: views/index.php:52 views/index.php:56
+msgid "Home Page About Us"
+msgstr ""
+
+#: views/privacy-policy.php:8
+msgid "Privacy Policy Page Title"
+msgstr ""
+
+#: views/privacy-policy.php:18 components/footer.php:4 components/footer.php:5
+msgid "Privacy Policy"
+msgstr ""
+
+#: views/privacy-policy.php:24
+msgid "Privacy Policy Page Big Text"
+msgstr ""
+
+#: components/editor.php:9 components/editor.php:11
+msgid "Clear"
+msgstr ""
+
+#: components/editor.php:13
+msgid "Color"
+msgstr ""
+
+#: components/editor.php:14
+msgid "Thickness"
+msgstr ""
+
+#: components/editor.php:17 components/signature-card.php:17
+#: components/socials-modal.php:4
+msgid "Share"
+msgstr ""
+
+#: components/editor.php:20 components/editor.php:22
+#: components/signature-card.php:19
+msgid "Download"
+msgstr ""
+
+#: components/footer.php:7
+msgid "© 2023 All Right Reserved"
+msgstr ""
+
+#: components/footer.php:8 components/footer.php:9
+msgid "Contact Us"
+msgstr ""
+
+#: components/footer.php:12
+msgid "Email"
+msgstr ""
+
+#: components/generator-form.php:3 components/generator-form.php:4
+msgid "First Name"
+msgstr ""
+
+#: components/generator-form.php:7 components/generator-form.php:8
+msgid "Last Name"
+msgstr ""
+
+#: components/generator-form.php:11 components/generator-form.php:12
+msgid "Middle Name"
+msgstr ""
+
+#: components/generator-form.php:14
+msgid "Generate"
+msgstr ""
+
+#: components/go-top.php:1
+msgid "Go to top"
+msgstr ""
+
+#: components/language-chooser.php:1
+msgid "Page Language"
+msgstr ""
+
+#: components/preview-lightbox.php:2
+msgid "Signature Preview Image"
+msgstr ""
+
+#: components/signature-card.php:5 components/signature-card.php:16
+msgid "Preview"
+msgstr ""
+
+#: components/signature-card.php:6
+msgid "Signature"
+msgstr ""
+
+#: components/signature-card.php:10 components/signature-card.php:12
+msgid "Edit"
+msgstr ""
+
+#: components/socials-modal.php:5
+msgid "By sharing you’re automatically accepting our rules and terms"
+msgstr ""
+
+#: components/socials-modal.php:9
+msgid "Share link"
+msgstr ""

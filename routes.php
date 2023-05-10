@@ -2,6 +2,8 @@
 require_once __DIR__.'/settings.php';
 require_once __DIR__.'/router.php';
 
+global $LOCALES;
+
 // ##################################################
 // ##################################################
 // ##################################################
@@ -10,13 +12,35 @@ require_once __DIR__.'/router.php';
 // In the URL -> http://localhost
 // The output -> Index
 // get('/signature_website', 'views/index.php');
-get('/signature_generator', function() {
-  return 'views/index.php';
+$locale = $LOCALES['en'];
+putenv("LC_ALL=en");
+setlocale(LC_ALL, 'en');
+
+bindtextdomain('messages', './locale');
+bind_textdomain_codeset("messages", "UTF-8");
+textdomain('messages');
+
+get('/signature_generator/%s/%s', function($locale, $path) use ($LOCALES) {
+  if (!(array_key_exists($locale, $LOCALES))) return;
+
+  $locale = $LOCALES[$locale];
+  $localeCode = $locale['code'];
+  $localeShortCode = $locale['short_code'];
+  
+  putenv("LC_ALL=$localeCode");
+  setlocale(LC_ALL, $localeShortCode);
 });
+
+get('/signature_generator', 'views/index.php');
+get('/signature_generator/%s', 'views/index.php');
+
 get('/signature_generator/privacy-policy', 'views/privacy-policy.php');
+get('/signature_generator/%s/privacy-policy', 'views/privacy-policy.php');
 
 
 get('/signature_generator/api/get-signatures', function () {
+
+  return false;
 });
 
 // Dynamic GET. Example with 1 variable
@@ -63,3 +87,4 @@ get('/signature_generator/api/get-signatures', function () {
 // The 404.php which is inside the views folder will be called
 // The 404.php has access to $_GET and $_POST
 any('/signature_generator/404','views/404.php');
+any('/signature_generator/%s/404','views/404.php');

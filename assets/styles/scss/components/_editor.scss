@@ -144,8 +144,6 @@
       gap: .25em;
       
       .right__tool {
-        flex: 1 1 100%;
-
         &.tool_share {
           @include button($background: var(--color-bg-lightdark), $color: var(--color-text), $font-size: var(--font-size-3));
 
@@ -169,6 +167,10 @@
               display: none;
             }
           }
+        }
+
+        @media screen and (width < 600px) {
+          flex: 1 1 100%;
         }
       }
     }

@@ -302,9 +302,6 @@
 .editor__tools .tools__right {
   gap: 0.25em;
 }
-.editor__tools .tools__right .right__tool {
-  flex: 1 1 100%;
-}
 .editor__tools .tools__right .right__tool.tool_share {
   padding: var(--padding-button);
   font-size: var(--font-size-3);
@@ -389,6 +386,11 @@
   }
   .editor__tools .tools__right .right__tool.tool_download .tool__text {
     display: none;
+  }
+}
+@media screen and (width < 600px) {
+  .editor__tools .tools__right .right__tool {
+    flex: 1 1 100%;
   }
 }
 
@@ -724,6 +726,7 @@
   border-radius: var(--border-radius-main);
   width: 100%;
   aspect-ratio: 3/1;
+  height: auto;
 }
 .main-content__about .about__block .block__description > * {
   text-align: justify;

@@ -28,36 +28,38 @@ function route($route, $path_to_include){
   $request_url = strtok($request_url, '?');
   $route_parts = explode('/', $route);
   $request_url_parts = explode('/', $request_url);
-  // echo $request_url.' '. $route. ' -------- ';
-  if ($request_url != $route && $request_url != $route.'/') return;
-
+  
+  $parameters = [];
+  for( $__i__ = 0; $__i__ < count($route_parts); $__i__++ ){
+    $route_part = $route_parts[$__i__];
+    if( preg_match("/^[%]/", $route_part) ){
+      $route_part = ltrim($route_part, '%');
+      array_push($parameters, $request_url_parts[$__i__] ?? '');
+      $$route_part=$request_url_parts[$__i__] ?? '';
+    }
+  }
+  $route_with_params = vsprintf($route, $parameters);
+  if ($route_with_params != $request_url && $route_with_params != $request_url.'/' && $route_with_params.'/' != $request_url) return;
+  
   array_shift($route_parts);
   array_shift($request_url_parts);
   if( $route_parts[0] == '' && count($request_url_parts) == 0 ){
     // Callback function
     if( is_callable($callback) ){
-      $template = get_callback_template_or_exit($callback, []);
+      $template = call_callback_function($callback, []);
+      if (!$template) return;
+
       $path_to_include = $template;
     }
     include_once __DIR__."/$path_to_include";
     exit();
   }
   // if( count($route_parts) != count($request_url_parts) ){ return; }  
-  $parameters = [];
-  for( $__i__ = 0; $__i__ < count($route_parts); $__i__++ ){
-    $route_part = $route_parts[$__i__];
-    if( preg_match("/^[$]/", $route_part) ){
-      $route_part = ltrim($route_part, '$');
-      array_push($parameters, $request_url_parts[$__i__]);
-      $$route_part=$request_url_parts[$__i__];
-    }
-    else if( $route_parts[$__i__] != $request_url_parts[$__i__] ){
-      continue;
-    } 
-  }
   // Callback function
   if( is_callable($callback) ){
-    $template = get_callback_template_or_exit($callback, $parameters);
+    $template = call_callback_function($callback, $parameters);
+    if (!$template) return;
+
     $path_to_include = $template;
   }
   include_once __DIR__."/$path_to_include";
@@ -66,18 +68,12 @@ function route($route, $path_to_include){
 function call_callback_function($callback, $parameters) {
   $template = call_user_func_array($callback, $parameters);
 
+  if ($template === false) exit();
   if (file_exists(__DIR__."/$template")) {
     return $template;
   }
 
   return false;
-}
-function get_callback_template_or_exit($callback, $parameters) {
-  $template = call_callback_function($callback, $parameters);
-  if ($template) {
-    return $template;
-  }
-  exit();
 }
 function out($text){echo htmlspecialchars($text);}
 function set_csrf(){
