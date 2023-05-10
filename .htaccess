@@ -1,9 +1,39 @@
+#<IfModule mod_rewrite.c>
+#  RewriteEngine On
+#  RewriteBase /signature_generator/
+#  RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$ [NC]
+#  RewriteCond %{REQUEST_FILENAME} !-f
+#  # RewriteRule ^(.*[^/])$ /signature_generator/$1/ [L,R=301]
+#  RewriteCond %{REQUEST_URI} !^/signature_generator/assets/
+#  RewriteCond %{REQUEST_URI} ^/signature_generator/api/
+#  RewriteRule (.*) api.php [QSA,L]
+#  RewriteCond %{REQUEST_URI} !^/signature_generator/assets/
+#  RewriteCond %{REQUEST_URI} !^/signature_generator/api/
+#  RewriteRule (.*) routes.php [QSA,L]
+#</IfModule>
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /signature_generator/
-RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*[^/])$ /signature_generator/$1/ [L,R=301]
-RewriteCond %{REQUEST_URI} !^/signature_generator/assets/
-RewriteRule (.*) routes.php [QSA,L]
+  RewriteEngine On
+  RewriteBase /signature_generator/
+  # Redirect to api.php if URL starts with /signature_generator/api/
+  RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$ [NC]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} ^/signature_generator/api/ [NC]
+  RewriteRule (.*) api.php [QSA,L]
+
+  # Redirect to routes.php for all other URLs
+  RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$ [NC]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !^/signature_generator/assets/ [NC]
+  RewriteCond %{REQUEST_URI} !^/signature_generator/api/ [NC]
+  RewriteRule (.*) routes.php [QSA,L]
 </IfModule>
+#
+#<IfModule mod_rewrite.c>
+#RewriteEngine On
+#RewriteBase /signature_generator/
+#RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(.*[^/])$ /signature_generator/$1/ [L,R=301]
+#RewriteCond %{REQUEST_URI} !^/signature_generator/assets/
+#RewriteRule (.*) routes.php [QSA,L]
+#</IfModule>
