@@ -113,17 +113,6 @@ function setupCurvesDraw($draw, $thickness) {
   $draw->setStrokeAntialias(true);
   $draw->setStrokeWidth($thickness);
 }
-
-// $images = [];
-// for ($i=0; $i < 2; $i++) {
-//   $image = getImageFromStyle(3, 'Nikita', 'Sobolev', 'Alexeyevich');
-//   $imageLink = 'data:image/'.$image->getImageFormat().';base64,'.base64_encode($image->getimageblob());
-
-//   $images = [...$images, $imageLink];
-//   $image->destroy();
-// }
-$images = getImageFromStyle(0);
-header("Content-Type: image/png");
-echo $images;
-
-// print_r(json_encode($images));
+// $images = getImageFromStyle(0);
+// header("Content-Type: image/png");
+// echo $images;

@@ -10,6 +10,7 @@ const signatureShareBtns = document.querySelectorAll('[share-signature]')
 const goToTopBtn = document.querySelector('[go-top]')
 const previewLightbox = document.querySelector('#preview-lightbox')
 const previewLightboxImage = previewLightbox && previewLightbox.querySelector('img')
+const signatureCardTemplate = document.querySelector('#signature-card-template')
 
 function fillGeneratorFormWithQuery() {
   const urlParams = new URLSearchParams(window.location.search)
@@ -42,9 +43,52 @@ function generatorFormHandler(e) {
 }
 
 async function replaceWithGeneratedSignatures() {
-  resetGeneratorData()
-
+  if (!signaturesList) return
+  
   const newSignatures = await generateSignatures()
+  if (!newSignatures) return
+  
+  signaturesList.innerHTML = ''
+  addSignaturesToList(newSignatures)
+
+  resetGeneratorData()
+}
+
+function addSignaturesToList(signatures) {
+  signatures.forEach(image => {
+    const newSignatureCard = getSignatureCard(image)
+    if (!newSignatureCard) return
+
+    signaturesList.appendChild(newSignatureCard)
+  })
+}
+
+function getSignatureCard(image) {
+  if (!signatureCardTemplate) return null
+
+  const newCardClone = signatureCardTemplate.content.cloneNode(true)
+  const newCard = newCardClone.querySelector('.signature-card')
+  console.log(newCard)
+  newCard.setAttribute('data-signature-src', image)
+
+  const newCardImageMainPreviewButton = newCard.querySelector('.signature-card__top')
+  newCardImageMainPreviewButton.addEventListener('click', previewSignature)
+  const newCardImage = newCardImageMainPreviewButton.querySelector('.top__image')
+  newCardImage.src = image
+
+  const newCardDownloadLink = newCard.querySelector('[download-signature]')
+  newCardDownloadLink.href = image
+
+  const newCardToolsEditButton = newCard.querySelector('[edit-signature]')
+  newCardToolsEditButton.addEventListener('click', editSignature)
+  
+  const newCardToolsPreviewButton = newCard.querySelector('.btn_view')
+  newCardToolsPreviewButton.addEventListener('click', previewSignature)
+
+  const newCardToolsShareButton = newCard.querySelector('.btn_share')
+  newCardToolsShareButton.addEventListener('click', shareSignature)
+
+  return newCard
 }
 
 function resetGeneratorData() {
@@ -63,9 +107,9 @@ function enableGeneratorLoader() {
 async function generateSignatures() {
   if (isNoMoreSignatures) {
     disableGeneratorLoader()
-    return
+    return null
   }
-  if (isSignaturesGenerating || !(isGeneratorFormValid())) return
+  if (isSignaturesGenerating || !(isGeneratorFormValid())) return null
 
   page++
 
@@ -89,7 +133,6 @@ function isGeneratorFormValid() {
   const formData = new FormData(generatorForm)
   const firstName = formData.get('first-name')
   const lastName = formData.get('last-name')
-  const middleName = formData.get('middle-name')
 
   return !(isEmpty(firstName) || isEmpty(lastName))
 }
@@ -116,8 +159,8 @@ async function getGeneratedSignatures() {
     method: 'GET',
   })
   if (response.status == 200) {
-    const signatures = response.json()
-
+    const signatures = await response.json()
+    
     return signatures
   }
   
@@ -148,7 +191,14 @@ function stopLoading() {
 }
 
 async function appendGeneratedSignatures() {
+  if (!signaturesList) return
+  
   const newSignatures = await generateSignatures()
+  if (!newSignatures) return
+  
+  resetGeneratorData()
+  
+  addSignaturesToList(newSignatures)
 }
 
 async function shareSignature(e) {
@@ -250,16 +300,21 @@ function enableGoTopBtnIfScrolled() {
 fillGeneratorFormWithQuery()
 generateIfDataFilled()
 generatorForm && generatorForm.addEventListener('submit', generatorFormHandler)
-const generatorLoaderObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      appendGeneratedSignatures()
-    }
+if (generatorLoader) {
+  const generatorLoaderObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        appendGeneratedSignatures()
+      }
+    })
+  }, {
+    threshold: 0.1
   })
-}, {
-  threshold: 0.1
-})
-generatorLoader && generatorLoaderObserver.observe(generatorLoader)
+  
+  generatorLoaderObserver.observe(generatorLoader)
+  generatorLoader.addEventListener('click', appendGeneratedSignatures)
+}
+
 signatureShareBtns.forEach(btn => {
   btn.addEventListener('click', shareSignature)
 })
