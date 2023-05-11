@@ -33,6 +33,8 @@ function fillGeneratorFormWithQuery() {
 }
 
 function generateIfDataFilled() {
+  if (!isGeneratorFormValid()) return
+
   replaceWithGeneratedSignatures()
 }
 
@@ -44,6 +46,9 @@ function generatorFormHandler(e) {
 
 async function replaceWithGeneratedSignatures() {
   if (!signaturesList) return
+  signaturesList.scrollIntoView({
+    block: 'center'
+  })
   
   const newSignatures = await generateSignatures()
   if (!newSignatures) return
@@ -68,7 +73,6 @@ function getSignatureCard(image) {
 
   const newCardClone = signatureCardTemplate.content.cloneNode(true)
   const newCard = newCardClone.querySelector('.signature-card')
-  console.log(newCard)
   newCard.setAttribute('data-signature-src', image)
 
   const newCardImageMainPreviewButton = newCard.querySelector('.signature-card__top')
