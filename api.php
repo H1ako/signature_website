@@ -5,13 +5,14 @@ require_once __DIR__.'/router.php';
 get('/signature_generator/api/get-signatures', function () {
   if (!array_key_exists('first-name', $_GET) || !array_key_exists('first-name', $_GET)) return false;
   $firstName = $_GET['first-name'];
+  $page = $_GET['page'] ?? 1;
   $lastName = $_GET['last-name'];
   $middleName = $_GET['middle-name'] ?? '';
   include('script.php');
   
   $images = [];
-  for ($i=0; $i < 3; $i++) {
-    $image = getImageFromStyle(3);
+  for ($i=($page - 1) * 3; $i < $page * 3; $i++) {
+    $image = getImageFromStyle($i);
     $imageLink = 'data:image/'.$image->getImageFormat().';base64,'.base64_encode($image->getimageblob());
     $images = [...$images, $imageLink];
     $image->destroy();

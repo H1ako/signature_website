@@ -49,6 +49,7 @@ async function replaceWithGeneratedSignatures() {
   signaturesList.scrollIntoView({
     block: 'center'
   })
+  resetGeneratorData()
   
   const newSignatures = await generateSignatures()
   if (!newSignatures) return
@@ -56,7 +57,6 @@ async function replaceWithGeneratedSignatures() {
   signaturesList.innerHTML = ''
   addSignaturesToList(newSignatures)
 
-  resetGeneratorData()
 }
 
 function addSignaturesToList(signatures) {
@@ -159,7 +159,7 @@ async function getGeneratedSignatures() {
   const lastName = cleanFormData.lastName
   const middleName = cleanFormData.middleName
   
-  const response = await fetch(`/signature_generator/api/get-signatures?first-name=${firstName}&last-name=${lastName}&middle-name=${middleName}&style=${page}`, {
+  const response = await fetch(`/signature_generator/api/get-signatures?first-name=${firstName}&last-name=${lastName}&middle-name=${middleName}&page=${page}`, {
     method: 'GET',
   })
   if (response.status == 200) {
@@ -199,8 +199,6 @@ async function appendGeneratedSignatures() {
   
   const newSignatures = await generateSignatures()
   if (!newSignatures) return
-  
-  resetGeneratorData()
   
   addSignaturesToList(newSignatures)
 }
