@@ -463,126 +463,6 @@ function _getStyle($font, $text_style, $curves_style, $angle=0, $font_size=240) 
   ];
 }
 
-function getStyle1($font) {
-  global $textStyle1;
-
-  return _getStyle($font, $textStyle1, 'addCurveStyle1', -15);
-}
-
-function getStyle2($font) {
-  global $textStyle7;
-  
-  return _getStyle($font, $textStyle7, 'addCurveStyle2', -15);
-}
-
-function getStyle3($font) {
-  global $textStyle4;
-  
-  return _getStyle($font, $textStyle4, 'addCurveStyle3', -15, 120);
-}
-
-function getStyle4($font) {
-  global $textStyle1;
-  
-  return _getStyle($font, $textStyle1, 'addCurveStyle4', -15);
-}
-
-function getStyle5($font) {
-  global $textStyle1;
-  
-  return _getStyle($font, $textStyle1, 'addCurveStyle5');
-}
-
-function getStyle6($font) {
-  global $textStyle5;
-  
-  return _getStyle($font, $textStyle5, 'addCurveStyle6');
-}
-
-function getStyle7($font) {
-  global $textStyle5;
-  
-  return _getStyle($font, $textStyle5, 'addCurveStyle7');
-}
-
-function getStyle8($font) {
-  global $textStyle3;
-  
-  return _getStyle($font, $textStyle3, 'addCurveStyle8');
-}
-
-function getStyle9($font) {
-  global $textStyle1;
-  
-  return _getStyle($font, $textStyle1, 'addCurveStyle9');
-}
-
-function getStyle10($font) {
-  global $textStyle4;
-  
-    return _getStyle($font, $textStyle4, 'addCurveStyle10');
-}
-
-function getStyle11($font) {
-  global $textStyle3;
-  
-  return _getStyle($font, $textStyle3, 'addCurveStyle11');
-}
-
-function getStyle12($font) {
-  global $textStyle6;
-  
-  return _getStyle($font, $textStyle6, 'addCurveStyle12');
-}
-
-function getStyle13($font) {
-  global $textStyle4;
-  
-  return _getStyle($font, $textStyle4, 'addCurveStyle13');
-}
-
-function getStyle14($font) {
-  global $textStyle4;
-  
-  return _getStyle($font, $textStyle4, 'addCurveStyle14');
-}
-
-function getStyle15($font) {
-  global $textStyle5;
-  
-  return _getStyle($font, $textStyle5, 'addCurveStyle15');
-}
-
-function getStyle16($font) {
-  global $textStyle3;
-  
-  return _getStyle($font, $textStyle3, 'addCurveStyle16', -15);
-}
-
-function getStyle17($font) {
-  global $textStyle2Short;
-  
-  return _getStyle($font, $textStyle2Short, 'addCurveStyle17');
-}
-
-function getStyle18($font) {
-  global $textStyle1;
-  
-  return _getStyle($font, $textStyle1, 'addCurveStyle18', -15);
-}
-
-function getStyle19($font) {
-  global $textStyle2;
-  
-  return _getStyle($font, $textStyle2, 'addCurveStyle19', -15);
-}
-
-function getStyle20($font) {
-  global $textStyle4;
-  
-  return _getStyle($font, $textStyle4, 'addCurveStyle20');
-}
-
 function addCurveStyle1() {
   drawBottomCurve8();
 }
@@ -773,15 +653,39 @@ $fonts = [
   ],
 ];
 
+$preStyles = [
+  _getStyle([], $textStyle1, 'addCurveStyle1', -15),
+  _getStyle([], $textStyle7, 'addCurveStyle2', -15),
+  _getStyle([], $textStyle4, 'addCurveStyle3', -15, 120),
+  _getStyle([], $textStyle1, 'addCurveStyle4', -15),
+  _getStyle([], $textStyle1, 'addCurveStyle5'),
+  _getStyle([], $textStyle5, 'addCurveStyle6'),
+  _getStyle([], $textStyle5, 'addCurveStyle7'),
+  _getStyle([], $textStyle3, 'addCurveStyle8'),
+  _getStyle([], $textStyle1, 'addCurveStyle9'),
+  _getStyle([], $textStyle4, 'addCurveStyle10'),
+  _getStyle([], $textStyle3, 'addCurveStyle11'),
+  _getStyle([], $textStyle6, 'addCurveStyle12'),
+  _getStyle([], $textStyle4, 'addCurveStyle13'),
+  _getStyle([], $textStyle4, 'addCurveStyle14'),
+  _getStyle([], $textStyle5, 'addCurveStyle15'),
+  _getStyle([], $textStyle3, 'addCurveStyle16', -15),
+  _getStyle([], $textStyle2Short, 'addCurveStyle17'),
+  _getStyle([], $textStyle1, 'addCurveStyle18', -15),
+  _getStyle([], $textStyle2, 'addCurveStyle19', -15),
+  _getStyle([], $textStyle4, 'addCurveStyle20'),
+];
+
 $styles = [];
 $fontI = 0;
-for ($i=0; $i < 20; $i++) {
-  $styleNumber = $i + 1;
- 
+foreach ($preStyles as $preStyle) {
   for ($j=0; $j < 3; $j++) {
+    $font = $fonts[$fontI];
+    $preStyle['font'] = $font;
+
     $styles = [
       ...$styles,
-      "getStyle$styleNumber"($fonts[$fontI])
+      $preStyle
     ];
 
     $fontI = $fontI + 2 > count($fonts) ? 0 : $fontI + 1;
