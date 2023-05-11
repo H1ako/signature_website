@@ -1,4 +1,8 @@
 <?php
+
+global $styles;
+
+
 function drawBottomHeart() {
   global $textMostRightX, $textMostRightY, $curvesDraw, $textWidth, $thickness;
 
@@ -675,7 +679,6 @@ $preStyles = [
   _getStyle([], $textStyle2, 'addCurveStyle19', -15),
   _getStyle([], $textStyle4, 'addCurveStyle20'),
 ];
-
 $styles = [];
 $fontI = 0;
 foreach ($preStyles as $preStyle) {

@@ -10,7 +10,6 @@ $textMostRightY;
 $textMostLeftX;
 $textMostLeftY;
 $textBoxBottomY;
-$bgColor = new ImagickPixel('white');
 $image;
 $textDraw;
 $curvesDraw;
@@ -21,13 +20,13 @@ $fonts;
 
 include_once('draw-styles.php');
 
-echo '<pre>';
-print_r($styles);
-echo '</pre>';
-exit();
+// echo '<pre>';
+// print_r($styles);
+// echo '</pre>';
+// exit();
 
 function getImageFromStyle($styleIndex) {
-  global $image, $textDraw, $curvesDraw, $styles, $textWidth, $textHeight, $width, $height, $thickness, $textBoxBottomY, $bgColor, $textMostTopY, $textMostRightX, $textMostRightY, $textMostLeftX, $textMostLeftY;
+  global $image, $textDraw, $curvesDraw, $styles, $textWidth, $textHeight, $width, $height, $thickness, $textBoxBottomY, $textMostTopY, $textMostRightX, $textMostRightY, $textMostLeftX, $textMostLeftY, $bgColor;
   
   if (!array_key_exists($styleIndex, $styles)) return false;
 
@@ -38,6 +37,7 @@ function getImageFromStyle($styleIndex) {
   $angle = $style['angle'];
   $drawStyles = $style['draw_styles'];
   $thickness = max(1, round($fontSize / $font['thickness_index']));
+  $bgColor = new ImagickPixel('white');
 
   $image = new \Imagick();
 
@@ -55,16 +55,25 @@ function getImageFromStyle($styleIndex) {
   $textX = round(($width - $textWidth) / 2);
   $textY = round(($height - $textHeight) / 2 + $fontSize);
   $textBoxBottomY = $textMetrics['boundingBox']['y2'] / 2 + $textY;
-  $textBoxMostRightX = $textMetrics['boundingBox']['x2'];
-  $textBoxMostLeftX = $textMetrics['boundingBox']['x1'];
+  $textBoxMostRightX = floor($textMetrics['boundingBox']['x2']) + $textX;
+  $textBoxMostLeftX = round($textMetrics['boundingBox']['x1']) + $textX;
   $textMostTopY = $textY;
+  // print_r(floor($textMetrics['boundingBox']['x2']). " ". $textMetrics['boundingBox']['x2']);
+  // exit();
 
   $textMostRightX = $textBoxMostRightX + $textX;
   $textMostRightY = null;
   $textMostLeftX = $textBoxMostLeftX + $textX;
   $textMostLeftY = null;
 
-  for($y=0; $y < $height; $y++) {
+  // print_r($height);
+  // exit();
+  $draw  = new ImagickDraw();
+  $color = new ImagickPixel('red');
+  $draw->setFillColor($color);
+
+  for($y=$textY - $textHeight; $y < $height; $y++) {
+    $draw->point($textMostRightX, $y);
     $mostRightColorByY = $image->getImagePixelColor($textMostRightX, $y);
     $isDifferentWithBg = $bgColor->isPixelSimilar($mostRightColorByY, 0);
     if (!$isDifferentWithBg) {
@@ -80,6 +89,9 @@ function getImageFromStyle($styleIndex) {
     if ($textMostRightY !== null && $textMostLeftY !== null) break;
   }
 
+  // print_r("$textMostRightX $textMostRightY\n");
+  // exit();
+
   $image->annotateImage($textDraw, $textX, $textY, 0, $text);
 
   $curvesDraw = new \ImagickDraw();
@@ -87,10 +99,13 @@ function getImageFromStyle($styleIndex) {
 
   $drawStyles();
   $image->drawImage($curvesDraw);
-  if ($angle) {
-    $image->rotateImage('white', $angle);
-  }
-  $image->trimImage(0);
+  // if ($angle) {
+    // $image->rotateImage('white', $angle);
+  // }
+  // $image->trimImage(0);
+
+  // $draw->rectangle($textMostRightX, 450, $textMostRightX, 450);
+  $image->drawImage($draw);
 
   $curvesDraw->destroy();
   $textDraw->destroy();
@@ -125,7 +140,8 @@ function setupCurvesDraw($draw, $thickness) {
 //   $images = [...$images, $imageLink];
 //   $image->destroy();
 // }
+$images = getImageFromStyle(0);
+header("Content-Type: image/png");
+echo $images;
 
-$images = getImageFromStyle(3);
-
-print_r(json_encode($images));
+// print_r(json_encode($images));
