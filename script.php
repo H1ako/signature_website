@@ -26,7 +26,7 @@ include_once('draw-styles.php');
 // exit();
 
 function getImageFromStyle($styleIndex) {
-  global $image, $textDraw, $curvesDraw, $styles, $textWidth, $textHeight, $width, $height, $thickness, $textBoxBottomY, $textMostTopY, $textMostRightX, $textMostRightY, $textMostLeftX, $textMostLeftY, $bgColor;
+  global $image, $textDraw, $curvesDraw, $styles, $textWidth, $textHeight, $width, $height, $thickness, $textBoxBottomY, $textMostTopY, $textMostRightX, $textMostRightY, $textMostLeftX, $textMostLeftY;
   
   if (!array_key_exists($styleIndex, $styles)) return false;
 
@@ -55,57 +55,39 @@ function getImageFromStyle($styleIndex) {
   $textX = round(($width - $textWidth) / 2);
   $textY = round(($height - $textHeight) / 2 + $fontSize);
   $textBoxBottomY = $textMetrics['boundingBox']['y2'] / 2 + $textY;
-  $textBoxMostRightX = floor($textMetrics['boundingBox']['x2']) + $textX;
-  $textBoxMostLeftX = round($textMetrics['boundingBox']['x1']) + $textX;
   $textMostTopY = $textY;
-  // print_r(floor($textMetrics['boundingBox']['x2']). " ". $textMetrics['boundingBox']['x2']);
-  // exit();
+  $image->annotateImage($textDraw, $textX, $textY, 0, $text);
 
-  $textMostRightX = $textBoxMostRightX + $textX;
+  $textMostRightX = floor($textWidth + $textX - $thickness / 2);
   $textMostRightY = null;
-  $textMostLeftX = $textBoxMostLeftX + $textX;
+  $textMostLeftX = round($textX - $thickness / 2);
   $textMostLeftY = null;
 
-  // print_r($height);
-  // exit();
-  $draw  = new ImagickDraw();
-  $color = new ImagickPixel('red');
-  $draw->setFillColor($color);
-
-  for($y=$textY - $textHeight; $y < $height; $y++) {
-    $draw->point($textMostRightX, $y);
+  for($y=$textY - $textHeight; $y < $textY + $textHeight / 2; $y++) {
     $mostRightColorByY = $image->getImagePixelColor($textMostRightX, $y);
-    $isDifferentWithBg = $bgColor->isPixelSimilar($mostRightColorByY, 0);
-    if (!$isDifferentWithBg) {
+    $isDifferentWithBg = !($bgColor->isPixelSimilar($mostRightColorByY, 0));
+    if ($isDifferentWithBg) {
       $textMostRightY = $y;
     }
-
+    
     $mostLeftColorByY = $image->getImagePixelColor($textMostLeftX, $y);
-    $isDifferentWithBg = $bgColor->isPixelSimilar($mostLeftColorByY, 0);
-    if (!$isDifferentWithBg) {
-      $textMostRightY = $y;
+    $isDifferentWithBg = !($bgColor->isPixelSimilar($mostLeftColorByY, 0));
+    if ($isDifferentWithBg) {
+      $textMostLeftY = $y;
     }
     
     if ($textMostRightY !== null && $textMostLeftY !== null) break;
   }
-
-  // print_r("$textMostRightX $textMostRightY\n");
-  // exit();
-
-  $image->annotateImage($textDraw, $textX, $textY, 0, $text);
-
+  
   $curvesDraw = new \ImagickDraw();
   setupCurvesDraw($curvesDraw, $thickness);
 
   $drawStyles();
   $image->drawImage($curvesDraw);
-  // if ($angle) {
-    // $image->rotateImage('white', $angle);
-  // }
-  // $image->trimImage(0);
-
-  // $draw->rectangle($textMostRightX, 450, $textMostRightX, 450);
-  $image->drawImage($draw);
+  if ($angle) {
+    $image->rotateImage('white', $angle);
+  }
+  $image->trimImage(0);
 
   $curvesDraw->destroy();
   $textDraw->destroy();

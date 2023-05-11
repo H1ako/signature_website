@@ -7,7 +7,7 @@ function drawBottomHeart() {
   global $textMostRightX, $textMostRightY, $curvesDraw, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textWidth, 'y' => $textMostRightY + 45],
     ['x' => $textWidth, 'y' => $textMostRightY + 60],
     ['x' => $textMostRightX, 'y' => $textMostRightY + 80],
@@ -16,7 +16,7 @@ function drawBottomHeart() {
     ['x' => $textWidth, 'y' => $textMostRightY + 80],
     ['x' => $textMostRightX, 'y' => $textMostRightY + 100],
     ['x' => $textMostRightX + 100, 'y' => $textMostRightY + 100],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
   ];
 
   $curvesDraw->bezier($points);
@@ -26,7 +26,7 @@ function drawCurve() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $height, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX - $textWidth / 3, 'y' => $textMostRightY * 0.7],
     ['x' => $textMostLeftX - $textWidth, 'y' => $textMostRightY],
     ['x' => $textMostRightX - $textWidth / 1.5, 'y' => ($height - $textHeight) / 2 + $textHeight],
@@ -40,7 +40,7 @@ function drawStretchedCurve() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $height, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX - $textWidth / 3, 'y' => $textMostRightY * 0.7],
     ['x' => $textMostLeftX - $textWidth, 'y' => $textMostRightY],
     ['x' => $textMostRightX - $textWidth, 'y' => ($height - $textHeight) / 2 + $textHeight],
@@ -54,7 +54,7 @@ function drawBottomCurve1() {
   global $textMostLeftX, $textMostLeftY, $textMostRightX, $textMostRightY, $curvesDraw, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + 20, 'y' => $textMostRightY - 180],
     ['x' => $textMostRightX - 20, 'y' => $textMostRightY - 100],
     ['x' => $textMostRightX - 20, 'y' => $textMostRightY + 80],
@@ -94,7 +94,7 @@ function drawBottomCurve3() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostLeftX + $textWidth * -0.55, 'y' => $textMostRightY + $textHeight * 0.3],
     ['x' => $textMostLeftX + $textWidth * -0.55, 'y' => $textMostRightY + $textHeight * 0.3],
     ['x' => $textMostRightX, 'y' => $textMostRightY + 40],
@@ -117,7 +117,7 @@ function drawBottomCurve4() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostLeftX + $textWidth * -0.55, 'y' => $textMostRightY + $textHeight * 0.1],
     ['x' => $textMostLeftX + $textWidth * -0.55, 'y' => $textMostRightY + $textHeight * 0.3],
     ['x' => $textMostRightX, 'y' => $textMostRightY + $textHeight * 0.4],
@@ -136,7 +136,7 @@ function drawBottomCurve5() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX - $textWidth, 'y' => $textMostRightY + $textHeight / 1.75],
     ['x' => $textMostRightX - $textWidth, 'y' => $textMostRightY + $textHeight / 1.75],
     ['x' => $textMostRightX, 'y' => $textMostRightY + $textHeight / 2],
@@ -169,17 +169,17 @@ function drawBottomCurve7() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $textBoxBottomY, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + 140, 'y' => $textMostRightY - $textHeight * .85],
     ['x' => $textMostRightX + 10, 'y' => $textMostRightY - $textHeight * .85],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX, 'y' => $textBoxBottomY],
   ];
   $secondPoints = [
-    ['x' => $textMostRightX + $thickness / 2, 'y' => $textBoxBottomY + $thickness / 2],
+    ['x' => $textMostRightX, 'y' => $textBoxBottomY],
     ['x' => $textMostRightX - $textWidth * 0.25, 'y' => $textBoxBottomY - $textHeight * 0.4],
     ['x' => $textMostLeftX, 'y' => $textBoxBottomY + $textHeight * 0.45],
     ['x' => $textMostLeftX - $textWidth * 0, 'y' => $textBoxBottomY - $textHeight * 0.15],
@@ -196,17 +196,17 @@ function drawBottomCurveLong7() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $textBoxBottomY, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + 140, 'y' => $textMostRightY - $textHeight * .85],
     ['x' => $textMostRightX + 10, 'y' => $textMostRightY - $textHeight * .85],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX, 'y' => $textBoxBottomY],
   ];
   $secondPoints = [
-    ['x' => $textMostRightX + $thickness / 2, 'y' => $textBoxBottomY + $thickness / 2],
+    ['x' => $textMostRightX, 'y' => $textBoxBottomY],
     ['x' => $textMostRightX - $textWidth * 0.25, 'y' => $textBoxBottomY - $textHeight * 0.4],
     ['x' => $textMostLeftX - $textWidth * 0.5, 'y' => $textBoxBottomY + $textHeight * 0.45],
     ['x' => $textMostLeftX - $textWidth * 0.5, 'y' => $textBoxBottomY - $textHeight * 0.15],
@@ -223,7 +223,7 @@ function drawBottomCurve8() {
   global $textMostLeftX, $textMostLeftY, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX, 'y' => $textMostRightY + $textHeight * 0.7],
     ['x' => $textMostRightX + $textWidth * 0.5, 'y' => $textMostRightY - $textHeight * 1.2],
     ['x' => $textMostRightX + $textHeight * 0.05, 'y' => $textMostRightY - $textHeight * 1.2],
@@ -243,7 +243,7 @@ function drawBottomCurve9() {
   global $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + $textWidth * 0.1, 'y' => $textMostRightY],
     ['x' => $textMostRightX + $textWidth * 0.1, 'y' => $textMostRightY - $textHeight * 0.2],
     ['x' => $textMostRightX - $textWidth * 0.1, 'y' => $textMostRightY - $textHeight * 0.7],
@@ -282,7 +282,7 @@ function drawBottomCurve10() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostLeftX - $textWidth * 0.1, 'y' => $textMostRightY],
     ['x' => $textMostLeftX - $textWidth * 0.1, 'y' => $textMostRightY + $textHeight * 0.1],
   ];
@@ -294,7 +294,7 @@ function drawBottomCurve11() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + 50, 'y' => $textMostRightY + $textHeight * 0.5],
     ['x' => $textMostRightX + 100, 'y' => $textMostRightY + $textHeight * 0.8],
     ['x' => $textMostRightX + 110, 'y' => $textMostRightY + $textHeight * 0.5],
@@ -310,7 +310,7 @@ function drawBottomCurve12() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + $textWidth * 0.5 , 'y' => $textMostRightY + $textHeight * 0.025],
     ['x' => $textMostRightX + $textWidth * 0.5 , 'y' => $textMostRightY + $textHeight * 0.025],
     ['x' => $textMostLeftX - $textWidth * 1.3, 'y' => $textMostRightY + $textHeight * 1],
@@ -326,7 +326,7 @@ function drawBottomCurve13() {
   global $textMostLeftX, $textMostLeftY, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX - $textWidth * 0.6, 'y' => $textMostRightY - $textHeight * 0.6],
     ['x' => $textMostRightX + $textWidth * 0.5, 'y' => $textMostRightY - $textHeight * 0.6],
     ['x' => $textMostRightX, 'y' => $textMostRightY - $textHeight * 0.1],
@@ -354,7 +354,7 @@ function drawBottomCurve14() {
   global $textMostLeftX, $textMostLeftY, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostLeftX - $textWidth * 0.7, 'y' => $textMostLeftY + $textHeight * 0.2],
     ['x' => $textMostLeftX - $textWidth * 0.7, 'y' => $textMostLeftY + $textHeight * 0.4],
     ['x' => $textMostLeftX - $textWidth * 0.5, 'y' => $textMostLeftY + $textHeight * 0.8],
@@ -376,7 +376,7 @@ function drawBottomCurve15() {
   global $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + $textWidth * 0.1, 'y' => $textMostRightY - $textHeight * 0.15],
     ['x' => $textMostRightX + $textWidth * 0.2, 'y' => $textMostRightY - $textHeight * 0.10],
     ['x' => $textMostRightX + $textWidth * 0.2, 'y' => $textMostRightY + $textHeight * 0.3],
@@ -395,7 +395,7 @@ function drawBottomCurve16() {
   global $textMostLeftX, $textMostRightX, $textMostRightY, $curvesDraw, $textHeight, $textWidth, $thickness;
 
   $points = [
-    ['x' => $textMostRightX - $thickness / 2, 'y' => $textMostRightY],
+    ['x' => $textMostRightX, 'y' => $textMostRightY],
     ['x' => $textMostRightX + $textWidth * 0.3, 'y' => $textMostRightY - $textHeight * 0.20],
     ['x' => $textMostRightX - $textWidth * 0.8, 'y' => $textMostRightY - $textHeight * 0.4],
     ['x' => $textMostRightX - $textWidth * 0.6, 'y' => $textMostRightY - $textHeight * 0.4],
@@ -477,7 +477,7 @@ function addCurveStyle2() {
 }
 
 function addCurveStyle3() {
-  draw_top_sun();
+  drawTopSun();
   drawBottomCurveLong7();
   drawRightLine();
 }
@@ -521,7 +521,7 @@ function addCurveStyle11() {
 }
 
 function addCurveStyle12() {
-  draw_bottom_heart();
+  drawBottomHeart();
 }
 
 function addCurveStyle13() {
