@@ -45,10 +45,9 @@ function generatorFormHandler(e) {
 }
 
 async function replaceWithGeneratedSignatures() {
-  if (!signaturesList) return
-  signaturesList.scrollIntoView({
-    block: 'center'
-  })
+  updateUrlQueryByFormData()
+  if (!signaturesList || !isGeneratorFormValid()) return
+  
   resetGeneratorData()
   signaturesList.innerHTML = ''
   
@@ -63,6 +62,15 @@ function resetGeneratorData() {
 }
 
 async function appendGeneratedSignatures() {
+  const isGeneratingFormValid = isGeneratorFormValid()
+  if (!isGeneratingFormValid && !isSignaturesGenerating) {
+    disableGeneratorLoader()
+    return null
+  }
+
+  if (isNoMoreSignatures) return null
+  enableGeneratorLoader()
+
   if (!signaturesList) return
 
   for(var i=0; i < 12;i++) {
@@ -72,7 +80,7 @@ async function appendGeneratedSignatures() {
     addSignaturesToList(newSignatures)
   }
 
-  if (!isElementVisible(generatorLoader) || isSignaturesGenerating || isNoMoreSignatures) return
+  if (!isElementVisible(generatorLoader) || isSignaturesGenerating || isNoMoreSignatures || !isGeneratorFormValid()) return
   await appendGeneratedSignatures()
 }
 
@@ -119,13 +127,6 @@ function enableGeneratorLoader() {
 }
 
 async function generateSignatures() {
-  if (isNoMoreSignatures) {
-    disableGeneratorLoader()
-    return null
-  }
-  if (isSignaturesGenerating || !(isGeneratorFormValid())) return null
-  enableGeneratorLoader()
-
   page++
 
   startLoading()
@@ -149,11 +150,11 @@ function isGeneratorFormValid() {
   const firstName = formData.get('first-name')
   const lastName = formData.get('last-name')
 
-  return !(isEmpty(firstName) || isEmpty(lastName))
+  return !isEmpty(firstName) && !isEmpty(lastName)
 }
 
 function isEmpty(value) {
-  return !value || value.trim().length === 0;
+  return !value || value.trim().length === 0
 }
 
 function startLoading() {
@@ -163,7 +164,6 @@ function startLoading() {
 }
 
 async function getGeneratedSignatures() {
-  updateUrlQueryByFormData()
   const formData = new FormData(generatorForm)
   const cleanFormData = getTransliteratedGeneratorData(formData)
   const firstName = cleanFormData.firstName
@@ -330,7 +330,12 @@ if (generatorLoader) {
   })
   
   generatorLoaderObserver.observe(generatorLoader)
-  generatorLoader.addEventListener('click', appendGeneratedSignatures)
+  generatorLoader.addEventListener('click', () => {
+    signaturesList.scrollIntoView({
+      block: 'center'
+    })
+    appendGeneratedSignatures()
+  })
 }
 
 signatureShareBtns.forEach(btn => {

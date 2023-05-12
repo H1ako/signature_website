@@ -2,10 +2,10 @@
 require_once __DIR__.'/settings.php';
 require_once __DIR__.'/router.php';
 
-global $LOCALES;
+global $LOCALES, $SITE_URL;
 
 
-$locale = $LOCALES['en'];
+$currentLocale = $LOCALES['en'];
 putenv("LC_ALL=en");
 setlocale(LC_ALL, 'en');
 
@@ -19,10 +19,11 @@ textdomain('messages');
 
 get('/signature_generator/%s/%s', function($locale, $path) use ($LOCALES) {
   if (!(array_key_exists($locale, $LOCALES))) return;
-
-  $locale = $LOCALES[$locale];
-  $localeCode = $locale['code'];
-  $localeShortCode = $locale['short_code'];
+  
+  global $currentLocale;
+  $currentLocale = $LOCALES[$locale];
+  $localeCode = $currentLocale['code'];
+  $localeShortCode = $currentLocale['short_code'];
   
   putenv("LC_ALL=$localeCode");
   setlocale(LC_ALL, $localeShortCode);
