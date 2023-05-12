@@ -197,6 +197,8 @@ function stopLoading() {
 async function appendGeneratedSignatures() {
   if (!signaturesList) return
   
+  enableGeneratorLoader()
+  
   const newSignatures = await generateSignatures()
   if (!newSignatures) return
   
@@ -315,6 +317,7 @@ if (generatorLoader) {
   
   generatorLoaderObserver.observe(generatorLoader)
   generatorLoader.addEventListener('click', appendGeneratedSignatures)
+  disableGeneratorLoader()
 }
 
 signatureShareBtns.forEach(btn => {
