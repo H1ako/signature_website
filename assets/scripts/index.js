@@ -84,7 +84,7 @@ async function appendGeneratedSignatures() {
     addSignaturesToList(newSignatures)
   }
 
-  if (!isElementVisible(generatorLoader) || isSignaturesGenerating || isNoMoreSignatures || !isGeneratorFormValid()) return
+  if (!isElementVisible(generatorLoader) || isSignaturesGenerating || !isGeneratorFormValid()) return
   await appendGeneratedSignatures()
 }
 

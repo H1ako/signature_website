@@ -25,9 +25,6 @@
       <?php include('components/generator-form.php'); ?>
     </span>
   </section>
-  <section class="main-content__socials">
-    <?php include('components/socials.php'); ?>
-  </section>
   <section class="main-content__advertisement">
     <?php include('components/advertisement.php'); ?>
   </section>
@@ -61,6 +58,9 @@
         <?= _('Home Page About Us'); ?>
       </div>
     </div>
+  </section>
+  <section class="main-content__socials">
+    <?php include('components/socials.php'); ?>
   </section>
 </main>
 <?php include('components/signature-card.php'); ?>
