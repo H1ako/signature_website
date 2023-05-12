@@ -40,6 +40,11 @@ async function generateIfDataFilled() {
 
 function generatorFormHandler(e) {
   e.preventDefault()
+
+  // console.log(signaturesList)
+  signaturesList.scrollIntoView({
+    block: 'center'
+  })
   
   replaceWithGeneratedSignatures()
 }
@@ -330,12 +335,7 @@ if (generatorLoader) {
   })
   
   generatorLoaderObserver.observe(generatorLoader)
-  generatorLoader.addEventListener('click', () => {
-    signaturesList.scrollIntoView({
-      block: 'center'
-    })
-    appendGeneratedSignatures()
-  })
+  generatorLoader.addEventListener('click', appendGeneratedSignatures)
 }
 
 signatureShareBtns.forEach(btn => {

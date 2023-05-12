@@ -83,6 +83,16 @@
     flex-direction: column;
     gap: 1em;
 
+    // &:has(.disabled),
+    // &:has(.generated-signatures__list:empty) {
+    //   display: none;
+    // }
+
+    // &:has(.generated-signatures__list:not(:empty)),
+    // &:has(.loading) {
+    //   display: flex !important;
+    // }
+
     .generated-signatures__list {
       width: 100%;
       gap: 1em;
