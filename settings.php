@@ -1,7 +1,7 @@
 <?php
 // Socials and Main Settings
 $SITE_NAME = 'Signature Generator';
-$SITE_URL = 'https://e5a1-176-59-98-163.ngrok-free.app//signature_generator';
+$SITE_URL = 'http://localhost/signature_generator';
 $CONTACT_EMAIL = 'support@siggenerator.com';
 $LOCALES = [
   'en' => [

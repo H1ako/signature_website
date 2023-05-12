@@ -6,7 +6,7 @@ get('/signature_generator/api/get-signatures', function () {
   if (!array_key_exists('first-name', $_GET) || !array_key_exists('first-name', $_GET)) return false;
   $firstName = $_GET['first-name'];
   $page = $_GET['page'] ?? 1;
-  $signaturesPerPage = 3;
+  $signaturesPerPage = 1;
   $lastName = $_GET['last-name'];
   $middleName = $_GET['middle-name'] ?? '';
   include('script.php');

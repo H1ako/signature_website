@@ -52,10 +52,6 @@ async function replaceWithGeneratedSignatures() {
   resetGeneratorData()
   signaturesList.innerHTML = ''
   
-  // var newSignatures = await generateSignatures()
-  // if (!newSignatures) return
-  // 
-  // addSignaturesToList(newSignatures)
   appendGeneratedSignatures()
 }
 
@@ -69,16 +65,15 @@ function resetGeneratorData() {
 async function appendGeneratedSignatures() {
   if (!signaturesList) return
 
-  // const newSignatures = await generateSignatures()
-  // if (!newSignatures) return
-  
-  // addSignaturesToList(newSignatures)
-  for(var i=0; i < 2;i++) {
+  for(var i=0; i < 12;i++) {
     const newSignatures = await generateSignatures()
     if (!newSignatures) continue
     
     addSignaturesToList(newSignatures)
   }
+
+  if (!isElementVisible(generatorLoader) || isSignaturesGenerating || isNoMoreSignatures) return
+  await appendGeneratedSignatures()
 }
 
 function addSignaturesToList(signatures) {
@@ -309,6 +304,16 @@ function enableGoTopBtnIfScrolled() {
   goToTopBtn.classList.toggle('active', window.scrollY > window.screen.height / 2)
 }
 
+function isElementVisible(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
 disableGeneratorLoader()
 fillGeneratorFormWithQuery()
 generateIfDataFilled()
@@ -321,7 +326,7 @@ if (generatorLoader) {
       }
     })
   }, {
-    threshold: 0.1
+    threshold: 0.1,
   })
   
   generatorLoaderObserver.observe(generatorLoader)
