@@ -32,10 +32,10 @@ function fillGeneratorFormWithQuery() {
   }
 }
 
-function generateIfDataFilled() {
+async function generateIfDataFilled() {
   if (!isGeneratorFormValid()) return
 
-  replaceWithGeneratedSignatures()
+  await replaceWithGeneratedSignatures()
 }
 
 function generatorFormHandler(e) {
@@ -50,13 +50,35 @@ async function replaceWithGeneratedSignatures() {
     block: 'center'
   })
   resetGeneratorData()
-  
-  const newSignatures = await generateSignatures()
-  if (!newSignatures) return
-  
   signaturesList.innerHTML = ''
-  addSignaturesToList(newSignatures)
+  
+  // var newSignatures = await generateSignatures()
+  // if (!newSignatures) return
+  // 
+  // addSignaturesToList(newSignatures)
+  appendGeneratedSignatures()
+}
 
+function resetGeneratorData() {
+  page = 0
+  isNoMoreSignatures = false
+
+  enableGeneratorLoader()
+}
+
+async function appendGeneratedSignatures() {
+  if (!signaturesList) return
+
+  // const newSignatures = await generateSignatures()
+  // if (!newSignatures) return
+  
+  // addSignaturesToList(newSignatures)
+  for(var i=0; i < 2;i++) {
+    const newSignatures = await generateSignatures()
+    if (!newSignatures) continue
+    
+    addSignaturesToList(newSignatures)
+  }
 }
 
 function addSignaturesToList(signatures) {
@@ -93,13 +115,6 @@ function getSignatureCard(image) {
   newCardToolsShareButton.addEventListener('click', shareSignature)
 
   return newCard
-}
-
-function resetGeneratorData() {
-  page = 0
-  isNoMoreSignatures = false
-
-  enableGeneratorLoader()
 }
 
 function enableGeneratorLoader() {
@@ -164,9 +179,12 @@ async function getGeneratedSignatures() {
     method: 'GET',
   })
   if (response.status == 200) {
-    const signatures = await response.json()
-    
-    return signatures
+    try {
+      const signatures = await response.json()
+      return signatures
+    } catch (error) {
+      return []
+    }
   }
   
   return []
@@ -193,15 +211,6 @@ function stopLoading() {
   isSignaturesGenerating = false
 
   generatorLoader && generatorLoader.classList.remove('loading')
-}
-
-async function appendGeneratedSignatures() {
-  if (!signaturesList) return
-
-  const newSignatures = await generateSignatures()
-  if (!newSignatures) return
-  
-  addSignaturesToList(newSignatures)
 }
 
 async function shareSignature(e) {

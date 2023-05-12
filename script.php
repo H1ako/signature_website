@@ -58,25 +58,23 @@ function getImageFromStyle($styleIndex) {
   $textMostTopY = $textY;
   $image->annotateImage($textDraw, $textX, $textY, 0, $text);
 
-  $textMostRightX = floor($textWidth + $textX - $thickness / 2);
+  $textMostRightX = floor($textWidth + $textX - $thickness);
   $textMostRightY = null;
-  $textMostLeftX = round($textX - $thickness / 2);
+  $textMostLeftX = round($textX - $thickness);
   $textMostLeftY = null;
 
   for($y=$textY - $textHeight; $y < $textY + $textHeight / 2; $y++) {
     $mostRightColorByY = $image->getImagePixelColor($textMostRightX, $y);
     $isDifferentWithBg = !($bgColor->isPixelSimilar($mostRightColorByY, 0));
     if ($isDifferentWithBg) {
-      $textMostRightY = $y;
+      $textMostRightY = $y - $thickness / 2;
     }
     
     $mostLeftColorByY = $image->getImagePixelColor($textMostLeftX, $y);
     $isDifferentWithBg = !($bgColor->isPixelSimilar($mostLeftColorByY, 0));
     if ($isDifferentWithBg) {
-      $textMostLeftY = $y;
+      $textMostLeftY = $y - $thickness / 2;
     }
-    
-    if ($textMostRightY !== null && $textMostLeftY !== null) break;
   }
   
   $curvesDraw = new \ImagickDraw();
@@ -113,6 +111,3 @@ function setupCurvesDraw($draw, $thickness) {
   $draw->setStrokeAntialias(true);
   $draw->setStrokeWidth($thickness);
 }
-// $images = getImageFromStyle(0);
-// header("Content-Type: image/png");
-// echo $images;
