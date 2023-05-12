@@ -114,6 +114,7 @@ async function generateSignatures() {
     return null
   }
   if (isSignaturesGenerating || !(isGeneratorFormValid())) return null
+  enableGeneratorLoader()
 
   page++
 
@@ -196,9 +197,7 @@ function stopLoading() {
 
 async function appendGeneratedSignatures() {
   if (!signaturesList) return
-  
-  enableGeneratorLoader()
-  
+
   const newSignatures = await generateSignatures()
   if (!newSignatures) return
   
@@ -301,6 +300,7 @@ function enableGoTopBtnIfScrolled() {
   goToTopBtn.classList.toggle('active', window.scrollY > window.screen.height / 2)
 }
 
+disableGeneratorLoader()
 fillGeneratorFormWithQuery()
 generateIfDataFilled()
 generatorForm && generatorForm.addEventListener('submit', generatorFormHandler)
@@ -317,7 +317,6 @@ if (generatorLoader) {
   
   generatorLoaderObserver.observe(generatorLoader)
   generatorLoader.addEventListener('click', appendGeneratedSignatures)
-  disableGeneratorLoader()
 }
 
 signatureShareBtns.forEach(btn => {

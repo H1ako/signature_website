@@ -445,7 +445,8 @@ function drawTopSun() {
   global $image, $textMostRightX, $textMostTopY;
 
   $overlay = new \Imagick();
-  $overlay->readImage('C:\Apache24\htdocs\signature_generator\assets\images\sun.png');
+  $currentPath = getcwd();
+  $overlay->readImage("$currentPath/assets/images/sun.png");
   $overlayWidth = $overlay->getImageWidth();
   $overlayHeight = $overlay->getImageHeight();
   $degrees = -20;
