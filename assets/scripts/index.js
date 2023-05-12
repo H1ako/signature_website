@@ -68,12 +68,11 @@ function resetGeneratorData() {
 
 async function appendGeneratedSignatures() {
   const isGeneratingFormValid = isGeneratorFormValid()
-  if (!isGeneratingFormValid && !isSignaturesGenerating) {
+  if ((!isGeneratingFormValid && !isSignaturesGenerating) || isNoMoreSignatures) {
     disableGeneratorLoader()
     return null
   }
 
-  if (isNoMoreSignatures) return null
   enableGeneratorLoader()
 
   if (!signaturesList) return
