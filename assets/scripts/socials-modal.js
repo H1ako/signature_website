@@ -43,6 +43,10 @@ function getRedditShareLink(link) {
 function closeSocialsModalIfOuterClick(e) {
   if (!checkIfOuterClick(socialsModal, e)) return
 
+  closeSocialsModal()
+}
+
+function closeSocialsModal() {
   closeModal(socialsModal)
 }
 
@@ -56,3 +60,4 @@ function checkIfOuterClick(element, event) {
 }
 
 socialsModal && socialsModal.addEventListener('click', closeSocialsModalIfOuterClick)
+socialsModal && socialsModal.addEventListener('close', closeSocialsModal)

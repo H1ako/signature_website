@@ -30,7 +30,8 @@
   </section>
   <section class="main-content__editor">
     <h2 class="editor__heading"><?= _('Create your own <b>Signature</b>'); ?></h2>
-    <?php include('components/editor.php'); ?>
+    <button class="editor__open-editor" open-editor><?= _('Open Editor'); ?></button>
+    
   </section>
   <section class="main-content__advertisement">
     <?php include('components/advertisement.php'); ?>
@@ -67,6 +68,7 @@
 <?php include('components/footer.php'); ?>
 <?php include('components/socials-modal.php'); ?>
 <?php include('components/preview-lightbox.php'); ?>
+<?php include('components/editor.php'); ?>
 <?php include('components/go-top.php'); ?>
 </body>
 </html>

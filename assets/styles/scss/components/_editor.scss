@@ -1,13 +1,15 @@
 @import "../main/mixins";
 
 .editor {
-  position: relative;
   border-radius: var(--border-radius-main);
   overflow: hidden;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  width: var(--width-main-content);
   border: var(--border-main);
+  padding: 0;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
 
   &__canvas {
     width: 100%;

@@ -350,4 +350,5 @@ if (previewLightbox) {
     btn.addEventListener('click', previewSignature)
   })
   previewLightbox.addEventListener('click', closePreviewLightboxlIfOuterClick)
+  previewLightbox.addEventListener('close', closePreviewLightbox)
 }

@@ -1,4 +1,4 @@
-<div class="editor" id="editor">
+<dialog class="editor" id="editor">
   <canvas class="editor__canvas" id='editor-area'></canvas>
   <div class="editor__tools">
     <span class="tools__left">
@@ -23,4 +23,4 @@
       </a>
     </span>
   </div>
-</div>
+</dialog>

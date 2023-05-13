@@ -9,6 +9,7 @@ const thicknessInput = editor && editor.querySelector('#editor-thickness')
 const editorDownloadBtn = editor && editor.querySelector('#editor-download')
 const editorShareBtn = editor && editor.querySelector('#editor-share')
 const signaturesEditBtns = editor && document.querySelectorAll('[edit-signature]')
+const openEditorBtns = editor && document.querySelectorAll('[open-editor]')
 
 var ctx = editorCanvas.getContext('2d')
 var canvasRect = editorCanvas.getBoundingClientRect()
@@ -29,6 +30,8 @@ function setPosition(e) {
 }
 
 function resize() {
+  if (!editorCanvas.offsetWidth || !editorCanvas.offsetHeight) return
+
   inMemCanvas.width = editorCanvas.width
   inMemCanvas.height = editorCanvas.height
   inMemCtx.drawImage(editorCanvas, 0, 0)
@@ -38,10 +41,8 @@ function resize() {
 
   ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
   ctx.drawImage(inMemCanvas, 0, 0, editorCanvas.width, editorCanvas.height)
-
-  
   ctx.lineCap = 'round'
-  
+
   coordinatesMultipliers.x = window.innerWidth / editorCanvas.offsetWidth
   coordinatesMultipliers.y = window.innerHeight / editorCanvas.offsetHeight
   
@@ -117,7 +118,7 @@ async function editSignature(e) {
   const imageSrc = e.target.closest('[data-signature-src]').getAttribute('data-signature-src')
 
   drawImage(imageSrc)
-  goToEditor()
+  openEditor()
 }
 
 function drawImage(src) {
@@ -137,10 +138,9 @@ function drawImage(src) {
   image.src = src
 }
 
-function goToEditor() {
-  editor.scrollIntoView({
-    block: 'center'
-  })
+function openEditor() {
+  openModal(editor)
+  resize()
 }
 
 async function shareEditorSignature() {
@@ -153,6 +153,16 @@ function disableShareBtnIfCantShare() {
   if (isNavigateShareWorks) return
 
   editorShareBtn?.remove()
+}
+
+function closeEditorIfOuterClick(e) {
+  if (!checkIfOuterClick(editor, e)) return
+
+  clsoeEditor()
+}
+
+function clsoeEditor() {
+  closeModal(editor)
 }
 
 if (editor) {
@@ -178,5 +188,9 @@ if (editor) {
     btn.addEventListener('click', editSignature)
   })
 
-  resize()
+  openEditorBtns.forEach(btn => {
+    btn.addEventListener('click', openEditor)
+  })
+  editor.addEventListener('click', closeEditorIfOuterClick)
+  editor.addEventListener('close', clsoeEditor)
 }
