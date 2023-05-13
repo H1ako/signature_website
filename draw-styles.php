@@ -604,10 +604,10 @@ $fonts = [
     'path' => 'assets/fonts/honeymoon-avenue-script.regular.otf',
     'thickness_index' => 120 // 1
   ],
-  [
-    'path' => 'assets/fonts/AdindaMelia.otf',
-    'thickness_index' => 25 // 1
-  ],
+  // [
+    // 'path' => 'assets/fonts/AdindaMelia.otf', // ------------
+    // 'thickness_index' => 25 // 1
+  // ],
   [
     'path' => 'assets/fonts/AlfridaSignature.ttf',
     'thickness_index' => 30 // 1
@@ -618,7 +618,7 @@ $fonts = [
   ],
   [
     'path' => 'assets/fonts/Centhiny.otf',
-    'thickness_index' => 35 // 1
+    'thickness_index' => 55 // 1
   ],
   [
     'path' => 'assets/fonts/Geovana.otf',
@@ -640,10 +640,10 @@ $fonts = [
     'path' => 'assets/fonts/Radith.otf',
     'thickness_index' => 30 // 1
   ],
-  [
-    'path' => 'assets/fonts/Rathie.otf',
-    'thickness_index' => 120 // 1
-  ],
+  // [
+    // 'path' => 'assets/fonts/Rathie.otf', // -------
+    // 'thickness_index' => 70 // 60
+  // ],
   [
     'path' => 'assets/fonts/Somelove.otf',
     'thickness_index' => 45 // 1

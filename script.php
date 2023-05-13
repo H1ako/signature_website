@@ -20,11 +20,6 @@ $fonts;
 
 include_once('draw-styles.php');
 
-// echo '<pre>';
-// print_r($styles);
-// echo '</pre>';
-// exit();
-
 function getImageFromStyle($styleIndex) {
   global $image, $textDraw, $curvesDraw, $styles, $textWidth, $textHeight, $width, $height, $thickness, $textBoxBottomY, $textMostTopY, $textMostRightX, $textMostRightY, $textMostLeftX, $textMostLeftY;
   
@@ -63,7 +58,13 @@ function getImageFromStyle($styleIndex) {
   $textMostLeftX = round($textX - $thickness);
   $textMostLeftY = null;
 
+  $curvesDraw = new \ImagickDraw();
+  setupCurvesDraw($curvesDraw, $thickness);
+  // $testDraw = new \ImagickDraw();
+  // $testDraw->setStrokeColor('red');
+
   for($y=$textY - $textHeight; $y < $textY + $textHeight / 2; $y++) {
+    // $testDraw->point($textMostRightX, $y);
     $mostRightColorByY = $image->getImagePixelColor($textMostRightX, $y);
     $isDifferentWithBg = !($bgColor->isPixelSimilar($mostRightColorByY, 0));
     if ($isDifferentWithBg) {
@@ -76,12 +77,10 @@ function getImageFromStyle($styleIndex) {
       $textMostLeftY = $y - $thickness / 2;
     }
   }
-  
-  $curvesDraw = new \ImagickDraw();
-  setupCurvesDraw($curvesDraw, $thickness);
 
   $drawStyles();
   $image->drawImage($curvesDraw);
+  // $image->drawImage($testDraw);
   if ($angle) {
     $image->rotateImage('white', $angle);
   }

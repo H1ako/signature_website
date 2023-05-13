@@ -13,7 +13,7 @@
       <div class="bottom__right">
         <button class="right__btn btn_view" preview-signature title="<?= _('Preview'); ?>"><?php include('icons/view.php'); ?></button>
         <button class="right__btn btn_share" share-signature title="<?= _('Share'); ?>"><?php include('icons/share.php'); ?></button>
-        <a href="" class="right__btn btn_download" download-signature download="signature-1.png" title="<?= _('Download'); ?>"><?php include('icons/download.php'); ?></a>
+        <a href="" class="right__btn btn_download" download-signature download="onlinesignatures-net.png" title="<?= _('Download'); ?>"><?php include('icons/download.php'); ?></a>
       </div>
     </div>
   </li>

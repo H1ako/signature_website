@@ -27,13 +27,9 @@
       <?php include('components/generator-form.php'); ?>
     </span>
   </section>
-  <section class="main-content__advertisement">
-    <?php include('components/advertisement.php'); ?>
-  </section>
   <section class="main-content__editor">
     <h2 class="editor__heading"><?= _('Create your own <b>Signature</b>'); ?></h2>
     <button class="editor__open-editor" open-editor><?= _('Open Editor'); ?></button>
-    
   </section>
   <section class="main-content__advertisement">
     <?php include('components/advertisement.php'); ?>
