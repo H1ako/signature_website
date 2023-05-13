@@ -1,9 +1,15 @@
 <?php
 // Socials and Main Settings
 $SITE_NAME = 'Signature Generator';
-$SITE_DESCRIPTION = '';
+$SITE_ICON = 'land.jpg';
 $SITE_URL = 'https://42bb-92-39-215-187.ngrok-free.app/signature_generator';
+$META_IMAGE = 'land.jpg';
+
 $CONTACT_EMAIL = 'support@siggenerator.com';
+
+// Pages Additional Settings
+$ABOUTUS_IMAGE = 'land.jpg';
+
 $LOCALES = [
   'en' => [
     'name' => '🇺🇸 English',
@@ -61,6 +67,3 @@ $LOCALES = [
     'code' => 'pt_PT',
   ],
 ];
-
-// Pages Additional Settings
-$ABOUTUS_IMAGE = 'land.jpg';

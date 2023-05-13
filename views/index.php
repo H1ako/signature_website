@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:title" content="<?= _('Home Page Title'); ?>">
+  <meta property="og:title" content="<?= _('Home Page Title'); ?>" />
   <title><?= _('Home Page Title'); ?></title>
   <?php include_once('components/base-head.php'); ?>
   <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/index.css">
