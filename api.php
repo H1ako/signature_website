@@ -7,6 +7,7 @@ get('/signature_generator/api/get-signatures', function () {
   $firstName = ucfirst($_GET['first-name']);
   $lastName = ucfirst($_GET['last-name']);
   $middleName = ucfirst($_GET['middle-name']) ?? '';
+  $randomIndex = isset($_GET['random-index']) ?? random_int(1, 9999);
   $page = $_GET['page'] ?? 1;
   $signaturesPerPage = 1;
   include('script.php');
@@ -18,7 +19,11 @@ get('/signature_generator/api/get-signatures', function () {
     $images = [...$images, $imageLink];
     $image->destroy();
   }
-  print_r(json_encode($images));
+  $data = [
+    'signatures' => $images,
+    'randomIndex' => $randomIndex
+  ];
+  print_r(json_encode($data));
 
   return false;
 });

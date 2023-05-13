@@ -695,3 +695,6 @@ foreach ($preStyles as $preStyle) {
     $fontI = $fontI + 2 > count($fonts) ? 0 : $fontI + 1;
   }
 }
+
+mt_srand($randomIndex);
+shuffle($styles);

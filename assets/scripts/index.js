@@ -1,6 +1,7 @@
 var page = 0
 var isNoMoreSignatures = false
 var isSignaturesGenerating = false
+var randomIndex = null
 
 const generatorForm = document.querySelector('#generator-form')
 const generatorLoader = document.querySelector('#generator-loader')
@@ -174,13 +175,15 @@ async function getGeneratedSignatures() {
   const lastName = cleanFormData.lastName
   const middleName = cleanFormData.middleName
   
-  const response = await fetch(`/signature_generator/api/get-signatures?first-name=${firstName}&last-name=${lastName}&middle-name=${middleName}&page=${page}`, {
+  const response = await fetch(`/signature_generator/api/get-signatures?first-name=${firstName}&last-name=${lastName}&middle-name=${middleName}&page=${page}&randomIndex=${randomIndex ?? ''}`, {
     method: 'GET',
   })
   if (response.status == 200) {
     try {
-      const signatures = await response.json()
-      return signatures
+      const data = await response.json()
+      randomIndex = data.randomIndex
+
+      return data.signatures
     } catch (error) {
       return []
     }
