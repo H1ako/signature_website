@@ -17,7 +17,7 @@
       <button class="right__tool tool_share" id="editor-share" title="<?= _('Share'); ?>">
         <?php include('icons/share.php'); ?>
       </button>
-      <a href="download:" class="right__tool tool_download" id="editor-download" title="<?= _('Download'); ?>">
+      <a href="" class="right__tool tool_download" download="OnlineSignatures.net.png" id="editor-download" title="<?= _('Download'); ?>">
         <?php include('icons/download.php'); ?>
         <span class="tool__text"><?= _('Download'); ?></span>
       </a>

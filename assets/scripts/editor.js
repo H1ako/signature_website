@@ -107,8 +107,8 @@ function disableEditing() {
   isEditing = false
 }
 
-function downloadEditorSignature(e) {
-  editorDownloadBtn.download = 'onlinesignatures-net.png'
+function downloadEditorSignature() {
+  editorDownloadBtn.download = getDownloadFileName()
   editorDownloadBtn.href = editorCanvas.toDataURL('image/png')
 }
 

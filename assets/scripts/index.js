@@ -45,7 +45,7 @@ function generatorFormHandler(e) {
   replaceWithGeneratedSignatures()
 
   signaturesList.scrollIntoView({
-    block: 'top'
+    block: 'center'
   })
 }
 
@@ -111,6 +111,7 @@ function getSignatureCard(image) {
 
   const newCardDownloadLink = newCard.querySelector('[download-signature]')
   newCardDownloadLink.href = image
+  newCardDownloadLink.download = getDownloadFileName()
 
   const newCardToolsEditButton = newCard.querySelector('[edit-signature]')
   newCardToolsEditButton.addEventListener('click', editSignature)
@@ -122,6 +123,10 @@ function getSignatureCard(image) {
   newCardToolsShareButton.addEventListener('click', shareSignature)
 
   return newCard
+}
+
+function getDownloadFileName() {
+  return `OnlineSignatures.net-${Math.round(Math.random() * 1000)}.png`
 }
 
 function enableGeneratorLoader() {

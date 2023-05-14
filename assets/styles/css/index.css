@@ -203,7 +203,7 @@
 }
 .editor__canvas {
   width: 100%;
-  height: min(80vh, 40em);
+  height: min(40vh, 40em);
   background: var(--color-bg-light);
 }
 .editor__tools {
