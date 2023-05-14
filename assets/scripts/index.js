@@ -41,13 +41,12 @@ async function generateIfDataFilled() {
 
 function generatorFormHandler(e) {
   e.preventDefault()
-
-  // console.log(signaturesList)
-  signaturesList.scrollIntoView({
-    block: 'center'
-  })
   
   replaceWithGeneratedSignatures()
+
+  signaturesList.scrollIntoView({
+    block: 'top'
+  })
 }
 
 async function replaceWithGeneratedSignatures() {

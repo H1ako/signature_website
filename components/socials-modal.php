@@ -6,7 +6,13 @@
     </section>
     <section class="content__links">
       <?php include('components/socials.php'); ?>
-      <input type="text" readonly class="links__link" id="socials-modal-link" title="<?= _('Share link'); ?>">
+      <div class="links__url">
+        <input type="text" readonly class="url__link" id="socials-modal-link" title="<?= _('Share link'); ?>">
+        <button class="url__copy" copy-share-link>
+          <?php include('icons/copy.php') ?>
+          <span class="copy__text"><?= _('Copy'); ?></span>
+        </button>
+      </div>
     </section>
   </div>
 </dialog>

@@ -426,6 +426,11 @@ b {
   --gap-block: 2em;
   --line-height-main: 1.9;
 }
+@media screen and (width < 680px) {
+  :root {
+    --padding-block: 1em;
+  }
+}
 
 .main-footer {
   background: var(--color-bg-light);

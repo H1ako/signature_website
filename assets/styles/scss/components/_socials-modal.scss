@@ -42,8 +42,26 @@
       gap: 2em;
       width: 100%;
 
-      .links__link {
+      .links__url {
         @include baseInput;
+
+        overflow: hidden;
+        display: flex;
+        align-items: stretch;
+        gap: .5em;
+
+        .url__link {
+          flex-grow: 1;
+
+          background: none;
+        }
+        
+        .url__copy {
+          @include button($background: var(--color-bg-light), $color: var(--color-text), $padding: .5em);
+
+          flex-shrink: 0;
+          border: var(--border-main);
+        }
       }
     }
   }

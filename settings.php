@@ -2,13 +2,13 @@
 // Socials and Main Settings
 $SITE_NAME = 'Signature Generator';
 $SITE_ICON = 'land.jpg';
-$SITE_URL = 'https://1576-176-59-108-251.ngrok-free.app/signature_generator';
+$SITE_URL = 'https://5bc1-92-39-215-187.ngrok-free.app/signature_generator';
 $META_IMAGE = 'land.jpg';
 
 $CONTACT_EMAIL = 'support@siggenerator.com';
 
 // Pages Additional Settings
-$ABOUTUS_IMAGE = 'land.jpg';
+$ABOUTUS_IMAGE = 'slider2.jpeg';
 
 $LOCALES = [
   'en' => [

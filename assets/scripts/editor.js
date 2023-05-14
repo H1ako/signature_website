@@ -127,8 +127,12 @@ function drawImage(src) {
   image.onload = () => {
     const canvasWidth = editorCanvas.width
     const canvasHeight = editorCanvas.height
-    const imageWidth = image.width * coordinatesMultipliers.x / 2
-    const imageHeight = image.height * coordinatesMultipliers.y / 2
+    const scalePadding = canvasWidth > 800 ? 0.5 : 0.75
+    const scaleFactor = Math.min(editorCanvas.offsetWidth / image.width, editorCanvas.offsetHeight / image.height) * scalePadding
+    console.log(scaleFactor)
+    const imageWidth = image.width * coordinatesMultipliers.x * scaleFactor
+    const imageHeight = image.height * coordinatesMultipliers.y * scaleFactor
+    console.log(imageWidth, imageHeight)
     const x = (canvasWidth - imageWidth) / 2
     const y = (canvasHeight - imageHeight) / 2
     

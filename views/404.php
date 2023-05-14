@@ -17,7 +17,7 @@
   <section class="main-content__info">
     <h1 class="info__subtitle"><?= _('Signature Generator'); ?></h1>
     <h2 class="info__title"><?= _('404 Not Found'); ?></h2>
-    <a href="/" class="info__btn"><?= _('Go to homepage'); ?></a>
+    <a href="/" class="info__btn" rel=nofollow><?= _('Go to homepage'); ?></a>
   </section>
 </main>
 <?php include_once('components/footer.php'); ?>

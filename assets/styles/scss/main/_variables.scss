@@ -52,4 +52,8 @@
   --gap-block: 2em;
 
   --line-height-main: 1.9;
+
+  @media screen and (width < 680px) {
+    --padding-block: 1em;
+  }
 }

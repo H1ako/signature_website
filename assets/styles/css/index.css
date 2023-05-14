@@ -45,17 +45,63 @@
   gap: 2em;
   width: 100%;
 }
-.socials-modal__content .content__links .links__link {
+.socials-modal__content .content__links .links__url {
   background: var(--color-bg-lightdark);
   border-radius: var(--border-radius-small);
   padding: var(--padding-input);
   color: var(--color-text);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  gap: 0.5em;
 }
-.socials-modal__content .content__links .links__link::-moz-placeholder {
+.socials-modal__content .content__links .links__url::-moz-placeholder {
   opacity: 0.75;
 }
-.socials-modal__content .content__links .links__link::placeholder {
+.socials-modal__content .content__links .links__url::placeholder {
   opacity: 0.75;
+}
+.socials-modal__content .content__links .links__url .url__link {
+  flex-grow: 1;
+  background: none;
+}
+.socials-modal__content .content__links .links__url .url__copy {
+  padding: 0.5em;
+  font-size: var(--font-size-5);
+  color: var(--color-text);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-bg-light);
+  flex-shrink: 0;
+  border: var(--border-main);
+}
+.socials-modal__content .content__links .links__url .url__copy svg {
+  height: 1em;
+  color: var(--color-text);
+  fill: var(--color-text);
+  flex-shrink: 0;
+}
+.socials-modal__content .content__links .links__url .url__copy:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.socials-modal__content .content__links .links__url .url__copy * {
+  z-index: 999;
+}
+.socials-modal__content .content__links .links__url .url__copy:hover:before, .socials-modal__content .content__links .links__url .url__copy:focus-within:focus-visible:before {
+  filter: brightness(0.8);
 }
 
 .generator-form {
@@ -578,7 +624,7 @@
   font-weight: 400;
   background: var(--color-bg-light);
   position: fixed;
-  bottom: 0.5em;
+  bottom: 3em;
   right: 0.5em;
   border: var(--border-main);
   aspect-ratio: 1;
@@ -853,7 +899,6 @@
   transition: var(--transition-main);
   border-radius: var(--border-radius-main);
   width: 100%;
-  aspect-ratio: 3/1;
   height: auto;
 }
 .main-content__about .about__block .block__description > * {
