@@ -1,4 +1,5 @@
 <dialog class="editor" id="editor">
+  <?php include('icons/editor-bg.php') ?>
   <canvas class="editor__canvas" id='editor-area'></canvas>
   <div class="editor__tools">
     <span class="tools__left">

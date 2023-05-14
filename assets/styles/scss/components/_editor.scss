@@ -11,10 +11,34 @@
     background: rgba(0, 0, 0, 0.75);
   }
 
+  & > svg {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    opacity: .75;
+    width: min(90%, 60rem);
+    pointer-events: none;
+    user-select: none;
+    transition: var(--transition-main);
+    animation: editorBgStrokeAnimation infinite 500s linear;
+    stroke-dasharray: 360px;
+
+    * {
+      stroke: var(--color-main);
+    }
+
+    &.disabled {
+      display: none;
+    }
+  }
+
   &__canvas {
     width: 100%;
     height: min(40vh, 40em);
-    background: var(--color-bg-light);
+    background-color: var(--color-bg-light);
+    // background: url('../../images/editor-bg.svg') center center / 65% no-repeat;
   }
 
   &__tools {
@@ -176,5 +200,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes editorBgStrokeAnimation {
+  from {
+    stroke-dashoffset: 99999;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }

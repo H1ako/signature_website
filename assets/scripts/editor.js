@@ -1,6 +1,8 @@
 const isNavigateShareWorks = !!navigator.share
+var EditingStarted = false
 
 const editor = document.querySelector('#editor')
+const editorBgSvg = editor && editor.querySelector('.editor-bg')
 const editorCanvas = editor && editor.querySelector('#editor-area')
 const editBtn = editor && editor.querySelector('#editor-edit')
 const clearBtn = editor && editor.querySelector('#editor-clear')
@@ -76,6 +78,11 @@ function clearCanvas(e) {
   thicknessInput.value = thicknessInput.min
   setThickness(thicknessInput.min)
   ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
+  enableBgAnimation()
+}
+
+function enableBgAnimation() {
+  editorBgSvg.classList.remove('disabled')
 }
 
 function changeColor(e) {
@@ -99,8 +106,13 @@ function setThickness(thickness) {
 }
 
 function enableEditing(e) {
+  disableBgAnimation()
   isEditing = true
   setPosition(e)
+}
+
+function disableBgAnimation() {
+  editorBgSvg.classList.add('disabled')
 }
 
 function disableEditing() {

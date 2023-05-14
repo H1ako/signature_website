@@ -201,10 +201,31 @@
 .editor::backdrop {
   background: rgba(0, 0, 0, 0.75);
 }
+.editor > svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  opacity: 0.75;
+  width: min(90%, 60rem);
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: var(--transition-main);
+  animation: editorBgStrokeAnimation infinite 500s linear;
+  stroke-dasharray: 360px;
+}
+.editor > svg * {
+  stroke: var(--color-main);
+}
+.editor > svg.disabled {
+  display: none;
+}
 .editor__canvas {
   width: 100%;
   height: min(40vh, 40em);
-  background: var(--color-bg-light);
+  background-color: var(--color-bg-light);
 }
 .editor__tools {
   position: relative;
@@ -441,6 +462,14 @@
   }
 }
 
+@keyframes editorBgStrokeAnimation {
+  from {
+    stroke-dashoffset: 99999;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 .signature-card {
   flex: 1 1 30%;
   min-width: 15em;
