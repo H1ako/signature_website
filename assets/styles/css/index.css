@@ -630,7 +630,8 @@
   display: grid;
   place-content: center;
   transition: var(--transition-main);
-  width: 100%;
+  margin-inline: auto;
+  width: min(100%, 70rem);
   height: auto;
   max-height: 80vh;
   -o-object-fit: contain;
@@ -651,6 +652,11 @@
   position: absolute;
   -o-object-fit: contain;
      object-fit: contain;
+  width: 20%;
+  rotate: -45deg;
+  top: 57.5%;
+  translate: 0 -50%;
+  left: 20%;
 }
 .preview-lightbox.preview-lightbox_paper-preview .paper-preview__bg-image {
   -o-object-fit: cover;
