@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/settings.php';
+require_once __DIR__.'/admin-settings.php';
 require_once __DIR__.'/router.php';
 
 global $LOCALES, $SITE_URL;
