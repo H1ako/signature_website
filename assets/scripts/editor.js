@@ -126,6 +126,7 @@ function downloadEditorSignature() {
 
 async function editSignature(e) {
   clearCanvas()
+  disableBgAnimation()
 
   const imageSrc = e.target.closest('[data-signature-src]').getAttribute('data-signature-src')
 
@@ -141,10 +142,9 @@ function drawImage(src) {
     const canvasHeight = editorCanvas.height
     const scalePadding = canvasWidth > 800 ? 0.5 : 0.75
     const scaleFactor = Math.min(editorCanvas.offsetWidth / image.width, editorCanvas.offsetHeight / image.height) * scalePadding
-    console.log(scaleFactor)
+    
     const imageWidth = image.width * coordinatesMultipliers.x * scaleFactor
     const imageHeight = image.height * coordinatesMultipliers.y * scaleFactor
-    console.log(imageWidth, imageHeight)
     const x = (canvasWidth - imageWidth) / 2
     const y = (canvasHeight - imageHeight) / 2
     

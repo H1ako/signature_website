@@ -85,6 +85,7 @@ function getImageFromStyle($styleIndex) {
     $image->rotateImage('white', $angle);
   }
   $image->trimImage(0);
+  $image->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
 
   $curvesDraw->destroy();
   $textDraw->destroy();

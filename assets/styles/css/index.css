@@ -636,6 +636,35 @@
   -o-object-fit: contain;
      object-fit: contain;
 }
+.preview-lightbox.preview-lightbox_paper-preview {
+  padding: 0;
+}
+.preview-lightbox.preview-lightbox_paper-preview .paper-preview__image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  color: var(--color-text);
+  display: grid;
+  place-content: center;
+  transition: var(--transition-main);
+  position: absolute;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.preview-lightbox.preview-lightbox_paper-preview .paper-preview__bg-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  color: var(--color-text);
+  display: grid;
+  place-content: center;
+  transition: var(--transition-main);
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+}
 
 .go-top {
   padding: 0.75em;

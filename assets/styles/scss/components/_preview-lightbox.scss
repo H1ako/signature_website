@@ -20,4 +20,23 @@
     max-height: 80vh;
     object-fit: contain;
   }
+
+  &.preview-lightbox_paper-preview {
+    padding: 0;
+    
+    .paper-preview__image {
+      @include image;
+
+      position: absolute;
+      object-fit: contain;
+    }
+
+    .paper-preview__bg-image {
+      @include image;
+
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+    }
+  }
 }

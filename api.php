@@ -6,7 +6,7 @@ get('/signature_generator/api/get-signatures', function () {
   if (!array_key_exists('first-name', $_GET) || !array_key_exists('first-name', $_GET)) return false;
   $firstName = ucfirst($_GET['first-name']);
   $lastName = ucfirst($_GET['last-name']);
-  $middleName = ucfirst($_GET['middle-name']) ?? '';
+  $middleName = isset($_GET['middle-name']) ? ucfirst($_GET['middle-name']) : '';
   $randomIndex = isset($_GET['random-index']) ?? random_int(1, 9999);
   $page = $_GET['page'] ?? 1;
   $signaturesPerPage = 1;
