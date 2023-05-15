@@ -527,6 +527,21 @@ b {
   justify-content: space-between;
 }
 
+.logo {
+  color: var(--color-text);
+}
+.logo .logo__img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  color: var(--color-text);
+  display: grid;
+  place-content: center;
+  transition: var(--transition-main);
+  font-size: var(--font-size-4);
+}
+
 .socials {
   display: flex;
   align-items: stretch;

@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="twitter:title" content="<?= _('Privacy Policy Page Title'); ?>">
   <meta property="og:title" content="<?= _('Privacy Policy Page Title'); ?>" />
+  <meta name="description" content="<?php _('Privacy Policy Page Meta Description') ?>">
+  <meta name="og:description" content="<?php _('Privacy Policy Page Meta Description') ?>">
+  <meta name="twitter:description" content="<?php _('Privacy Policy Page Meta Description') ?>">
   <title><?= _('Privacy Policy Page Title'); ?></title>
   <?php include_once('components/base-head.php'); ?>
   <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/privacy-policy.css">

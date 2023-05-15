@@ -1,16 +1,4 @@
 <?php global $currentLocale, $SITE_ICON, $SITE_NAME, $META_IMAGE;
-
-function createDescription($string) {
-  $string = strip_tags($string); // remove all HTML tags
-
-  if (strlen($string) > 200) {
-    $string = substr($string, 0, 197) . "..."; // limit to 200 characters and add "..."
-  }
-
-  return $string;
-}
-
-$SITE_DESCRIPTION = createDescription(_('Home Page About Us'));
 ?>
 <meta name="theme-color" content="#F0F8FF">
 <meta name="msapplication-TileColor" content="<?= $SITE_URL ?>/assets/images/<?= $SITE_ICON ?>">
@@ -18,13 +6,11 @@ $SITE_DESCRIPTION = createDescription(_('Home Page About Us'));
 <link rel="manifetst" href="<?= $SITE_URL ?>/assets/manifest.json">
 
 <meta itemprop="name" content="<?= $SITE_NAME ?>">
-<meta name="description" content="<?= $SITE_DESCRIPTION ?>">
 <meta itemprop="image" content="<?= $SITE_URL ?>/assets/images/<?= $META_IMAGE ?>">
 <link rel="shortcut icon" href="<?= $SITE_URL ?>/assets/images/<?= $SITE_ICON ?>" type="image/x-icon">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="<?= $SITE_NAME ?>">
-<meta name="twitter:description" content="<?= $SITE_DESCRIPTION ?>">
 <meta name="twitter:creator" content="<?= $SITE_NAME ?>">
 <meta name="twitter:image" content="<?= $SITE_URL ?>/assets/images/<?= $META_IMAGE ?>">
 
@@ -43,3 +29,4 @@ $SITE_DESCRIPTION = createDescription(_('Home Page About Us'));
 </script>
 <script src="<?= $SITE_URL ?>/assets/scripts/footer.js" defer></script>
 <script src="<?= $SITE_URL ?>/assets/scripts/header.js" defer></script>
+<script src="<?= $SITE_URL ?>/assets/scripts/service-worker.js" defer></script>
