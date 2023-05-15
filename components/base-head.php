@@ -1,9 +1,7 @@
 <?php global $currentLocale, $SITE_ICON, $SITE_NAME, $META_IMAGE;
 ?>
 <meta name="theme-color" content="#F0F8FF">
-<meta name="msapplication-TileColor" content="<?= $SITE_URL ?>/assets/images/<?= $SITE_ICON ?>">
-<meta name="msapplication-TileIcon" content="#F0F8FF">
-<link rel="manifetst" href="<?= $SITE_URL ?>/assets/manifest.json">
+<link rel="manifest" href="<?= $SITE_URL ?>/assets/manifest.json">
 
 <meta itemprop="name" content="<?= $SITE_NAME ?>">
 <meta itemprop="image" content="<?= $SITE_URL ?>/assets/images/<?= $META_IMAGE ?>">
@@ -26,7 +24,8 @@
 <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/global.css">
 <script defer>
   const CURRENT_LOCALE = "<?= $currentLocale['short_code']; ?>"
+  const HOST_URL = window.location.origin
 </script>
 <script src="<?= $SITE_URL ?>/assets/scripts/footer.js" defer></script>
 <script src="<?= $SITE_URL ?>/assets/scripts/header.js" defer></script>
-<script src="<?= $SITE_URL ?>/assets/scripts/service-worker.js" defer></script>
+<!-- <script src="<?= $SITE_URL ?>/assets/scripts/service-worker.js" defer></script> -->

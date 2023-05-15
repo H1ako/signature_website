@@ -1,18 +1,13 @@
 
 {
+  "background_color": "#f0f8ff",
+  "display": "standalone",
   "name": "Signature Generator",
   "orientation": "any",
   "scope": "/",
   "short_name": "Signature",
   "start_url": "/",
   "theme_color": "#f0f8ff",
-  "shortcuts": [],
-  "description": "An online Signature Generator when You can generate your unique signature based on your name or draw it by yourself.",
-  "lang": "en",
-  "dir": "ltr",
-  "edge_side_panel": {
-    "preferred_width": 800
-  },
   "categories": [
     "business",
     "entertainment",
@@ -21,6 +16,12 @@
     "social",
     "utilities"
   ],
+  "description": "An online Signature Generator when You can generate your unique signature based on your name or draw it by yourself.",
+  "lang": "en",
+  "dir": "ltr",
+  "edge_side_panel": {
+    "preferred_width": 800
+  },
   "icons": [
     {
       "src": "icons/windows11/SmallTile.scale-100.png",

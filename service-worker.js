@@ -50,16 +50,3 @@ self.addEventListener('fetch', function(event) {
       })
   )
 })
-
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('assets/scripts/service-worker.js')
-      .then(function(registration) {
-        console.log('Service worker registered:', registration)
-      })
-      .catch(function(error) {
-        console.log('Service worker registration failed:', error)
-      })
-  })
-}
