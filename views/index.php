@@ -8,9 +8,9 @@
   <meta name="twitter:title" content="<?= _('Home Page Title'); ?>">
   <meta property="og:title" content="<?= _('Home Page Title'); ?>" />
   <title><?= _('Home Page Title'); ?></title>
-  <meta name="description" content="<?php _('Home Page Meta Description') ?>">
-  <meta name="og:description" content="<?php _('Home Page Meta Description') ?>">
-  <meta name="twitter:description" content="<?php _('Home Page Meta Description') ?>">
+  <meta name="description" content="<?= _('Home Page Meta Description') ?>">
+  <meta name="og:description" content="<?= _('Home Page Meta Description') ?>">
+  <meta name="twitter:description" content="<?= _('Home Page Meta Description') ?>">
   <?php include_once('components/base-head.php'); ?>
   <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/index.css">
   <script defer src="https://cdn.jsdelivr.net/npm/transliteration@2.1.8/dist/browser/bundle.umd.min.js"></script>

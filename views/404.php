@@ -8,9 +8,9 @@
   <meta name="twitter:title" content="<?= _('404 Not Found Page Title'); ?>">
   <meta property="og:title" content="<?= _('404 Not Found Page Title'); ?>" />
   <title><?= _('404 Not Found Page Title'); ?></title>
-  <meta name="description" content="<?php _('404 Not Found Page Meta Description') ?>">
-  <meta name="og:description" content="<?php _('404 Not Found Page Meta Description') ?>">
-  <meta name="twitter:description" content="<?php _('Home Page Meta Description') ?>">
+  <meta name="description" content="<?= _('404 Not Found Page Meta Description') ?>">
+  <meta name="og:description" content="<?= _('404 Not Found Page Meta Description') ?>">
+  <meta name="twitter:description" content="<?= _('Home Page Meta Description') ?>">
   <?php include_once('components/base-head.php'); ?>
   <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/404.css">
 </head>
