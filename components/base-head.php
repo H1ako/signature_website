@@ -12,6 +12,11 @@ function createDescription($string) {
 
 $SITE_DESCRIPTION = createDescription(_('Home Page About Us'));
 ?>
+<meta name="theme-color" content="#F0F8FF">
+<meta name="msapplication-TileColor" content="<?= $SITE_URL ?>/assets/images/<?= $SITE_ICON ?>">
+<meta name="msapplication-TileIcon" content="#F0F8FF">
+<link rel="manifetst" href="<?= $SITE_URL ?>/assets/manifest.json">
+
 <meta itemprop="name" content="<?= $SITE_NAME ?>">
 <meta name="description" content="<?= $SITE_DESCRIPTION ?>">
 <meta itemprop="image" content="<?= $SITE_URL ?>/assets/images/<?= $META_IMAGE ?>">
@@ -29,9 +34,9 @@ $SITE_DESCRIPTION = createDescription(_('Home Page About Us'));
 <meta property="og:image" content="<?= $SITE_URL ?>/assets/images/<?= $META_IMAGE ?>"/>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
 <meta property="og:description" content="<?= $SITE_DESCRIPTION ?>" />
 <meta property="og:site_name" content="<?= $SITE_NAME ?>" />
+
 <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/global.css">
 <script defer>
   const CURRENT_LOCALE = "<?= $currentLocale['short_code']; ?>"
