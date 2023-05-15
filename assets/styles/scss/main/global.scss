@@ -20,7 +20,7 @@
 }
 
 .big-text {
-  & > {
+  & > * {
     @include wrapWords;
   }
   
