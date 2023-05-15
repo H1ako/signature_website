@@ -60,11 +60,8 @@ function getImageFromStyle($styleIndex) {
 
   $curvesDraw = new \ImagickDraw();
   setupCurvesDraw($curvesDraw, $thickness);
-  // $testDraw = new \ImagickDraw();
-  // $testDraw->setStrokeColor('red');
 
   for($y=$textY - $textHeight; $y < $textY + $textHeight / 2; $y++) {
-    // $testDraw->point($textMostRightX, $y);
     $mostRightColorByY = $image->getImagePixelColor($textMostRightX, $y);
     $isDifferentWithBg = !($bgColor->isPixelSimilar($mostRightColorByY, 0));
     if ($isDifferentWithBg) {
@@ -80,7 +77,6 @@ function getImageFromStyle($styleIndex) {
 
   $drawStyles();
   $image->drawImage($curvesDraw);
-  // $image->drawImage($testDraw);
   if ($angle) {
     $image->rotateImage('white', $angle);
   }

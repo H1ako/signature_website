@@ -1,9 +1,13 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /signature_generator/
+  RewriteCond %{REQUEST_URI} ^/signature_generator/service-worker.js [NC]
+  RewriteRule (.*) service-worker.js [QSA,L]
+
   # Redirect to api.php if URL starts with /signature_generator/api/
   RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$ [NC]
   RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !^/signature_generator/service-worker.js [NC]
   RewriteCond %{REQUEST_URI} ^/signature_generator/api/ [NC]
   RewriteRule (.*) api.php [QSA,L]
 
@@ -12,6 +16,7 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_URI} !^/signature_generator/assets/ [NC]
   RewriteCond %{REQUEST_URI} !^/signature_generator/api/ [NC]
+  RewriteCond %{REQUEST_URI} !^/signature_generator/service-worker.js [NC]
   RewriteRule (.*) routes.php [QSA,L]
 </IfModule>
 

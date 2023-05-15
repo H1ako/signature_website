@@ -2,11 +2,11 @@
 {
   "background_color": "#f0f8ff",
   "display": "standalone",
+  "short_name": "Signature",
   "name": "Signature Generator",
   "orientation": "any",
-  "scope": "/",
-  "short_name": "Signature",
-  "start_url": "/",
+  "scope": "/signature_generator/",
+  "start_url": "/signature_generator/",
   "theme_color": "#f0f8ff",
   "categories": [
     "business",
@@ -23,6 +23,12 @@
     "preferred_width": 800
   },
   "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
     {
       "src": "icons/windows11/SmallTile.scale-100.png",
       "sizes": "71x71"
@@ -475,12 +481,12 @@
   "screenshots": [
     {
       "src": "screenshots/screenshotMobile.jpg",
-      "sizes": "800x1334",
+      "sizes": "425x1178",
       "type": "image/jpg"
     },
     {
       "src": "screenshots/screenshotDesktop.jpg",
-      "sizes": "1280x800",
+      "sizes": "1903x1778",
       "type": "image/jpg"
     }
   ]

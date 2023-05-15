@@ -1,18 +1,18 @@
 const CACHE_NAME = 'signature-generator-pwa-cache'
 
 const urlsToCache = [
-  '/',
-  '/privacy-policy',
-  '/assets/styles/css/global.css',
-  '/assets/styles/css/404.css',
-  '/assets/styles/css/privacy-policy.css',
-  '/assets/styles/css/index.css',
+  '',
+  'privacy-policy',
+  'assets/styles/css/global.css',
+  'assets/styles/css/404.css',
+  'assets/styles/css/privacy-policy.css',
+  'assets/styles/css/index.css',
 
-  '/assets/scripts/footer.js',
-  '/assets/scripts/header.js',
-  '/assets/scripts/socials-modal.js',
-  '/assets/scripts/index.js',
-  '/assets/scripts/editor.js',
+  'assets/scripts/footer.js',
+  'assets/scripts/header.js',
+  'assets/scripts/socials-modal.js',
+  'assets/scripts/index.js',
+  'assets/scripts/editor.js',
 ]
 
 self.addEventListener('install', function(event) {
