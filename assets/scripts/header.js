@@ -25,11 +25,12 @@ function getUrlWithNewLanguage(newLanguage) {
   let pathParts = urlObject.pathname.split("/").filter(part => !!part)
   
   if (pathParts.length >= 2 && pathParts[LANGUAGE_POS_INDEX] === CURRENT_LOCALE) {
-    pathParts[LANGUAGE_POS_INDEX] = newLanguage === 'en' ? '' : newLanguageCode
+    newLanguage === 'en' ? pathParts.splice(LANGUAGE_POS_INDEX, 1) : pathParts[LANGUAGE_POS_INDEX] = newLanguageCode
   } else {
-    pathParts.splice(LANGUAGE_POS_INDEX + 1 , 0, newLanguageCode)
+    pathParts.splice(LANGUAGE_POS_INDEX , 0, newLanguageCode)
   }
-
+  
+  console.log(pathParts)
   urlObject.pathname = pathParts.join("/")
 
   return urlObject.href
