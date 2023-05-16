@@ -180,3 +180,7 @@ msgstr "Loading"
 #: views/index.php:51
 msgid "Load More"
 msgstr "Load More"
+
+#: components/signature-card.php:14
+msgid "Preview on Document"
+msgstr "Preview on Document"
