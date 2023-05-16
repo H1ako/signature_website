@@ -161,7 +161,7 @@ msgstr "Подпись"
 
 #: components/signature-card.php:8 components/signature-card.php:10
 msgid "Edit"
-msgstr "Редактировать"
+msgstr "Изменить"
 
 #: components/socials-modal.php:5
 msgid "By sharing you’re automatically accepting our rules and terms"
@@ -174,3 +174,11 @@ msgstr "Ссылка на страницу"
 #: components/socials-modal.php:13
 msgid "Copy"
 msgstr "Скопировать"
+
+#: views/index.php:47
+msgid "Loading"
+msgstr "Загрузка"
+
+#: views/index.php:51
+msgid "Load More"
+msgstr "Загрузить Еще"

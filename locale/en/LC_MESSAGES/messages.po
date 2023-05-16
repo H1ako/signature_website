@@ -172,3 +172,11 @@ msgstr "Share link"
 #: components/socials-modal.php:13
 msgid "Copy"
 msgstr "Copy"
+
+#: views/index.php:47
+msgid "Loading"
+msgstr "Loading"
+
+#: views/index.php:51
+msgid "Load More"
+msgstr "Load More"

@@ -591,7 +591,7 @@
 .signature-card__bottom .bottom__right .right__btn:hover:before, .signature-card__bottom .bottom__right .right__btn:focus-within:focus-visible:before {
   filter: brightness(0.8);
 }
-@media screen and (width < 800px) {
+@media screen and (width < 900px) {
   .signature-card__bottom {
     gap: 0.15em !important;
   }
