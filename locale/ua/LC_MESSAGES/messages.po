@@ -1,4 +1,5 @@
-# Language ua translations for PACKAGE package.
+# Ukrainian translations for PACKAGE package
+# �������� ���������� ��� ������ PACKAGE.
 # Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # <EMAIL@ADDRESS>, 2023.
@@ -7,137 +8,169 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 12:43+0400\n"
-"PO-Revision-Date: 2023-05-10 12:46+0400\n"
+"POT-Creation-Date: 2023-05-16 14:47+0400\n"
+"PO-Revision-Date: 2023-05-16 16:24+0400\n"
 "Last-Translator: <EMAIL@ADDRESS>\n"
-"Language-Team: Language ua\n"
-"Language: ua_UA\n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: views/404.php:8
+#: views/404.php:8 views/404.php:9 views/404.php:10
 msgid "404 Not Found Page Title"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/404.php:16 views/index.php:21 views/privacy-policy.php:17
+#: views/404.php:11 views/404.php:12
+msgid "404 Not Found Page Meta Description"
+msgstr "ТЕСТ"
+
+#: views/404.php:13 views/index.php:11 views/index.php:12 views/index.php:13
+msgid "Home Page Meta Description"
+msgstr "ТЕСТ"
+
+#: views/404.php:21 views/index.php:26 views/privacy-policy.php:21
 msgid "Signature Generator"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/404.php:17
+#: views/404.php:22
 msgid "404 Not Found"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/404.php:18
+#: views/404.php:23
 msgid "Go to homepage"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/index.php:8
+#: views/index.php:8 views/index.php:9 views/index.php:10
 msgid "Home Page Title"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/index.php:22
+#: views/index.php:27
 msgid "Generate your own unique signature or <b>draw</b> it by yourself"
-msgstr ""
+msgstr "ТЕСТ"
+
+#: views/index.php:34
+msgid "Create your own <b>Signature</b>"
+msgstr "ТЕСТ"
 
 #: views/index.php:35
-msgid "Create your own <b>Signature</b>"
-msgstr ""
+msgid "Open Editor"
+msgstr "ТЕСТ"
 
-#: views/index.php:52 views/index.php:56
+#: views/index.php:56
 msgid "Home Page About Us"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/privacy-policy.php:8
+#: views/index.php:60
+msgid "Home Page About Us Big Text"
+msgstr "ТЕСТ"
+
+#: views/privacy-policy.php:8 views/privacy-policy.php:9
+#: views/privacy-policy.php:13
 msgid "Privacy Policy Page Title"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/privacy-policy.php:18 components/footer.php:4 components/footer.php:5
+#: views/privacy-policy.php:10 views/privacy-policy.php:11
+#: views/privacy-policy.php:12
+msgid "Privacy Policy Page Meta Description"
+msgstr "ТЕСТ"
+
+#: views/privacy-policy.php:22 components/footer.php:4 components/footer.php:5
 msgid "Privacy Policy"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: views/privacy-policy.php:24
+#: views/privacy-policy.php:28
 msgid "Privacy Policy Page Big Text"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/editor.php:9 components/editor.php:11
+#: components/editor.php:6 components/editor.php:8
 msgid "Clear"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/editor.php:13
+#: components/editor.php:10
 msgid "Color"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/editor.php:14
+#: components/editor.php:11
 msgid "Thickness"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/editor.php:17 components/signature-card.php:17
+#: components/editor.php:14 components/signature-card.php:15
 #: components/socials-modal.php:4
 msgid "Share"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/editor.php:20 components/editor.php:22
-#: components/signature-card.php:19
+#: components/editor.php:17 components/editor.php:19
+#: components/signature-card.php:16
 msgid "Download"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/footer.php:7
-msgid "© 2023 All Right Reserved"
-msgstr ""
+msgid "2023 All Right Reserved"
+msgstr "ТЕСТ"
 
 #: components/footer.php:8 components/footer.php:9
 msgid "Contact Us"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/footer.php:12
 msgid "Email"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/generator-form.php:3 components/generator-form.php:4
 msgid "First Name"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/generator-form.php:7 components/generator-form.php:8
 msgid "Last Name"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/generator-form.php:11 components/generator-form.php:12
 msgid "Middle Name"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/generator-form.php:14
 msgid "Generate"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/go-top.php:1
 msgid "Go to top"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/language-chooser.php:1
+#: components/language-chooser.php:2
 msgid "Page Language"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/preview-lightbox.php:2
+#: components/paper-preview-lightbox.php:3 components/preview-lightbox.php:2
 msgid "Signature Preview Image"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/signature-card.php:5 components/signature-card.php:16
+#: components/paper-preview-lightbox.php:4
+msgid "Background Image"
+msgstr "ТЕСТ"
+
+#: components/signature-card.php:3 components/signature-card.php:14
 msgid "Preview"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/signature-card.php:6
+#: components/signature-card.php:4
 msgid "Signature"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/signature-card.php:10 components/signature-card.php:12
+#: components/signature-card.php:8 components/signature-card.php:10
 msgid "Edit"
-msgstr ""
+msgstr "ТЕСТ"
 
 #: components/socials-modal.php:5
 msgid "By sharing you’re automatically accepting our rules and terms"
-msgstr ""
+msgstr "ТЕСТ"
 
-#: components/socials-modal.php:9
+#: components/socials-modal.php:10
 msgid "Share link"
-msgstr ""
+msgstr "ТЕСТ"
+
+#: components/socials-modal.php:13
+msgid "Copy"
+msgstr "ТЕСТ"

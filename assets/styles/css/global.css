@@ -620,6 +620,16 @@ b {
   gap: var(--gap-block);
 }
 
+.big-text {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  text-align: justify;
+  line-height: var(--line-height-main);
+}
 .big-text > * {
   overflow-wrap: break-word;
   word-wrap: break-word;

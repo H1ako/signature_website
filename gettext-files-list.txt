@@ -11,6 +11,7 @@
 ./components/header.php
 ./components/language-chooser.php
 ./components/logo.php
+./components/paper-preview-lightbox.php
 ./components/preview-lightbox.php
 ./components/signature-card.php
 ./components/socials-modal.php

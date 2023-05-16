@@ -21,6 +21,11 @@
 }
 
 .big-text {
+  @include wrapWords;
+
+  text-align: justify;
+  line-height: var(--line-height-main);
+  
   & > * {
     @include wrapWords;
   }

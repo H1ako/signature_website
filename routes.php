@@ -2,17 +2,19 @@
 require_once __DIR__.'/settings.php';
 require_once __DIR__.'/admin-settings.php';
 require_once __DIR__.'/router.php';
+require_once __DIR__.'/libs/streams.php';
+require_once __DIR__.'/libs/gettext.php';
 
 global $LOCALES, $SITE_URL;
 
 
 $currentLocale = $LOCALES['en'];
-putenv("LC_ALL=en");
-setlocale(LC_ALL, 'en');
+$currentLocaleShortCode = $currentLocale['short_code'];
 
-bindtextdomain('messages', './locale');
-bind_textdomain_codeset("messages", "UTF-8");
-textdomain('messages');
+$streamer = new FileReader;
+$streamer->FileReader(__DIR__.'/locale/en/LC_MESSAGES/messages.mo');
+$localeReader = new gettext_reader;
+$localeReader->gettext_reader($streamer);
 
 // ##################################################
 // ##################################################
@@ -21,13 +23,15 @@ textdomain('messages');
 get('/signature_generator/%s/%s', function($locale, $path) use ($LOCALES) {
   if (!(array_key_exists($locale, $LOCALES))) return;
   
-  global $currentLocale;
-  $currentLocale = $LOCALES[$locale];
-  $localeCode = $currentLocale['code'];
-  $localeShortCode = $currentLocale['short_code'];
+  global $currentLocale, $localeReader;
   
-  putenv("LC_ALL=$localeCode");
-  setlocale(LC_ALL, $localeShortCode);
+  $currentLocale = $LOCALES[$locale];
+  $localeShortCode = $currentLocale['short_code'];
+
+  $streamer = new FileReader;
+  $streamer->FileReader(__DIR__."/locale/$localeShortCode/LC_MESSAGES/messages.mo");
+  $localeReader = new gettext_reader;
+  $localeReader->gettext_reader($streamer);
 });
 
 get('/signature_generator', 'views/index.php');

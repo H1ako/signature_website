@@ -1,16 +1,16 @@
-<?php global $SITE_URL, $ABOUTUS_IMAGE, $locale; ?>
+<?php global $SITE_URL, $ABOUTUS_IMAGE, $currentLocale, $localeReader; ?>
 <!DOCTYPE html>
-<html lang="<?= $locale ?? 'en' ?>">
+<html lang="<?= $currentLocale['short_code'] ?? 'en' ?>">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="twitter:title" content="<?= _('Home Page Title'); ?>">
-  <meta property="og:title" content="<?= _('Home Page Title'); ?>" />
-  <title><?= _('Home Page Title'); ?></title>
-  <meta name="description" content="<?= _('Home Page Meta Description') ?>">
-  <meta name="og:description" content="<?= _('Home Page Meta Description') ?>">
-  <meta name="twitter:description" content="<?= _('Home Page Meta Description') ?>">
+  <meta name="twitter:title" content="<?= $localeReader->translate('Home Page Title'); ?>">
+  <meta property="og:title" content="<?= $localeReader->translate('Home Page Title'); ?>" />
+  <title><?= $localeReader->translate('Home Page Title'); ?></title>
+  <meta name="description" content="<?= $localeReader->translate('Home Page Meta Description') ?>">
+  <meta name="og:description" content="<?= $localeReader->translate('Home Page Meta Description') ?>">
+  <meta name="twitter:description" content="<?= $localeReader->translate('Home Page Meta Description') ?>">
   <?php include_once('components/base-head.php'); ?>
   <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/index.css">
   <script defer src="https://cdn.jsdelivr.net/npm/transliteration@2.1.8/dist/browser/bundle.umd.min.js"></script>
@@ -23,16 +23,16 @@
 <main class="main-content">
   <section class="main-content__face">
     <span class="face__left">
-      <h1 class="left__title"><?= _('Signature Generator'); ?></h1>
-      <h2 class="left__subtitle"><?= _('Generate your own unique signature or <b>draw</b> it by yourself'); ?></h2>
+      <h1 class="left__title"><?= $localeReader->translate('Signature Generator'); ?></h1>
+      <h2 class="left__subtitle"><?= $localeReader->translate('Generate your own unique signature or <b>draw</b> it by yourself'); ?></h2>
     </span>
     <span class="face__right">
       <?php include('components/generator-form.php'); ?>
     </span>
   </section>
   <section class="main-content__editor">
-    <h2 class="editor__heading"><?= _('Create your own <b>Signature</b>'); ?></h2>
-    <button class="editor__open-editor" open-editor><?= _('Open Editor'); ?></button>
+    <h2 class="editor__heading"><?= $localeReader->translate('Create your own <b>Signature</b>'); ?></h2>
+    <button class="editor__open-editor" open-editor><?= $localeReader->translate('Open Editor'); ?></button>
   </section>
   <section class="main-content__advertisement">
     <?php include('components/advertisement.php'); ?>
@@ -53,11 +53,11 @@
     </button>
   </section>
   <section class="main-content__about">
-    <h2 class="about__heading"><?= _('Home Page About Us'); ?></h2>
+    <h2 class="about__heading"><?= $localeReader->translate('Home Page About Us'); ?></h2>
     <div class="about__block">
       <img src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_IMAGE ?>" alt="About us image" width="1100" height="400" class="block__img">
       <div class="block__description big-text">
-        <?= _('Home Page About Us'); ?>
+        <?= $localeReader->translate('Home Page About Us Big Text'); ?>
       </div>
     </div>
   </section>

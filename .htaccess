@@ -5,18 +5,20 @@
   RewriteRule (.*) service-worker.js [QSA,L]
 
   # Redirect to api.php if URL starts with /signature_generator/api/
-  RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$ [NC]
+  RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf|\.mo|\.po)$ [NC]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_URI} !^/signature_generator/service-worker.js [NC]
   RewriteCond %{REQUEST_URI} ^/signature_generator/api/ [NC]
+  RewriteCond %{REQUEST_URI} !^/signature_generator/locale/ [NC]
   RewriteRule (.*) api.php [QSA,L]
 
   # Redirect to routes.php for all other URLs
-  RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$ [NC]
+  RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf|\.mo|\.po)$ [NC]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_URI} !^/signature_generator/assets/ [NC]
   RewriteCond %{REQUEST_URI} !^/signature_generator/api/ [NC]
   RewriteCond %{REQUEST_URI} !^/signature_generator/service-worker.js [NC]
+  RewriteCond %{REQUEST_URI} !^/signature_generator/locale/ [NC]
   RewriteRule (.*) routes.php [QSA,L]
 </IfModule>
 

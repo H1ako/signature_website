@@ -43,6 +43,7 @@ async function generateIfDataFilled() {
 
 function generatorFormHandler(e) {
   e.preventDefault()
+  if (!isGeneratorFormValid()) return
   
   replaceWithGeneratedSignatures()
 
