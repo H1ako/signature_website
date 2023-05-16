@@ -180,3 +180,7 @@ msgstr "Chia sẻ liên kết"
 #: components/socials-modal.php:13
 msgid "Copy"
 msgstr "Sao chép"
+
+#: components/signature-card.php:14
+msgid "Preview on Document"
+msgstr "Xem Trước Trên Tài liệu"

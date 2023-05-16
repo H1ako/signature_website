@@ -181,3 +181,7 @@ msgstr "Lien de partage"
 #: components/socials-modal.php:13
 msgid "Copy"
 msgstr "Copie"
+
+#: components/signature-card.php:14
+msgid "Preview on Document"
+msgstr "Prévisualisation sur le document"

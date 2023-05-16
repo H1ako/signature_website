@@ -182,3 +182,7 @@ msgstr "Завантаження"
 #: views/index.php:51
 msgid "Load More"
 msgstr "Завантажити ще"
+
+#: components/signature-card.php:14
+msgid "Preview on Document"
+msgstr "Превью у документі"
