@@ -1,7 +1,7 @@
 <?php global $currentLocale, $SITE_ICON, $SITE_NAME, $META_IMAGE, $SITE_URL;
 ?>
 <meta name="theme-color" content="#F0F8FF">
-<link rel="manifest" href="<?= $SITE_URL ?>/assets/manifest.json">
+<link rel="manifest" href="<?= $SITE_URL ?>/assets/manifests/manifest-<?= $currentLocale['short_code'] ?? 'en' ?>.json">
 
 <link itemprop="mainEntityOfPage" href="<?= $SITE_URL ?>" />
 <meta itemprop="author" content="@<?= $SITE_NAME ?>">

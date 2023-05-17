@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: 
+
+Host: https://9d40-92-39-215-187.ngrok-free.app
+Sitemap: [insert your sitemap URL here]
+
+Allow: /*
+Allow: /api/*
+Allow: /assets/*
