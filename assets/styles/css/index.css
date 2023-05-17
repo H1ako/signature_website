@@ -109,6 +109,10 @@
   flex-direction: column;
   gap: 1em;
 }
+.generator-form:focus-within input:invalid {
+  animation: invalidAnimation 400ms 1;
+  outline: 2px tomato solid;
+}
 .generator-form__field {
   display: flex;
   flex-direction: column;
@@ -135,14 +139,6 @@
 }
 .generator-form__field input::placeholder {
   opacity: 0;
-}
-.generator-form__field:has(input:invalid) {
-  animation: invalidAnimation 400ms 1;
-  border: 2px tomato solid;
-}
-.generator-form__field input:focus:invalid {
-  animation: invalidAnimation 400ms 1;
-  outline: 2px tomato solid;
 }
 .generator-form__submit {
   padding: var(--padding-button);

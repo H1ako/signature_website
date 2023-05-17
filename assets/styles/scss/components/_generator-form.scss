@@ -5,18 +5,15 @@
   flex-direction: column;
   gap: 1em;
 
-  &__field {
-    @include titledInput;
-
-    &:has(input:invalid) {
-      animation: invalidAnimation 400ms 1;
-      border: 2px tomato solid;
-    }
-
-    input:focus:invalid {
+  &:focus-within {
+    input:invalid {
       animation: invalidAnimation 400ms 1;
       outline: 2px tomato solid;
     }
+  }
+
+  &__field {
+    @include titledInput;
   }
 
   &__submit {
