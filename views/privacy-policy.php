@@ -1,6 +1,6 @@
-<?php global $SITE_URL, $currentLocale, $localeReader; ?>
+<?php global $SITE_URL, $currentLocale, $localeReader, $SITE_NAME; ?>
 <!DOCTYPE html>
-<html lang="<?= $currentLocale['short_code'] ?? 'en' ?>">
+<html lang="<?= $currentLocale['short_code'] ?? 'en' ?>" itemscope="" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,15 +16,16 @@
 </head>
 <body>
 <?php include_once('components/header.php'); ?>
-<main class="main-content">
+<main class="main-content" itemscope="" itemtype="http://schema.org/Article">
+  <meta itemprop="url sameAs" content="<?= $SITE_URL ?>">
   <section class="main-content__titles">
     <h1 class="titles__subtitle"><?= $localeReader->translate('Signature Generator'); ?></h1>
-    <h2 class="titles__title"><?= $localeReader->translate('Privacy Policy'); ?></h2>
+    <h2 itemprop="name" class="titles__title"><?= $localeReader->translate('Privacy Policy'); ?></h2>
   </section>
   <section class="main-content__socials">
     <?php include_once('components/socials.php'); ?>    
   </section>
-  <section class="main-content__description big-text">
+  <section class="main-content__description big-text" itemprop="articleBody">
     <?= $localeReader->translate('Privacy Policy Page Big Text'); ?>
   </section>
 </main>

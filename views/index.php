@@ -1,6 +1,6 @@
-<?php global $SITE_URL, $ABOUTUS_IMAGE, $currentLocale, $localeReader; ?>
+<?php global $SITE_URL, $ABOUTUS_IMAGE, $currentLocale, $localeReader, $SITE_URL, $SITE_ICON, $SITE_NAME; ?>
 <!DOCTYPE html>
-<html lang="<?= $currentLocale['short_code'] ?? 'en' ?>">
+<html lang="<?= $currentLocale['short_code'] ?? 'en' ?>" itemscope="" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,11 +52,14 @@
       </span>
     </button>
   </section>
-  <section class="main-content__about">
-    <h2 class="about__heading"><?= $localeReader->translate('Home Page About Us'); ?></h2>
+  <section class="main-content__about" itemscope="" itemtype="http://schema.org/Article">
+    <meta itemprop="url sameAs" content="<?= $SITE_URL ?>">
+    <meta itemprop="url" content="<?= $SITE_URL ?>">
+    <meta itemprop="name" content="<?= $SITE_NAME ?>">
+    <h2 class="about__heading" itemprop="headline"><?= $localeReader->translate('Home Page About Us'); ?></h2>
     <div class="about__block">
-      <img src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_IMAGE ?>" alt="About us image" width="1100" height="400" class="block__img">
-      <div class="block__description big-text">
+      <img src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_IMAGE ?>" alt="About us image" width="1100" height="400" class="block__img" itemprop="image">
+      <div class="block__description big-text" itemprop="description">
         <?= $localeReader->translate('Home Page About Us Big Text'); ?>
       </div>
     </div>

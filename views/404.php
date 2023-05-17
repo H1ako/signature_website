@@ -1,6 +1,6 @@
 <?php global $SITE_URL, $currentLocale, $localeReader; ?>
 <!DOCTYPE html>
-<html lang="<?= $currentLocale['short_code'] ?? 'en' ?>">
+<html lang="<?= $currentLocale['short_code'] ?? 'en' ?>" itemscope="" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,7 @@
   <section class="main-content__info">
     <h1 class="info__subtitle"><?= $localeReader->translate('Signature Generator'); ?></h1>
     <h2 class="info__title"><?= $localeReader->translate('404 Not Found'); ?></h2>
-    <a href="/" class="info__btn" rel=nofollow><?= $localeReader->translate('Go to homepage'); ?></a>
+    <a href="/" class="info__btn" rel="nofollow"><?= $localeReader->translate('Go to homepage'); ?></a>
   </section>
 </main>
 <?php include_once('components/footer.php'); ?>

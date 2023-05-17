@@ -1,8 +1,10 @@
-<?php global $currentLocale, $SITE_ICON, $SITE_NAME, $META_IMAGE;
+<?php global $currentLocale, $SITE_ICON, $SITE_NAME, $META_IMAGE, $SITE_URL;
 ?>
 <meta name="theme-color" content="#F0F8FF">
 <link rel="manifest" href="<?= $SITE_URL ?>/assets/manifest.json">
 
+<link itemprop="mainEntityOfPage" href="<?= $SITE_URL ?>" />
+<meta itemprop="author" content="@<?= $SITE_NAME ?>">
 <meta itemprop="name" content="<?= $SITE_NAME ?>">
 <meta itemprop="image" content="<?= $SITE_URL ?>/assets/images/<?= $META_IMAGE ?>">
 <link rel="shortcut icon" href="<?= $SITE_URL ?>/assets/images/<?= $SITE_ICON ?>" type="image/x-icon">
