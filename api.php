@@ -5,6 +5,7 @@ require_once __DIR__.'/router.php';
 
 get('/signature_generator/api/get-signatures', function () {
   if (!array_key_exists('first-name', $_GET) || !array_key_exists('first-name', $_GET)) return false;
+  
   $firstName = ucfirst($_GET['first-name']);
   $lastName = ucfirst($_GET['last-name']);
   $middleName = isset($_GET['middle-name']) ? ucfirst($_GET['middle-name']) : '';
@@ -12,6 +13,19 @@ get('/signature_generator/api/get-signatures', function () {
   $page = $_GET['page'] ?? 1;
   $signaturesPerPage = 1;
   include('script.php');
+  
+  // $dataFile = 'data.json';
+  
+  // try {
+  //   $contents = file_get_contents($dataFile);
+  // } catch (Error $e) {}
+  
+  // $data = isset($contents) ? json_decode($contents, true) : ["numberOfGeneratedSignatures" => 0];
+  
+  // isset($data['numberOfGeneratedSignatures']) ? $data['numberOfGeneratedSignatures'] + $signaturesPerPage : $data['numberOfGeneratedSignatures'] = 0;
+  
+  // $json = json_encode($data);
+  // file_put_contents($dataFile, $json);
   
   $images = [];
   for ($i=($page - 1) * $signaturesPerPage; $i < $page * $signaturesPerPage; $i++) {
@@ -24,7 +38,23 @@ get('/signature_generator/api/get-signatures', function () {
     'signatures' => $images,
     'randomIndex' => $randomIndex
   ];
+
   print_r(json_encode($data));
 
   return false;
+});
+
+put('/signature_generator/api/increase-installations-number', function() {
+  $dataFile = 'data.json';
+
+  try {
+    $contents = file_get_contents($dataFile);
+  } catch (Error $e) {}
+
+  $data = isset($contents) ? json_decode($contents, true) : ["numberOfInstallations" => 0];
+  
+  isset($data['numberOfInstallations']) ? $data['numberOfInstallations']++ : $data['numberOfInstallations'] = 0;
+  
+  $json = json_encode($data);
+  file_put_contents($dataFile, $json);
 });

@@ -28,8 +28,9 @@
   const CURRENT_LOCALE = "<?= $currentLocale['short_code']; ?>"
   const HOST_URL = window.location.origin
   const SITE_URL = "<?= $SITE_URL ?>"
+  const SITE_NAME = "<?= $SITE_NAME ?>"
 </script>
-<!-- <script src="<?= $SITE_URL ?>/assets/scripts/service-worker.js" defer></script> -->
 <script src="<?= $SITE_URL ?>/assets/scripts/pwa.js" defer></script>
+<script src="<?= $SITE_URL ?>/assets/scripts/socials.js" defer></script>
 <script src="<?= $SITE_URL ?>/assets/scripts/footer.js" defer></script>
 <script src="<?= $SITE_URL ?>/assets/scripts/header.js" defer></script>

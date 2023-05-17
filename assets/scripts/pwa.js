@@ -10,6 +10,14 @@ if ('serviceWorker' in navigator) {
   })
 }
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // e.preventDefault()
+window.addEventListener('appinstalled', (e) => {
+  console.log('App was installed')
+
+  increaseNumberOfInstallations()
 })
+
+async function increaseNumberOfInstallations() {
+  await fetch('/signature_generator/api/increase-installations-number', {
+    method: 'PUT'
+  })
+}
