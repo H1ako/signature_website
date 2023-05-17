@@ -109,7 +109,11 @@
   flex-direction: column;
   gap: 1em;
 }
-.generator-form:focus-within input:invalid {
+.generator-form:focus-within input:not(:-moz-placeholder-shown):invalid {
+  animation: invalidAnimation 400ms 1;
+  outline: 2px tomato solid;
+}
+.generator-form:focus-within input:not(:placeholder-shown):invalid {
   animation: invalidAnimation 400ms 1;
   outline: 2px tomato solid;
 }
@@ -139,6 +143,14 @@
 }
 .generator-form__field input::placeholder {
   opacity: 0;
+}
+.generator-form__field input::-moz-placeholder {
+  color: var(--color-text);
+  opacity: 0.001;
+}
+.generator-form__field input::placeholder {
+  color: var(--color-text);
+  opacity: 0.001;
 }
 .generator-form__submit {
   padding: var(--padding-button);

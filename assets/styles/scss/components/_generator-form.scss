@@ -6,7 +6,7 @@
   gap: 1em;
 
   &:focus-within {
-    input:invalid {
+    input:not(:placeholder-shown):invalid {
       animation: invalidAnimation 400ms 1;
       outline: 2px tomato solid;
     }
@@ -14,6 +14,11 @@
 
   &__field {
     @include titledInput;
+
+    input::placeholder {
+      color: var(--color-text);
+      opacity: .001;
+    }
   }
 
   &__submit {

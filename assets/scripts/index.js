@@ -29,7 +29,7 @@ function fillGeneratorFormWithQuery() {
 
   for (const [key, value] of Object.entries(data)) {
     const input = generatorForm.elements[key]
-    if (!input) continue
+    if (!input || !value) continue
 
     input.value = value
   }
