@@ -4,7 +4,6 @@ var EditingStarted = false
 const editor = document.querySelector('#editor')
 const editorBgSvg = editor && editor.querySelector('.editor-bg')
 const editorCanvas = editor && editor.querySelector('#editor-area')
-const editBtn = editor && editor.querySelector('#editor-edit')
 const clearBtn = editor && editor.querySelector('#editor-clear')
 const colorInput = editor && editor.querySelector('#editor-color')
 const thicknessInput = editor && editor.querySelector('#editor-thickness')
@@ -50,17 +49,6 @@ function resize() {
   
   setColor(colorInput.value)
   setThickness(thicknessInput.value)
-
-  // TODO: delete if no need to scale content on width change
-  // let scale = Math.min(editorCanvas.width / inMemCanvas.width, editorCanvas.height / inMemCanvas.height)
-  // let newWidth = inMemCanvas.width * scale
-  // let newHeight = inMemCanvas.height * scale
-
-  // let x = (editorCanvas.width - newWidth) / 2
-  // let y = (editorCanvas.height - newHeight) / 2
-
-  // ctx.clearRect(0, 0, editorCanvas.width, editorCanvas.height)
-  // ctx.drawImage(inMemCanvas, 0, 0, inMemCanvas.width, inMemCanvas.height, x, y, newWidth, newHeight)
 }
 
 function draw(e) {
@@ -186,14 +174,13 @@ if (editor) {
   document.addEventListener('mousemove', draw)
   editorCanvas.addEventListener('mousedown', enableEditing)
   document.addEventListener('mouseup', disableEditing)
-  editorCanvas.addEventListener('touchmove', e => e.preventDefault())
+  editorCanvas.addEventListener('touchmove', e => e.preventDefault(), {passive: true})
   
-  editorCanvas.addEventListener("touchstart", enableEditing)
-  document.addEventListener("touchmove", draw)
+  editorCanvas.addEventListener("touchstart", enableEditing, {passive: true})
+  document.addEventListener("touchmove", draw, {passive: true})
   document.addEventListener("touchend", disableEditing)
 
   clearBtn.addEventListener('click', clearCanvas)
-  // eraserBtn.addEventListener('click', setEraserMode)
   colorInput.addEventListener('change', changeColor)
   thicknessInput.addEventListener('change', changeThickness)
   editorDownloadBtn.addEventListener('click', downloadEditorSignature)

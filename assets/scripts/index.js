@@ -57,7 +57,11 @@ async function replaceWithGeneratedSignatures() {
   if (!signaturesList || !isGeneratorFormValid()) return
   
   resetGeneratorData()
+  const signaturesListAdvertisementBlocks = signaturesList.querySelectorAll('.advertisement')
   signaturesList.innerHTML = ''
+  signaturesListAdvertisementBlocks.forEach(block => {
+    signaturesList.appendChild(block)
+  })
   
   appendGeneratedSignatures()
 }
@@ -80,7 +84,7 @@ async function appendGeneratedSignatures() {
 
   if (!signaturesList) return
 
-  for(var i=0; i < 12;i++) {
+  for(var i=0; i < 15;i++) {
     const newSignatures = await generateSignatures()
     if (!newSignatures) continue
     
@@ -96,7 +100,7 @@ function addSignaturesToList(signatures) {
     const newSignatureCard = getSignatureCard(image)
     if (!newSignatureCard) return
 
-    signaturesList.appendChild(newSignatureCard)
+    signaturesList.insertBefore(newSignatureCard, signaturesList.children[signaturesList.children.length - 2])
   })
 }
 
