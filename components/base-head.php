@@ -27,20 +27,9 @@
 <script defer>
   const CURRENT_LOCALE = "<?= $currentLocale['short_code']; ?>"
   const HOST_URL = window.location.origin
+  const SITE_URL = "<?= $SITE_URL ?>"
 </script>
 <!-- <script src="<?= $SITE_URL ?>/assets/scripts/service-worker.js" defer></script> -->
-<script defer>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('<?= $SITE_URL ?>/service-worker.js')
-        .then(function(registration) {
-          console.log('Service worker registered:', registration)
-        })
-        .catch(function(error) {
-          console.log('Service worker registration failed:', error)
-        })
-    })
-  }
-</script>
+<script src="<?= $SITE_URL ?>/assets/scripts/pwa.js" defer></script>
 <script src="<?= $SITE_URL ?>/assets/scripts/footer.js" defer></script>
 <script src="<?= $SITE_URL ?>/assets/scripts/header.js" defer></script>

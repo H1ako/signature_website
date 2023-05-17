@@ -136,6 +136,14 @@
 .generator-form__field input::placeholder {
   opacity: 0;
 }
+.generator-form__field:has(input:invalid) {
+  animation: invalidAnimation 400ms 1;
+  border: 2px tomato solid;
+}
+.generator-form__field input:focus:invalid {
+  animation: invalidAnimation 400ms 1;
+  outline: 2px tomato solid;
+}
 .generator-form__submit {
   padding: var(--padding-button);
   font-size: var(--font-size-5);
@@ -174,6 +182,26 @@
   filter: brightness(0.8);
 }
 
+@keyframes invalidAnimation {
+  0% {
+    transform: translate(30px);
+  }
+  20% {
+    transform: translate(-30px);
+  }
+  40% {
+    transform: translate(15px);
+  }
+  60% {
+    transform: translate(-15px);
+  }
+  80% {
+    transform: translate(8px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
 .advertisement {
   overflow-wrap: break-word;
   word-wrap: break-word;

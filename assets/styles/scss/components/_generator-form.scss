@@ -7,6 +7,16 @@
 
   &__field {
     @include titledInput;
+
+    &:has(input:invalid) {
+      animation: invalidAnimation 400ms 1;
+      border: 2px tomato solid;
+    }
+
+    input:focus:invalid {
+      animation: invalidAnimation 400ms 1;
+      outline: 2px tomato solid;
+    }
   }
 
   &__submit {
@@ -14,4 +24,13 @@
 
     align-self: center;
   }
+}
+
+@keyframes invalidAnimation {
+  0% { transform: translate(30px); }
+  20% { transform: translate(-30px); }
+  40% { transform: translate(15px); }
+  60% { transform: translate(-15px); }
+  80% { transform: translate(8px); }
+  100% {transform: translate(0px); }
 }
