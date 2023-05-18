@@ -85,6 +85,7 @@
 }
 .socials-modal__content .content__links .links__url .url__copy svg {
   height: 1em;
+  width: auto;
   color: var(--color-text);
   fill: var(--color-text);
   flex-shrink: 0;
@@ -171,6 +172,7 @@
 }
 .generator-form__submit svg {
   height: 1em;
+  width: auto;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;
@@ -244,6 +246,7 @@
   translate: -50% -50%;
   opacity: 0.75;
   width: min(90%, 60rem);
+  height: auto;
   pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -302,6 +305,7 @@
 }
 .editor__tools .tools__left .left__tool.tool_edit svg, .editor__tools .tools__left .left__tool.tool_clear svg {
   height: 1em;
+  width: auto;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;
@@ -426,6 +430,7 @@
 }
 .editor__tools .tools__right .right__tool.tool_share svg {
   height: 1em;
+  width: auto;
   color: var(--color-text);
   fill: var(--color-text);
   flex-shrink: 0;
@@ -462,6 +467,7 @@
 }
 .editor__tools .tools__right .right__tool.tool_download svg {
   height: 1em;
+  width: auto;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;
@@ -568,6 +574,7 @@
 }
 .signature-card__bottom .bottom__left .left__edit-btn svg {
   height: 1em;
+  width: auto;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;
@@ -609,6 +616,7 @@
 }
 .signature-card__bottom .bottom__right .right__btn svg {
   height: 1em;
+  width: auto;
   color: var(--color-text);
   fill: var(--color-text);
   flex-shrink: 0;
@@ -732,6 +740,7 @@
 }
 .go-top svg {
   height: 1em;
+  width: auto;
   color: var(--color-text);
   fill: var(--color-text);
   flex-shrink: 0;
@@ -847,6 +856,7 @@
 }
 .main-content__editor .editor__open-editor svg {
   height: 1em;
+  width: auto;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;
@@ -947,6 +957,7 @@
 }
 .main-content__generated-signatures .generated-signatures__loader svg {
   height: 1em;
+  width: auto;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;

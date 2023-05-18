@@ -12,7 +12,8 @@
   <meta name="og:description" content="<?= $localeReader->translate('404 Not Found Page Meta Description') ?>">
   <meta name="twitter:description" content="<?= $localeReader->translate('Home Page Meta Description') ?>">
   <?php include_once('components/base-head.php'); ?>
-  <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/404.css">
+  <link rel="preload" as="style" href="<?= $SITE_URL ?>/assets/styles/css/404.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/404.css"></noscript>
 </head>
 <body>
 <?php include_once('components/header.php'); ?>

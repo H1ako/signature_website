@@ -574,6 +574,7 @@ b {
 }
 .socials__social .social__wrapper svg {
   height: 1em;
+  width: auto;
   color: var(--color-text-light);
   fill: var(--color-text-light);
   flex-shrink: 0;

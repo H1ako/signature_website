@@ -19,6 +19,7 @@
     translate: -50% -50%;
     opacity: .75;
     width: min(90%, 60rem);
+    height: auto;
     pointer-events: none;
     user-select: none;
     transition: var(--transition-main);

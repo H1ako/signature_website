@@ -12,7 +12,8 @@
   <meta name="twitter:description" content="<?= $localeReader->translate('Privacy Policy Page Meta Description') ?>">
   <title><?= $localeReader->translate('Privacy Policy Page Title'); ?></title>
   <?php include_once('components/base-head.php'); ?>
-  <link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/privacy-policy.css">
+  <link rel="preload" as="style" href="<?= $SITE_URL ?>/assets/styles/css/privacy-policy.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/privacy-policy.css"></noscript>
 </head>
 <body>
 <?php include_once('components/header.php'); ?>
