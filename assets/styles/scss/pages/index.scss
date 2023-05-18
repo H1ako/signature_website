@@ -228,6 +228,12 @@
     align-items: center;
     gap: var(--gap-block);
 
+    .about__heading {
+      @include wrapWords;
+
+      text-align: center;
+    }
+
     .about__block {
       background: var(--color-bg-light);
       border-radius: var(--border-radius-main);
@@ -282,6 +288,26 @@
 
               height: auto;
               border-radius: var(--border-radius-main);
+            }
+
+            @media screen and (width < 750px) {
+              grid-template-columns: 1fr;
+              grid-template-rows: repeat(2, auto);
+              gap: 1em;
+
+              .step__left {
+                align-items: center;
+  
+                .left__index,
+                .left__title,
+                .left__description {
+                  text-align: center;
+                }
+              }
+
+              .step__img {
+                width: 100%;
+              }
             }
           }
         }

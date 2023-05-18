@@ -1024,6 +1024,15 @@
   align-items: center;
   gap: var(--gap-block);
 }
+.main-content__about .about__heading {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  text-align: center;
+}
 .main-content__about .about__block {
   background: var(--color-bg-light);
   border-radius: var(--border-radius-main);
@@ -1088,6 +1097,24 @@
   transition: var(--transition-main);
   height: auto;
   border-radius: var(--border-radius-main);
+}
+@media screen and (width < 750px) {
+  .main-content__about .about__block .block__description .description__steps .steps__step {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    gap: 1em;
+  }
+  .main-content__about .about__block .block__description .description__steps .steps__step .step__left {
+    align-items: center;
+  }
+  .main-content__about .about__block .block__description .description__steps .steps__step .step__left .left__index,
+  .main-content__about .about__block .block__description .description__steps .steps__step .step__left .left__title,
+  .main-content__about .about__block .block__description .description__steps .steps__step .step__left .left__description {
+    text-align: center;
+  }
+  .main-content__about .about__block .block__description .description__steps .steps__step .step__img {
+    width: 100%;
+  }
 }
 .main-content__about .about__block .block__description .description__text > * {
   text-align: justify;
