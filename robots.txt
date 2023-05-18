@@ -7,3 +7,5 @@ Sitemap: [insert your sitemap URL here]
 Allow: /*
 Allow: /api/*
 Allow: /assets/*
+Disallow: /admin
+Disallow: /api/admin/*
