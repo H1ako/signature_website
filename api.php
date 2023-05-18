@@ -57,4 +57,16 @@ put('/signature_generator/api/increase-installations-number', function() {
   
   $json = json_encode($data);
   file_put_contents($dataFile, $json);
+
+  return false;
+});
+
+post('/signature_generator/api/admin/update-text', function() {
+  $data = file_get_contents('php://input');
+  $newData = isset($data) ? $data : [];
+  $dataFile = 'big-descriptions.json';
+  
+  file_put_contents($dataFile, $newData);
+
+  return false;
 });

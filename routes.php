@@ -33,6 +33,7 @@ get('/signature_generator/%s/%s', function($locale, $path) use ($LOCALES) {
   $localeReader = new gettext_reader;
   $localeReader->gettext_reader($streamer);
 });
+get('/signature_generator/admin','views/admin.php');
 
 get('/signature_generator', 'views/index.php');
 get('/signature_generator/privacy-policy', 'views/privacy-policy.php');
@@ -41,6 +42,7 @@ any('/signature_generator/404','views/404.php');
 get('/signature_generator/%s', 'views/index.php');
 get('/signature_generator/%s/privacy-policy', 'views/privacy-policy.php');
 any('/signature_generator/%s/404','views/404.php');
+
 
 // ##################################################
 // ##################################################
