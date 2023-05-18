@@ -69,7 +69,7 @@ msgstr "Załaduj więcej"
 
 #: views/index.php:56
 msgid "Home Page About Us"
-msgstr "O nas"
+msgstr "Jak korzystać z generatora podpisów?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"

@@ -68,7 +68,7 @@ msgstr "Daha Fazla Yükle"
 
 #: views/index.php:56
 msgid "Home Page About Us"
-msgstr "Hakkımızda"
+msgstr "İmza oluşturucuyu nasıl kullanabilirim?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"

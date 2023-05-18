@@ -68,7 +68,7 @@ msgstr "Per saperne di più"
 
 #: views/index.php:56
 msgid "Home Page About Us"
-msgstr "Chi siamo"
+msgstr "Come si usa il generatore di firme?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"

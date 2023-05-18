@@ -68,7 +68,7 @@ msgstr "En savoir plus"
 
 #: views/index.php:56
 msgid "Home Page About Us"
-msgstr "Page d'accueil"
+msgstr "Comment utiliser le générateur de signature ?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"

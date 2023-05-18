@@ -59,7 +59,7 @@ msgstr "Open Editor"
 
 #: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
-msgstr "About Us"
+msgstr "How do I use the signature generator?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"

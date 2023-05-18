@@ -61,7 +61,7 @@ msgstr "Відкритий Редактор"
 
 #: views/index.php:56
 msgid "Home Page About Us"
-msgstr "Про нас"
+msgstr "Як використовувати генератор підпису?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"

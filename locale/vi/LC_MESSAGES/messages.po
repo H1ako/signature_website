@@ -67,7 +67,7 @@ msgstr "Tải Thêm"
 
 #: views/index.php:56
 msgid "Home Page About Us"
-msgstr "Về Chúng Tôi"
+msgstr "Làm thế nào để sử dụng trình tạo chữ ký?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"

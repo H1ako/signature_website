@@ -68,7 +68,7 @@ msgstr "Carregar mais"
 
 #: views/index.php:56
 msgid "Home Page About Us"
-msgstr "Sobre nós"
+msgstr "Como é que utilizo o gerador de assinaturas?"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
