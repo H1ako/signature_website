@@ -1,23 +1,20 @@
 <?php global $SITE_URL, $ABOUTUS_IMAGE, $currentLocale, $localeReader, $SITE_URL, $SITE_ICON, $SITE_NAME, $ABOUTUS_STEP1_IMAGE, $ABOUTUS_STEP2_IMAGE, $ABOUTUS_STEP3_IMAGE, $ABOUTUS_STEP4_IMAGE, $ABOUTUS_STEP5_IMAGE, $ABOUTUS_STEP6_IMAGE, $ABOUTUS_STEP7_IMAGE;
 $localeShortCode = $currentLocale['short_code'];
 
-$dataFile = 'big-descriptions.json';
+$dataContents = null;
+try {
+  $dataContents = json_decode(file_get_contents('data.json'), true);
+} catch (Error $e) {
+  // pass
+}
 
 $contents = null;
 try {
-  $contents = json_decode(file_get_contents($dataFile), true);
+  $contents = json_decode(file_get_contents('big-descriptions.json'), true);
 } catch (Error $e) {
   // pass
 }
 
-$dataFile = 'data.json';
-
-$dataContents = null;
-try {
-  $dataContents = json_decode(file_get_contents($dataFile), true);
-} catch (Error $e) {
-  // pass
-}
 ?>
 <!DOCTYPE html>
 <html lang="<?= $currentLocale['short_code'] ?? 'en' ?>" itemscope="" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
@@ -35,12 +32,13 @@ try {
   <link rel="preload" as="style" href="<?= $SITE_URL ?>/assets/styles/css/index.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/index.css"></noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/transliteration@2.1.8/dist/browser/bundle.umd.min.js"></script>
-  <script defer>
-    const SIGNATURES_GENERATED = <?= isset($dataContents['numberOfGeneratedSignatures']) ? $dataContents['numberOfGeneratedSignatures'] : 0 ?>
-  </script>
   <script src="<?= $SITE_URL ?>/assets/scripts/socials-modal.js" defer></script>
   <script src="<?= $SITE_URL ?>/assets/scripts/editor.js" defer></script>
   <script src="<?= $SITE_URL ?>/assets/scripts/index.js" defer></script>
+  <script defer>
+    const SIGNATURES_GENERATED = <?= isset($dataContents['numberOfGeneratedSignatures']) ? $dataContents['numberOfGeneratedSignatures'] : 0 ?>
+  </script>
+  <script src="<?= $SITE_URL ?>/assets/scripts/signatures-counter.js" defer></script>
 </head>
 <body>
 <?php include_once('components/header.php'); ?>
