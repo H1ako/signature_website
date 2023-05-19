@@ -67,9 +67,21 @@ msgstr "Ładowanie"
 msgid "Load More"
 msgstr "Załaduj więcej"
 
-#: views/index.php:56
+#: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
+msgstr "O nas"
+
+#: views/index.php:79
+msgid "Home Page Instruction"
 msgstr "Jak korzystać z generatora podpisów?"
+
+#: views/index.php:164
+msgid "About us image"
+msgstr "Obraz o nas"
+
+#: views/index.php:69
+msgid "Generate more"
+msgstr "Wygeneruj więcej"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
@@ -252,3 +264,7 @@ msgstr "Udostępnianie w mediach społecznościowych"
 #: views/index.php:122
 msgid "Step 7 Description"
 msgstr "Jeśli chcesz udostępnić swój nowy podpis innym, kliknij 'Udostępnij' i wybierz sieci społecznościowe, w których chcesz opublikować link do swojego podpisu"
+
+#: views/index.php:58
+msgid "Signatures already generated:"
+msgstr "Podpisy zostały już wygenerowane:"

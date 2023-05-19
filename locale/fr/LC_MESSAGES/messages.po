@@ -66,9 +66,21 @@ msgstr "Chargement"
 msgid "Load More"
 msgstr "En savoir plus"
 
-#: views/index.php:56
+#: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
+msgstr "A propos de nous"
+
+#: views/index.php:79
+msgid "Home Page Instruction"
 msgstr "Comment utiliser le générateur de signature ?"
+
+#: views/index.php:164
+msgid "About us image"
+msgstr "À propos de nous image"
+
+#: views/index.php:69
+msgid "Generate more"
+msgstr "Générer plus"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
@@ -251,3 +263,7 @@ msgstr "Partager sur les médias sociaux"
 #: views/index.php:122
 msgid "Step 7 Description"
 msgstr "Si vous souhaitez partager votre nouvelle signature avec d'autres personnes, cliquez sur 'Partager' et sélectionnez les réseaux sociaux où vous souhaitez publier le lien vers votre signature"
+
+#: views/index.php:58
+msgid "Signatures already generated:"
+msgstr "Signatures déjà générées:"

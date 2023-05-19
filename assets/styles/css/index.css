@@ -819,6 +819,45 @@
     align-self: stretch;
   }
 }
+.main-content__statistics {
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius-main);
+  border: var(--border-main);
+  padding: var(--padding-block);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+}
+.main-content__statistics .statistics__title {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  font-weight: 400;
+}
+.main-content__statistics .statistics__data {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  color: var(--color-main);
+  font-size: var(--font-size-1);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+@media screen and (width < 500px) {
+  .main-content__statistics {
+    flex-direction: column;
+  }
+  .main-content__statistics > * {
+    text-align: center;
+  }
+}
 .main-content__socials .social__wrapper {
   padding-inline: 0.5em;
 }
@@ -1086,20 +1125,21 @@
 .main-content__instruction .instruction__block .block__steps {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 4em;
 }
 .main-content__instruction .instruction__block .block__steps .steps__step {
   position: relative;
   display: grid;
   grid-template-columns: 7fr 3fr;
-  gap: min(10em, 7%);
+  align-items: center;
+  gap: min(20em, 15%);
 }
 .main-content__instruction .instruction__block .block__steps .steps__step .step__left {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.5em;
+  gap: 1.25em;
 }
 .main-content__instruction .instruction__block .block__steps .steps__step .step__left .left__index {
   color: var(--color-main);
@@ -1125,7 +1165,20 @@
   line-height: var(--line-height-main);
   font-weight: 400;
 }
-.main-content__instruction .instruction__block .block__steps .steps__step .step__img {
+.main-content__instruction .instruction__block .block__steps .steps__step .step__right {
+  position: relative;
+  min-width: 15rem;
+}
+.main-content__instruction .instruction__block .block__steps .steps__step .step__right::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0) 70%, var(--color-bg-light) 100%);
+  right: 0;
+  top: 0;
+}
+.main-content__instruction .instruction__block .block__steps .steps__step .step__right .right__img {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -1136,8 +1189,14 @@
   transition: var(--transition-main);
   height: auto;
   border-radius: var(--border-radius-main);
+  width: 100%;
 }
 @media screen and (width < 750px) {
+  .main-content__instruction .instruction__block .block__steps .steps__step {
+    gap: 1em;
+  }
+}
+@media screen and (width < 470px) {
   .main-content__instruction .instruction__block .block__steps .steps__step {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, auto);

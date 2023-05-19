@@ -65,9 +65,21 @@ msgstr "Đang tải"
 msgid "Load More"
 msgstr "Tải Thêm"
 
-#: views/index.php:56
+#: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
+msgstr "Về chúng tôi"
+
+#: views/index.php:79
+msgid "Home Page Instruction"
 msgstr "Làm thế nào để sử dụng trình tạo chữ ký?"
+
+#: views/index.php:164
+msgid "About us image"
+msgstr "Về chúng tôi hình ảnh"
+
+#: views/index.php:69
+msgid "Generate more"
+msgstr "Tạo thêm"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
@@ -250,3 +262,7 @@ msgstr "Chia sẻ trên phương tiện truyền thông xã hội"
 #: views/index.php:122
 msgid "Step 7 Description"
 msgstr "Nếu bạn muốn chia sẻ chữ ký mới của mình với người khác, hãy nhấp vào 'Chia sẻ' và chọn mạng xã hội nơi bạn muốn đăng liên kết đến chữ ký của mình"
+
+#: views/index.php:58
+msgid "Signatures already generated:"
+msgstr "Chữ ký đã được tạo:"

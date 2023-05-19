@@ -66,9 +66,21 @@ msgstr "Caricamento"
 msgid "Load More"
 msgstr "Per saperne di più"
 
-#: views/index.php:56
+#: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
+msgstr "Chi siamo"
+
+#: views/index.php:79
+msgid "Home Page Instruction"
 msgstr "Come si usa il generatore di firme?"
+
+#: views/index.php:164
+msgid "About us image"
+msgstr "Immagine su di noi"
+
+#: views/index.php:69
+msgid "Generate more"
+msgstr "Generare di più"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
@@ -251,3 +263,7 @@ msgstr "Condividi sui social media"
 #: views/index.php:122
 msgid "Step 7 Description"
 msgstr "Se si desidera condividere la nuova firma con altri, fare clic su 'Condividi' e selezionare i social network in cui si desidera pubblicare il link alla firma"
+
+#: views/index.php:58
+msgid "Signatures already generated:"
+msgstr "Firme già generate:"

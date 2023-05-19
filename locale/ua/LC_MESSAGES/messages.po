@@ -59,9 +59,21 @@ msgstr "Створіть власний <b>Підпис</b>"
 msgid "Open Editor"
 msgstr "Відкритий Редактор"
 
-#: views/index.php:56
+#: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
+msgstr "Про нас"
+
+#: views/index.php:79
+msgid "Home Page Instruction"
 msgstr "Як використовувати генератор підпису?"
+
+#: views/index.php:164
+msgid "About us image"
+msgstr "Імідж про нас"
+
+#: views/index.php:69
+msgid "Generate more"
+msgstr "Генеруйте більше"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
@@ -252,3 +264,7 @@ msgstr "Поділіться в соціальних мережах"
 #: views/index.php:122
 msgid "Step 7 Description"
 msgstr "Якщо ви хочете поділитися своїм новим підписом з іншими, натисніть 'Поділитися' і виберіть соціальні мережі, в яких ви хочете опублікувати посилання на ваш підпис"
+
+#: views/index.php:58
+msgid "Signatures already generated:"
+msgstr "Підписи вже зібрані:"

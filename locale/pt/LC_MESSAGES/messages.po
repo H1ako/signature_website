@@ -66,9 +66,21 @@ msgstr "Abrir o editor"
 msgid "Load More"
 msgstr "Carregar mais"
 
-#: views/index.php:56
+#: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
+msgstr "Sobre nós"
+
+#: views/index.php:79
+msgid "Home Page Instruction"
 msgstr "Como é que utilizo o gerador de assinaturas?"
+
+#: views/index.php:164
+msgid "About us image"
+msgstr "Imagem sobre nós"
+
+#: views/index.php:69
+msgid "Generate more"
+msgstr "Gerar mais"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
@@ -251,3 +263,7 @@ msgstr "Partilhar nas redes sociais"
 #: views/index.php:122
 msgid "Step 7 Description"
 msgstr "Se pretender partilhar a sua nova assinatura com outras pessoas, clique em 'Partilhar' e seleccione as redes sociais onde pretende publicar a ligação para a sua assinatura"
+
+#: views/index.php:58
+msgid "Signatures already generated:"
+msgstr "Assinaturas já geradas:"

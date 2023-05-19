@@ -59,7 +59,19 @@ msgstr "Open Editor"
 
 #: views/index.php:56 views/index.php:60
 msgid "Home Page About Us"
+msgstr "About us"
+
+#: views/index.php:79
+msgid "Home Page Instruction"
 msgstr "How do I use the signature generator?"
+
+#: views/index.php:164
+msgid "About us image"
+msgstr "About us image"
+
+#: views/index.php:69
+msgid "Generate more"
+msgstr "Generate more"
 
 #: views/index.php:60
 msgid "Home Page About Us Big Text"
@@ -250,3 +262,7 @@ msgstr "Share on social media"
 #: views/index.php:122
 msgid "Step 7 Description"
 msgstr "If you want to share your new signature with others, click 'Share' and select the social networks where you want to post the link to your signature"
+
+#: views/index.php:58
+msgid "Signatures already generated:"
+msgstr "Signatures already generated:"

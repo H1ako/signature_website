@@ -9,6 +9,15 @@ try {
 } catch (Error $e) {
   // pass
 }
+
+$dataFile = 'data.json';
+
+$dataContents = null;
+try {
+  $dataContents = json_decode(file_get_contents($dataFile), true);
+} catch (Error $e) {
+  // pass
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?= $currentLocale['short_code'] ?? 'en' ?>" itemscope="" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
@@ -26,6 +35,9 @@ try {
   <link rel="preload" as="style" href="<?= $SITE_URL ?>/assets/styles/css/index.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="<?= $SITE_URL ?>/assets/styles/css/index.css"></noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/transliteration@2.1.8/dist/browser/bundle.umd.min.js"></script>
+  <script defer>
+    const SIGNATURES_GENERATED = <?= isset($dataContents['numberOfGeneratedSignatures']) ? $dataContents['numberOfGeneratedSignatures'] : 0 ?>
+  </script>
   <script src="<?= $SITE_URL ?>/assets/scripts/socials-modal.js" defer></script>
   <script src="<?= $SITE_URL ?>/assets/scripts/editor.js" defer></script>
   <script src="<?= $SITE_URL ?>/assets/scripts/index.js" defer></script>
@@ -41,6 +53,10 @@ try {
     <span class="face__right">
       <?php include('components/generator-form.php'); ?>
     </span>
+  </section>
+  <section class="main-content__statistics">
+    <h3 class="statistics__title"><?= $localeReader->translate('Signatures already generated:'); ?></h3>
+    <p class="statistics__data" statistics-counter>0</p>
   </section>
   <section class="main-content__editor">
     <h2 class="editor__heading"><?= $localeReader->translate('Create your own <b>Signature</b>'); ?></h2>
@@ -85,7 +101,9 @@ try {
             <h3 class="left__title" itemprop="name"><?= $localeReader->translate('Step 1 Title'); ?></h3>
             <p class="left__description" itemprop="description"><?= $localeReader->translate('Step 1 Description'); ?></p>
           </div>
-          <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP1_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="step__img">
+          <div class="step__right">
+            <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP1_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="right__img">
+          </div>
         </li>
         <li class="steps__step" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <div class="step__left">
@@ -93,7 +111,9 @@ try {
             <h3 class="left__title" itemprop="name"><?= $localeReader->translate('Step 2 Title'); ?></h3>
             <p class="left__description" itemprop="description"><?= $localeReader->translate('Step 2 Description'); ?></p>
           </div>
-          <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP2_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="step__img">
+          <div class="step__right">
+            <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP2_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="right__img">
+          </div>
         </li>
         <li class="steps__step" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <div class="step__left">
@@ -101,7 +121,9 @@ try {
             <h3 class="left__title" itemprop="name"><?= $localeReader->translate('Step 3 Title'); ?></h3>
             <p class="left__description" itemprop="description"><?= $localeReader->translate('Step 3 Description'); ?></p>
           </div>
-          <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP3_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="step__img">
+          <div class="step__right">
+            <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP3_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="right__img">
+          </div>
         </li>
         <li class="steps__step" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <div class="step__left">
@@ -109,7 +131,9 @@ try {
             <h3 class="left__title" itemprop="name"><?= $localeReader->translate('Step 4 Title'); ?></h3>
             <p class="left__description" itemprop="description"><?= $localeReader->translate('Step 4 Description'); ?></p>
           </div>
-          <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP4_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="step__img">
+          <div class="step__right">
+            <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP4_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="right__img">
+          </div>
         </li>
         <li class="steps__step" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <div class="step__left">
@@ -117,7 +141,9 @@ try {
             <h3 class="left__title" itemprop="name"><?= $localeReader->translate('Step 5 Title'); ?></h3>
             <p class="left__description" itemprop="description"><?= $localeReader->translate('Step 5 Description'); ?></p>
           </div>
-          <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP5_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="step__img">
+          <div class="step__right">
+            <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP5_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="right__img">
+          </div>
         </li>
         <li class="steps__step" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <div class="step__left">
@@ -125,7 +151,9 @@ try {
             <h3 class="left__title" itemprop="name"><?= $localeReader->translate('Step 6 Title'); ?></h3>
             <p class="left__description" itemprop="description"><?= $localeReader->translate('Step 6 Description'); ?></p>
           </div>
-          <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP6_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="step__img">
+          <div class="step__right">
+            <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP6_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="right__img">
+          </div>
         </li>
         <li class="steps__step" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <div class="step__left">
@@ -133,7 +161,9 @@ try {
             <h3 class="left__title" itemprop="name"><?= $localeReader->translate('Step 7 Title'); ?></h3>
             <p class="left__description" itemprop="description"><?= $localeReader->translate('Step 7 Description'); ?></p>
           </div>
-          <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP7_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="step__img">
+          <div class="step__right">
+            <img itemprop="image" src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_STEP7_IMAGE ?>" width="300" height="300" title="<?= $localeReader->translate('Step Image'); ?>" alt="<?= $localeReader->translate('Step Image'); ?>" class="right__img">
+          </div>
         </li>
       </ul>
     </div>

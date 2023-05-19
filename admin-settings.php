@@ -8,7 +8,7 @@
 $SITE_NAME = 'Signature Generator';
 $SITE_ICON = 'land.jpg';
 $SITE_LOGO = 'logo.webp';
-$SITE_URL = 'https://4f44-176-59-99-199.ngrok-free.app/signature_generator'; // no slash at the end(https://example.com)
+$SITE_URL = 'https://81c1-92-39-213-219.ngrok-free.app/signature_generator'; // no slash at the end(https://example.com)
 $META_IMAGE = 'land.jpg';
 
 $CONTACT_EMAIL = 'support@siggenerator.com';

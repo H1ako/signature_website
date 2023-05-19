@@ -59,6 +59,40 @@
     }
   }
 
+  &__statistics {
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius-main);
+    border: var(--border-main);
+    padding: var(--padding-block);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+
+    .statistics__title {
+      @include wrapWords;
+
+      font-weight: 400;
+    }
+
+    .statistics__data {
+      @include wrapWords;
+
+      color: var(--color-main);
+      font-size: var(--font-size-1);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    @media screen and (width < 500px) {
+      flex-direction: column;
+
+      & > * {
+        text-align: center;
+      }
+    }
+  }
+
   &__socials {
     .social__wrapper {
       padding-inline: .5em;
@@ -248,24 +282,21 @@
       .block__steps {
         display: flex;
         flex-direction: column;
-        gap: 1em;
+        gap: 4em;
 
         .steps__step {
           position: relative;
           display: grid;
           grid-template-columns: 7fr 3fr;
-          gap: min(10em, 7%);
+          align-items: center;
+          gap: min(20em, 15%);
 
           .step__left {
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 0.5em;
-            // height: fit-content;
-            // position: sticky;
-            // top: 1em;
-            // left: 0;
+            gap: 1.25em;
 
             .left__index {
               color: var(--color-main);
@@ -287,14 +318,34 @@
             }
           }
 
-          .step__img {
-            @include image;
+          .step__right {
+            position: relative;
+            min-width: 15rem;
 
-            height: auto;
-            border-radius: var(--border-radius-main);
+            &::after {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              background: linear-gradient(rgba(255, 255, 255, 0) 70%, var(--color-bg-light) 100%);
+              right: 0;
+              top: 0;
+            }
+
+            .right__img {
+              @include image;
+  
+              height: auto;
+              border-radius: var(--border-radius-main);
+              width: 100%;
+            }
           }
 
           @media screen and (width < 750px) {
+            gap: 1em;
+          }
+
+          @media screen and (width < 470px) {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(2, auto);
             gap: 1em;

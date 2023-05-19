@@ -15,6 +15,7 @@ const paperPreviewLightbox = document.querySelector('#paper-preview-lightbox')
 const paperPreviewLightboxImage = paperPreviewLightbox && paperPreviewLightbox.querySelector('.paper-preview__image')
 const signatureCardTemplate = document.querySelector('#signature-card-template')
 const goForMoreSignaturesBtn = document.querySelector('[go-for-more-signatures]')
+const statisticsCounter = document.querySelector('[statistics-counter]')
 
 function fillGeneratorFormWithQuery() {
   const urlParams = new URLSearchParams(window.location.search)
@@ -71,6 +72,7 @@ async function replaceWithGeneratedSignatures() {
 function resetGeneratorData() {
   page = 0
   isNoMoreSignatures = false
+  randomIndex = null
   generatorLoader.classList.remove('no-more-signatures')
 
   enableGeneratorLoader()
@@ -367,9 +369,41 @@ function isElementVisible(el) {
 function goToOpenEditorBtn() {
   if (!openEditorBtn) return
 
+  replaceWithGeneratedSignatures()
+
   openEditorBtn.scrollIntoView({
     block: 'center'
   })
+}
+
+function spincrement(targetEl, endVal, duration) {
+  let startVal = Number(targetEl.innerText),
+      range = endVal - startVal,
+      minTimer = 50,
+      easeInOut = t => {return t<.5 ? 2*t*t : -1+(4-2*t)*t},
+      stepTime = Math.abs(Math.floor(duration / range)),
+      startTime = null,
+      previousVal = startVal
+
+  function update(now) {
+    if (!startTime) startTime = now
+
+    let timeLeft = Math.max(0, Math.min(1, (now - startTime) / duration)),
+        val = Math.floor(easeInOut(timeLeft) * range + startVal)
+
+    if (range > 0 && val > endVal) val = endVal
+    if (range < 0 && val < endVal) val = endVal
+
+    targetEl.innerText = val
+
+    if (val === endVal) return
+
+    previousVal = val
+
+    requestAnimationFrame(update)
+  }
+
+  requestAnimationFrame(update);
 }
 
 disableGeneratorLoader()
@@ -410,3 +444,4 @@ if (paperPreviewLightbox) {
 }
 
 goForMoreSignaturesBtn && goForMoreSignaturesBtn.addEventListener('click', goToOpenEditorBtn)
+statisticsCounter && spincrement(statisticsCounter, SIGNATURES_GENERATED, 3000)
