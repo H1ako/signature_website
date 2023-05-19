@@ -1,4 +1,13 @@
-<?php global $SITE_URL; ?>
+<?php global $SITE_URL;
+$dataFile = 'big-descriptions.json';
+
+$contents = null;
+try {
+  $contents = json_decode(file_get_contents($dataFile));
+} catch (Error $e) {
+  // pass
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,28 +116,28 @@
   <button class="save-button">Save Changes</button>
   <script src="<?= $SITE_URL ?>/assets/scripts/admin.js"></script>
   <script>
-    editorAboutUs_en.setData('')
-    editorAboutUs_ru.setData('')
-    editorAboutUs_ua.setData('')
-    editorAboutUs_es.setData('')
-    editorAboutUs_fr.setData('')
-    editorAboutUs_pl.setData('')
-    editorAboutUs_pt.setData('')
-    editorAboutUs_vi.setData('')
-    editorAboutUs_tr.setData('')
-    editorAboutUs_de.setData('')
-    editorAboutUs_it.setData('')
-    editorPrivacy_en.setData('')
-    editorPrivacy_ru.setData('')
-    editorPrivacy_ua.setData('')
-    editorPrivacy_es.setData('')
-    editorPrivacy_fr.setData('')
-    editorPrivacy_pl.setData('')
-    editorPrivacy_pt.setData('')
-    editorPrivacy_vi.setData('')
-    editorPrivacy_tr.setData('')
-    editorPrivacy_de.setData('')
-    editorPrivacy_it.setData('')
+    editorAboutUs_en.setData('<?= ($contents && isset($contents['aboutUs_en'])) ? $contents['aboutUs_en'] : '' ?>')
+    editorAboutUs_ru.setData('<?= ($contents && isset($contents['aboutUs_ru'])) ? $contents['aboutUs_ru'] : '' ?>')
+    editorAboutUs_ua.setData('<?= ($contents && isset($contents['aboutUs_ua'])) ? $contents['aboutUs_ua'] : '' ?>')
+    editorAboutUs_es.setData('<?= ($contents && isset($contents['aboutUs_es'])) ? $contents['aboutUs_es'] : '' ?>')
+    editorAboutUs_fr.setData('<?= ($contents && isset($contents['aboutUs_fr'])) ? $contents['aboutUs_fr'] : '' ?>')
+    editorAboutUs_pl.setData('<?= ($contents && isset($contents['aboutUs_pl'])) ? $contents['aboutUs_pl'] : '' ?>')
+    editorAboutUs_pt.setData('<?= ($contents && isset($contents['aboutUs_pt'])) ? $contents['aboutUs_pt'] : '' ?>')
+    editorAboutUs_vi.setData('<?= ($contents && isset($contents['aboutUs_vi'])) ? $contents['aboutUs_vi'] : '' ?>')
+    editorAboutUs_tr.setData('<?= ($contents && isset($contents['aboutUs_tr'])) ? $contents['aboutUs_tr'] : '' ?>')
+    editorAboutUs_de.setData('<?= ($contents && isset($contents['aboutUs_de'])) ? $contents['aboutUs_de'] : '' ?>')
+    editorAboutUs_it.setData('<?= ($contents && isset($contents['aboutUs_it'])) ? $contents['aboutUs_it'] : '' ?>')
+    editorPrivacy_en.setData('<?= ($contents && isset($contents['aboutUs_en'])) ? $contents['aboutUs_en'] : '' ?>')
+    editorPrivacy_ru.setData('<?= ($contents && isset($contents['aboutUs_ru'])) ? $contents['aboutUs_ru'] : '' ?>')
+    editorPrivacy_ua.setData('<?= ($contents && isset($contents['aboutUs_ua'])) ? $contents['aboutUs_ua'] : '' ?>')
+    editorPrivacy_es.setData('<?= ($contents && isset($contents['aboutUs_es'])) ? $contents['aboutUs_es'] : '' ?>')
+    editorPrivacy_fr.setData('<?= ($contents && isset($contents['aboutUs_fr'])) ? $contents['aboutUs_fr'] : '' ?>')
+    editorPrivacy_pl.setData('<?= ($contents && isset($contents['aboutUs_pl'])) ? $contents['aboutUs_pl'] : '' ?>')
+    editorPrivacy_pt.setData('<?= ($contents && isset($contents['aboutUs_pt'])) ? $contents['aboutUs_pt'] : '' ?>')
+    editorPrivacy_vi.setData('<?= ($contents && isset($contents['aboutUs_vi'])) ? $contents['aboutUs_vi'] : '' ?>')
+    editorPrivacy_tr.setData('<?= ($contents && isset($contents['aboutUs_tr'])) ? $contents['aboutUs_tr'] : '' ?>')
+    editorPrivacy_de.setData('<?= ($contents && isset($contents['aboutUs_de'])) ? $contents['aboutUs_de'] : '' ?>')
+    editorPrivacy_it.setData('<?= ($contents && isset($contents['aboutUs_it'])) ? $contents['aboutUs_it'] : '' ?>')
   </script>
 </body>
 </html>
