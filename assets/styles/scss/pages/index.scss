@@ -89,16 +89,6 @@
     flex-direction: column;
     gap: 1em;
 
-    // &:has(.disabled),
-    // &:has(.generated-signatures__list:empty) {
-    //   display: none;
-    // }
-
-    // &:has(.generated-signatures__list:not(:empty)),
-    // &:has(.loading) {
-    //   display: flex !important;
-    // }
-
     .generated-signatures__list {
       width: 100%;
       gap: 1em;
@@ -219,6 +209,20 @@
       &.disabled {
         display: none;
       }
+
+      &.no-more-signatures {
+        & ~ .generated-signatures__go-for-more {
+          display: flex;
+        }
+      }
+    }
+
+    .generated-signatures__go-for-more {
+      @include button($font-size: var(--font-size-4));
+
+      width: min(100%, 80rem);
+      margin-inline: auto;
+      display: none;
     }
   }
 

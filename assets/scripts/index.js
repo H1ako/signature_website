@@ -14,6 +14,7 @@ const previewLightboxImage = previewLightbox && previewLightbox.querySelector('i
 const paperPreviewLightbox = document.querySelector('#paper-preview-lightbox')
 const paperPreviewLightboxImage = paperPreviewLightbox && paperPreviewLightbox.querySelector('.paper-preview__image')
 const signatureCardTemplate = document.querySelector('#signature-card-template')
+const goForMoreSignaturesBtn = document.querySelector('[go-for-more-signatures]')
 
 function fillGeneratorFormWithQuery() {
   const urlParams = new URLSearchParams(window.location.search)
@@ -57,6 +58,7 @@ async function replaceWithGeneratedSignatures() {
   if (!signaturesList || !isGeneratorFormValid()) return
   
   resetGeneratorData()
+
   const signaturesListAdvertisementBlocks = signaturesList.querySelectorAll('.advertisement')
   signaturesList.innerHTML = ''
   signaturesListAdvertisementBlocks.forEach(block => {
@@ -69,6 +71,7 @@ async function replaceWithGeneratedSignatures() {
 function resetGeneratorData() {
   page = 0
   isNoMoreSignatures = false
+  generatorLoader.classList.remove('no-more-signatures')
 
   enableGeneratorLoader()
 }
@@ -84,11 +87,17 @@ async function appendGeneratedSignatures() {
 
   if (!signaturesList) return
 
+  var newSignatures
   for(var i=0; i < 15;i++) {
-    const newSignatures = await generateSignatures()
+    newSignatures = await generateSignatures()
     if (!newSignatures) continue
     
     addSignaturesToList(newSignatures)
+  }
+
+  if (!newSignatures.length) {
+    isNoMoreSignatures = true
+    generatorLoader.classList.add('no-more-signatures')
   }
 
   if (!isElementVisible(generatorLoader) || isSignaturesGenerating || !isGeneratorFormValid()) return
@@ -148,9 +157,6 @@ async function generateSignatures() {
   startLoading()
   const signatures = await getGeneratedSignatures()
   stopLoading()
-  if (!signatures.length) {
-    isNoMoreSignatures = true
-  }
 
   return signatures
 }
@@ -358,6 +364,14 @@ function isElementVisible(el) {
   );
 }
 
+function goToOpenEditorBtn() {
+  if (!openEditorBtn) return
+
+  openEditorBtn.scrollIntoView({
+    block: 'center'
+  })
+}
+
 disableGeneratorLoader()
 fillGeneratorFormWithQuery()
 generateIfDataFilled()
@@ -394,3 +408,5 @@ if (paperPreviewLightbox) {
   paperPreviewLightbox.addEventListener('click', closePaperPreviewLightboxlIfOuterClick)
   paperPreviewLightbox.addEventListener('close', closePaperPreviewLightbox)
 }
+
+goForMoreSignaturesBtn && goForMoreSignaturesBtn.addEventListener('click', goToOpenEditorBtn)

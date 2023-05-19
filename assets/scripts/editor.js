@@ -10,7 +10,7 @@ const thicknessInput = editor && editor.querySelector('#editor-thickness')
 const editorDownloadBtn = editor && editor.querySelector('#editor-download')
 const editorShareBtn = editor && editor.querySelector('#editor-share')
 const signaturesEditBtns = editor && document.querySelectorAll('[edit-signature]')
-const openEditorBtns = editor && document.querySelectorAll('[open-editor]')
+const openEditorBtn = editor && document.querySelector('[open-editor]')
 
 var ctx = editorCanvas.getContext('2d')
 var canvasRect = editorCanvas.getBoundingClientRect()
@@ -191,9 +191,7 @@ if (editor) {
     btn.addEventListener('click', editSignature)
   })
 
-  openEditorBtns.forEach(btn => {
-    btn.addEventListener('click', openEditor)
-  })
+  openEditorBtn.addEventListener('click', openEditor)
   editor.addEventListener('click', closeEditorIfOuterClick)
   editor.addEventListener('close', clsoeEditor)
 }

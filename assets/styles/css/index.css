@@ -1018,6 +1018,49 @@
 .main-content__generated-signatures .generated-signatures__loader.disabled {
   display: none;
 }
+.main-content__generated-signatures .generated-signatures__loader.no-more-signatures ~ .generated-signatures__go-for-more {
+  display: flex;
+}
+.main-content__generated-signatures .generated-signatures__go-for-more {
+  padding: var(--padding-button);
+  font-size: var(--font-size-4);
+  color: var(--color-text-light);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  background: var(--color-main);
+  width: min(100%, 80rem);
+  margin-inline: auto;
+  display: none;
+}
+.main-content__generated-signatures .generated-signatures__go-for-more svg {
+  height: 1em;
+  width: auto;
+  color: var(--color-text-light);
+  fill: var(--color-text-light);
+  flex-shrink: 0;
+}
+.main-content__generated-signatures .generated-signatures__go-for-more:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-main);
+  background: inherit;
+  z-index: -1;
+}
+.main-content__generated-signatures .generated-signatures__go-for-more * {
+  z-index: 999;
+}
+.main-content__generated-signatures .generated-signatures__go-for-more:hover:before, .main-content__generated-signatures .generated-signatures__go-for-more:focus-within:focus-visible:before {
+  filter: brightness(0.8);
+}
 .main-content__about {
   display: flex;
   flex-direction: column;
