@@ -1,4 +1,14 @@
-<?php global $SITE_URL, $currentLocale, $localeReader, $SITE_NAME; ?>
+<?php global $SITE_URL, $currentLocale, $localeReader, $SITE_NAME;
+$localeShortCode = $currentLocale['short_code'];
+$dataFile = 'big-descriptions.json';
+
+$contents = null;
+try {
+  $contents = json_decode(file_get_contents($dataFile), true);
+} catch (Error $e) {
+  // pass
+}
+?>
 <!DOCTYPE html>
 <html lang="<?= $currentLocale['short_code'] ?? 'en' ?>" itemscope="" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
 <head>
@@ -27,7 +37,7 @@
     <?php include_once('components/socials.php'); ?>    
   </section>
   <section class="main-content__description big-text" itemprop="articleBody">
-    <?= $localeReader->translate('Privacy Policy Page Big Text'); ?>
+    <?= isset($contents["privacy_$localeShortCode"]) ? $contents["privacy_$localeShortCode"] : '' ?>
   </section>
 </main>
 <?php include_once('components/footer.php'); ?>

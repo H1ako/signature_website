@@ -1,4 +1,15 @@
-<?php global $SITE_URL, $ABOUTUS_IMAGE, $currentLocale, $localeReader, $SITE_URL, $SITE_ICON, $SITE_NAME, $ABOUTUS_STEP1_IMAGE, $ABOUTUS_STEP2_IMAGE, $ABOUTUS_STEP3_IMAGE, $ABOUTUS_STEP4_IMAGE, $ABOUTUS_STEP5_IMAGE, $ABOUTUS_STEP6_IMAGE, $ABOUTUS_STEP7_IMAGE; ?>
+<?php global $SITE_URL, $ABOUTUS_IMAGE, $currentLocale, $localeReader, $SITE_URL, $SITE_ICON, $SITE_NAME, $ABOUTUS_STEP1_IMAGE, $ABOUTUS_STEP2_IMAGE, $ABOUTUS_STEP3_IMAGE, $ABOUTUS_STEP4_IMAGE, $ABOUTUS_STEP5_IMAGE, $ABOUTUS_STEP6_IMAGE, $ABOUTUS_STEP7_IMAGE;
+$localeShortCode = $currentLocale['short_code'];
+
+$dataFile = 'big-descriptions.json';
+
+$contents = null;
+try {
+  $contents = json_decode(file_get_contents($dataFile), true);
+} catch (Error $e) {
+  // pass
+}
+?>
 <!DOCTYPE html>
 <html lang="<?= $currentLocale['short_code'] ?? 'en' ?>" itemscope="" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
 <head>
@@ -127,7 +138,8 @@
         </ul>
         <img src="<?= $SITE_URL ?>/assets/images/<?= $ABOUTUS_IMAGE ?>" alt="About us image" width="1100" height="500" class="description__img" itemprop="image">
         <div class="description__text big-text" itemprop="articleBody">
-          <?= $localeReader->translate('Home Page About Us Big Text'); ?>
+          <?php print_r($contents["aboutUs_$localeShortCode"]);?>
+          <?= isset($contents["aboutUs_$localeShortCode"]) ? $contents["aboutUs_$localeShortCode"] : '' ?>
         </div>
       </div>
     </div>
