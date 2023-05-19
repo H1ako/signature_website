@@ -226,6 +226,98 @@
     }
   }
 
+  &__instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-block);
+
+    .instruction__heading {
+      @include wrapWords;
+
+      text-align: center;
+    }
+
+    .instruction__block {
+      background: var(--color-bg-light);
+      border-radius: var(--border-radius-main);
+      border: var(--border-main);
+      padding: var(--padding-block);
+      width: 100%;
+  
+      .block__steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .steps__step {
+          position: relative;
+          display: grid;
+          grid-template-columns: 7fr 3fr;
+          gap: min(10em, 7%);
+
+          .step__left {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5em;
+            // height: fit-content;
+            // position: sticky;
+            // top: 1em;
+            // left: 0;
+
+            .left__index {
+              color: var(--color-main);
+              font-weight: 700;
+              font-size: var(--font-size-4);
+            }
+
+            .left__title {
+              @include wrapWords;
+
+              font-weight: 600;
+            }
+
+            .left__description {
+              @include wrapWords;
+
+              line-height: var(--line-height-main);
+              font-weight: 400;
+            }
+          }
+
+          .step__img {
+            @include image;
+
+            height: auto;
+            border-radius: var(--border-radius-main);
+          }
+
+          @media screen and (width < 750px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, auto);
+            gap: 1em;
+
+            .step__left {
+              align-items: center;
+
+              .left__index,
+              .left__title,
+              .left__description {
+                text-align: center;
+              }
+            }
+
+            .step__img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &__about {
     display: flex;
     flex-direction: column;
@@ -244,91 +336,22 @@
       border: var(--border-main);
       padding: var(--padding-block);
       width: 100%;
-  
-      .block__description {
-        display: flex;
+      display: flex;
         flex-direction: column;
         gap: 1em;
 
-        .description__steps {
-          display: flex;
-          flex-direction: column;
-          gap: 1em;
+      .block__text {
+        & > * {
+          text-align: justify;
+        }
+      }
 
-          .steps__step {
-            display: grid;
-            grid-template-columns: 7fr 3fr;
-            gap: min(10em, 7%);
-
-            .step__left {
-              position: relative;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              gap: 0.5em;
-
-              .left__index {
-                color: var(--color-main);
-                font-weight: 700;
-                font-size: var(--font-size-4);
-              }
-
-              .left__title {
-                @include wrapWords;
-
-                font-weight: 600;
-              }
-
-              .left__description {
-                @include wrapWords;
-
-                line-height: var(--line-height-main);
-                font-weight: 400;
-              }
-            }
-
-            .step__img {
-              @include image;
-
-              height: auto;
-              border-radius: var(--border-radius-main);
-            }
-
-            @media screen and (width < 750px) {
-              grid-template-columns: 1fr;
-              grid-template-rows: repeat(2, auto);
-              gap: 1em;
-
-              .step__left {
-                align-items: center;
+      .block__img {
+        @include image;
   
-                .left__index,
-                .left__title,
-                .left__description {
-                  text-align: center;
-                }
-              }
-
-              .step__img {
-                width: 100%;
-              }
-            }
-          }
-        }
-
-        .description__text {
-          & > * {
-            text-align: justify;
-          }
-        }
-
-        .description__img {
-          @include image;
-    
-          border-radius: var(--border-radius-main);
-          width: 100%;
-          height: auto;
-        }
+        border-radius: var(--border-radius-main);
+        width: 100%;
+        height: auto;
       }
     }
   }

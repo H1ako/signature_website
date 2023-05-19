@@ -16,10 +16,10 @@ $CONTACT_EMAIL = 'support@siggenerator.com';
 // Pages Additional Settings
 $ABOUTUS_IMAGE = 'slider2.jpeg';
 
-$ABOUTUS_STEP1_IMAGE = 'slider2.jpeg';
-$ABOUTUS_STEP2_IMAGE = 'slider2.jpeg';
-$ABOUTUS_STEP3_IMAGE = 'slider2.jpeg';
-$ABOUTUS_STEP4_IMAGE = 'slider2.jpeg';
-$ABOUTUS_STEP5_IMAGE = 'slider2.jpeg';
-$ABOUTUS_STEP6_IMAGE = 'slider2.jpeg';
-$ABOUTUS_STEP7_IMAGE = 'slider2.jpeg';
+$ABOUTUS_STEP1_IMAGE = 'phone-half.png';
+$ABOUTUS_STEP2_IMAGE = 'phone-half.png';
+$ABOUTUS_STEP3_IMAGE = 'phone-half.png';
+$ABOUTUS_STEP4_IMAGE = 'phone-half.png';
+$ABOUTUS_STEP5_IMAGE = 'phone-half.png';
+$ABOUTUS_STEP6_IMAGE = 'phone-half.png';
+$ABOUTUS_STEP7_IMAGE = 'phone-half.png';
