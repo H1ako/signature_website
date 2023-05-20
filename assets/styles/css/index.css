@@ -661,6 +661,7 @@
   border: var(--border-main);
   border-radius: var(--border-radius-main);
   overflow: hidden;
+  overflow: hidden;
 }
 .preview-lightbox::backdrop {
   background: rgba(0, 0, 0, 0.75);
@@ -699,8 +700,8 @@
   width: 20%;
   rotate: -32.5deg;
   top: 62.5%;
-  translate: 0 -50%;
   left: 23.5%;
+  translate: 0 -50%;
 }
 .preview-lightbox.preview-lightbox_paper-preview .paper-preview__bg-image {
   -o-object-fit: cover;
@@ -714,6 +715,19 @@
   width: 100%;
   height: auto;
   max-height: 80vh;
+}
+@media screen and (width < 500px) {
+  .preview-lightbox.preview-lightbox_paper-preview .paper-preview__image {
+    width: 40%;
+    top: 62%;
+    left: 45%;
+    rotate: -27deg;
+  }
+  .preview-lightbox.preview-lightbox_paper-preview .paper-preview__bg-image {
+    width: 200%;
+    -o-object-position: left center;
+       object-position: left center;
+  }
 }
 
 .go-top {
